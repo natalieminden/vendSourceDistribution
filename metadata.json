@@ -1,0 +1,6 @@
+{
+  "name": "Smart Cooler Landing Page",
+  "description": "A premium, responsive landing page comparing and retail-targeting the Haha and Qingo smart coolers, featuring specs sheets, comparison tables, customer reviews, and fully interactive ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
