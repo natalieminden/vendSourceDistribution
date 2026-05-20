@@ -507,13 +507,9 @@ export default function App() {
         </a>
       </div>
 
-      {/* HERO GLOW CONTAINER BACKGROUND (Using custom gradient styling aligned with aesthetic design principles) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 py-16 md:py-24 px-4 border-b border-slate-100">
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(0,212,255,0.06),transparent_60%)]"></div>
-        <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-glow"></div>
-        
-        {/* BRAND MAIN NAVIGATION HEADER */}
-        <header className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mb-16 flex items-center justify-between rounded-2xl transition-all ${scrolled ? "bg-white/90 backdrop-blur-md shadow-lg border border-slate-200/80 sticky top-4 z-40" : "bg-transparent"}`}>
+      {/* BRAND MAIN NAVIGATION HEADER */}
+      <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <div className="bg-[#0A0F2C] p-2 rounded-xl text-[#00D4FF]">
               <span className="text-xl font-bold font-display">🧊</span>
@@ -559,7 +555,13 @@ export default function App() {
               Get Custom Quote
             </a>
           </div>
-        </header>
+        </div>
+      </header>
+
+      {/* HERO GLOW CONTAINER BACKGROUND */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 py-16 md:py-20 px-4 border-b border-slate-100">
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(0,212,255,0.06),transparent_60%)]"></div>
+        <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-glow"></div>
 
         {/* HERO CONTENT */}
         <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 text-center pb-8">
