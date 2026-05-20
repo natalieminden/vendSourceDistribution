@@ -520,7 +520,7 @@ export default function App() {
             </span>
           </div>
 
-          <nav className="hidden md:flex space-x-8 text-sm font-bold text-slate-600">
+          <nav className="hidden md:flex space-x-5 lg:space-x-8 text-sm font-bold text-slate-600">
             <a href="#features-deep" className="hover:text-cyan-600 transition-colors">Features</a>
             <a href="#haha-showcase" className="hover:text-cyan-600 transition-colors">Haha Vending</a>
             <a href="#qingo-showcase" className="hover:text-cyan-600 transition-colors">Qingo Vending</a>
@@ -530,18 +530,10 @@ export default function App() {
           </nav>
 
           <div className="flex items-center space-x-3">
-            <button 
-              onClick={() => setExportOpen(true)}
-              className="bg-slate-100 border border-slate-200 hover:border-cyan-400 hover:bg-slate-200 text-xs text-slate-700 font-bold px-4 py-2.5 rounded-xl flex items-center gap-1.5 transition-all shadow-sm"
-            >
-              <Download className="w-4 h-4 text-cyan-600" />
-              <span>Export HTML</span>
-            </button>
-
-            <button 
+            <button
               onClick={() => { setCartOpen(true); setCheckoutStep("cart"); }}
               className="relative p-2.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl text-slate-800 transition-all shadow-sm"
-              aria-label="Open purchase baggage cart"
+              aria-label="Open cart"
             >
               <ShoppingBag className="w-5 h-5" />
               {cart.reduce((sum, item) => sum + item.quantity, 0) > 0 && (
@@ -559,7 +551,7 @@ export default function App() {
       </header>
 
       {/* HERO GLOW CONTAINER BACKGROUND */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 py-16 md:py-20 px-4 border-b border-slate-100">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 pt-10 pb-16 md:pt-14 md:pb-20 px-4 border-b border-slate-100">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(0,212,255,0.06),transparent_60%)]"></div>
         <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-glow"></div>
 
