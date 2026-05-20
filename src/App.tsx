@@ -510,26 +510,26 @@ export default function App() {
       {/* BRAND MAIN NAVIGATION HEADER */}
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="bg-[#0A0F2C] p-2 rounded-xl text-[#00D4FF]">
-              <span className="text-xl font-bold font-display">🧊</span>
+          <div className="flex items-center space-x-2 shrink-0">
+            <div className="bg-[#0A0F2C] p-1.5 rounded-lg text-[#00D4FF]">
+              <span className="text-lg font-bold font-display">🧊</span>
             </div>
-            <span className="text-xl md:text-2xl font-black font-display tracking-tight text-[#0A0F2C] flex items-center">
-              COOL<span className="text-cyan-500">TECH</span> VENDING
-              <span className="text-[10px] ml-1 bg-cyan-100 text-cyan-800 font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">SMART</span>
+            <span className="text-lg font-black font-display tracking-tight text-[#0A0F2C] flex items-center whitespace-nowrap">
+              COOL<span className="text-cyan-500">TECH</span>
+              <span className="text-[10px] ml-1.5 bg-cyan-100 text-cyan-800 font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">SMART</span>
             </span>
           </div>
 
-          <nav className="hidden md:flex space-x-5 lg:space-x-8 text-sm font-bold text-slate-600">
-            <a href="#features-deep" className="hover:text-cyan-600 transition-colors">Features</a>
-            <a href="#haha-showcase" className="hover:text-cyan-600 transition-colors">Haha Vending</a>
-            <a href="#qingo-showcase" className="hover:text-cyan-600 transition-colors">Qingo Vending</a>
-            <a href="#compare" className="hover:text-cyan-600 transition-colors">Compare</a>
-            <a href="#reviews" className="hover:text-cyan-600 transition-colors">Reviews</a>
-            <a href="#faq" className="hover:text-cyan-600 transition-colors">FAQ</a>
+          <nav className="hidden md:flex items-center space-x-5 lg:space-x-7 text-sm font-bold text-slate-600">
+            <a href="#features-deep" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Features</a>
+            <a href="#haha-showcase" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Haha</a>
+            <a href="#qingo-showcase" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Qingo</a>
+            <a href="#compare" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Compare</a>
+            <a href="#reviews" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Reviews</a>
+            <a href="#faq" className="whitespace-nowrap hover:text-cyan-600 transition-colors">FAQ</a>
           </nav>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 shrink-0">
             <button
               onClick={() => { setCartOpen(true); setCheckoutStep("cart"); }}
               className="relative p-2.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl text-slate-800 transition-all shadow-sm"
@@ -543,7 +543,7 @@ export default function App() {
               )}
             </button>
 
-            <a href="#get-quote-block" className="hidden lg:inline-block text-xs font-extrabold uppercase bg-cyan-400 hover:bg-cyan-300 text-navy-dark px-5 py-2.5 rounded-xl shadow-md transition-all">
+            <a href="#get-quote-block" className="whitespace-nowrap text-xs font-extrabold uppercase bg-cyan-400 hover:bg-cyan-300 text-[#0A0F2C] px-4 py-2.5 rounded-xl shadow-md transition-all">
               Get Custom Quote
             </a>
           </div>
