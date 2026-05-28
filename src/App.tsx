@@ -72,6 +72,66 @@ export default function App() {
       specs: ["SCAN, GRAB & GO FLOW", "COMPUTER VISION CAMERA SENSORS", "99.9% TRANSACTION ACCURACY", "LIVE CLOUD MANAGEMENT DASHBOARD"]
     },
     {
+      id: "qingoking509",
+      name: "Qingo King 509",
+      price: 3799,
+      originalPrice: 3799,
+      badge: "Compact & Best Value",
+      tagline: "Compact & Refined. Best Value. Widely Usable.",
+      accentColor: "#FB923C",
+      secondaryColor: "rgba(251, 146, 60, 0.15)",
+      capacity: "14.8 cu ft — Holds 378 bottles (or 240 with pushers)",
+      battery: "Air-cooled refrigeration, 36-46°F (2-8°C) temperature range",
+      noise: "<55 dB commercial compressor",
+      solar: "Nayax & Pax integrated payment processing & real-time VMS portal",
+      weight: "194 lbs (W26.38 × D25.39 × H73.62 inch)",
+      bestFor: "Offices, gyms, break rooms, hotel lobbies.",
+      description: "Compact single-door AI smart vending machine with 9 columns × 7 rows × 6 tiers. AI Dynamic Recognition technology delivers 99% transaction accuracy. Standard US outlet (120V/60Hz), Nayax & Pax payment terminals included.",
+      imgUrl: "/products/qingo-king-509.jpeg",
+      stock: 12,
+      specs: ["AI DYNAMIC RECOGNITION", "99% ACCURACY", "NAYAX & PAX PAYMENTS", "REMOTE TEMP CONTROL"]
+    },
+    {
+      id: "qingoace779",
+      name: "Qingo Ace 779",
+      price: 4999,
+      originalPrice: 4999,
+      badge: "Flagship Model",
+      tagline: "Flagship Model. Large Capacity. Full Featured.",
+      accentColor: "#FB923C",
+      secondaryColor: "rgba(251, 146, 60, 0.15)",
+      capacity: "20.5 cu ft — Holds 495 bottles (or 393 with pushers)",
+      battery: "Air-cooled refrigeration, 36-46°F (2-8°C) temperature range",
+      noise: "<55 dB commercial compressor",
+      solar: "Nayax & Pax integrated payment processing & real-time VMS portal",
+      weight: "276 lbs (W32.64 × D26.18 × H78.66 inch)",
+      bestFor: "High-traffic offices, universities, medical facilities, hotel lobbies.",
+      description: "Full-featured single-door AI smart vending machine with 11 columns × 7 rows × 6 tiers (plus 11 × 3 × 1 tiers). AI Dynamic Recognition with 99% accuracy. Nayax & Pax terminals, beverage & snack pushers available.",
+      imgUrl: "/products/qingo-ace-779.jpeg",
+      stock: 8,
+      specs: ["AI DYNAMIC RECOGNITION", "99% ACCURACY", "NAYAX & PAX PAYMENTS", "REMOTE TEMP CONTROL"]
+    },
+    {
+      id: "qingopair1208",
+      name: "Qingo Pair 1208",
+      price: 6999,
+      originalPrice: 6999,
+      badge: "High Capacity",
+      tagline: "High Capacity. Low Refill Frequency.",
+      accentColor: "#FB923C",
+      secondaryColor: "rgba(251, 146, 60, 0.15)",
+      capacity: "36.4 cu ft — Holds 672 bottles (or 588 with pushers)",
+      battery: "Air-cooled refrigeration, 36-46°F (2-8°C) temperature range",
+      noise: "<55 dB dual commercial compressor",
+      solar: "Nayax & Pax integrated payment processing & real-time VMS portal",
+      weight: "388 lbs (W48.23 × D27.76 × H82.09 inch)",
+      bestFor: "Airports, transit hubs, large event venues, major commercial complexes.",
+      description: "Dual glass-door high-capacity AI smart vending machine with 16 columns × 7 rows × 6 tiers. AI Dynamic Recognition with 99% accuracy. Built for locations that demand maximum throughput with minimal restocking frequency.",
+      imgUrl: "/products/qingo-pair-1208.jpeg",
+      stock: 4,
+      specs: ["DUAL DOOR HIGH CAPACITY", "99% AI ACCURACY", "NAYAX & PAX PAYMENTS", "REMOTE TEMP CONTROL"]
+    },
+    {
       id: "freezer",
       name: "Smart Freezer",
       price: 4699,
@@ -596,24 +656,18 @@ export default function App() {
             Double retail sales and provide 24/7 premium amenities with the Tap, Grab & Go self-service refrigeration experience. Features integrated load cells, AI vision models, and instant cellular Nayax checkouts.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 max-w-2xl mx-auto">
-            <a
-              href="#haha-showcase"
-              className="w-full sm:w-1/3 bg-[#00D4FF] hover:bg-cyan-300 text-[#0A0F2C] font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block shadow-lg shadow-cyan-400/20 uppercase tracking-tight font-heading"
-            >
+          <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-3 max-w-3xl mx-auto flex-wrap">
+            <a href="#haha-showcase" className="w-full sm:w-auto bg-[#00D4FF] hover:bg-cyan-300 text-[#0A0F2C] font-black text-center px-5 py-3 rounded-xl text-xs transition-all transform hover:-translate-y-1 block shadow-lg shadow-cyan-400/20 uppercase tracking-tight font-heading">
               Haha 1200 Ultra ($6,799)
             </a>
-            <a
-              href="#max620-showcase"
-              className="w-full sm:w-1/3 bg-[#0A0F2C] hover:bg-slate-950 text-white font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading"
-            >
+            <a href="#max620-showcase" className="w-full sm:w-auto bg-slate-700 hover:bg-slate-600 text-white font-black text-center px-5 py-3 rounded-xl text-xs transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading">
               Max 620 ($4,899)
             </a>
-            <a
-              href="#freezer-showcase"
-              className="w-full sm:w-1/3 bg-[#34D399] hover:bg-emerald-400 text-[#0A0F2C] font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading"
-            >
+            <a href="#freezer-showcase" className="w-full sm:w-auto bg-[#34D399] hover:bg-emerald-400 text-[#0A0F2C] font-black text-center px-5 py-3 rounded-xl text-xs transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading">
               Smart Freezer ($4,699)
+            </a>
+            <a href="#qingo-series" className="w-full sm:w-auto bg-orange-500 hover:bg-orange-400 text-white font-black text-center px-5 py-3 rounded-xl text-xs transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading">
+              Qingo Series ($3,799+)
             </a>
           </div>
 
@@ -928,6 +982,100 @@ export default function App() {
                 <span className="text-sm font-extrabold text-[#0A0F2C]">DEEP-FREEZE VENDING UNIT</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* QINGO AI VENDING SERIES SHOWCASE */}
+      <section id="qingo-series" className="py-24 bg-[#0A0F2C] text-white border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-black tracking-widest text-orange-400 uppercase font-heading">QINGO AI VENDING SERIES</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold font-display text-white mt-2">Three Models. One Smart Platform.</h2>
+            <p className="text-slate-300 mt-4 font-sans">AI Dynamic Recognition with 99% transaction accuracy. Choose the capacity that fits your location.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            {/* King 509 */}
+            <div className="bg-[#131b42] rounded-2xl border border-white/10 overflow-hidden hover:border-orange-500/40 transition-all hover:shadow-xl hover:shadow-orange-500/5 flex flex-col">
+              <div className="relative bg-white/5 p-4 flex items-center justify-center" style={{height: "280px"}}>
+                <img src="/products/qingo-king-509.jpeg" alt="Qingo King 509" className="h-full object-contain hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">Compact & Best Value</span>
+                  <h3 className="text-xl font-black text-white mt-1 mb-1 font-display">Qingo King 509</h3>
+                  <p className="text-slate-400 text-xs mb-4">14.8 cu ft · 194 lbs · Holds 378 bottles</p>
+                  <ul className="space-y-2 text-xs text-slate-300 mb-4">
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />9 Col × 7 Row × 6 Tier layout</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />AI Dynamic Recognition — 99% accuracy</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />Nayax & Pax payment terminals</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />36-46°F · Remote temp control</li>
+                  </ul>
+                </div>
+                <div className="border-t border-white/10 pt-4 flex items-center justify-between">
+                  <span className="text-2xl font-black text-white font-display">$3,799</span>
+                  <button onClick={() => addToCart(products[3])} className="bg-orange-500 hover:bg-orange-400 text-white font-black text-xs uppercase px-5 py-2.5 rounded-lg transition-all">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Ace 779 */}
+            <div className="bg-[#131b42] rounded-2xl border-2 border-orange-500/60 overflow-hidden hover:border-orange-500 transition-all hover:shadow-xl hover:shadow-orange-500/10 flex flex-col relative">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-orange-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest z-10">FLAGSHIP</div>
+              <div className="relative bg-white/5 p-4 flex items-center justify-center" style={{height: "280px"}}>
+                <img src="/products/qingo-ace-779.jpeg" alt="Qingo Ace 779" className="h-full object-contain hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">Flagship · Large Capacity</span>
+                  <h3 className="text-xl font-black text-white mt-1 mb-1 font-display">Qingo Ace 779</h3>
+                  <p className="text-slate-400 text-xs mb-4">20.5 cu ft · 276 lbs · Holds 495 bottles</p>
+                  <ul className="space-y-2 text-xs text-slate-300 mb-4">
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />11 Col × 7 Row × 6 Tier + snack tier</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />AI Dynamic Recognition — 99% accuracy</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />Nayax & Pax payment terminals</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />36-46°F · Remote temp control</li>
+                  </ul>
+                </div>
+                <div className="border-t border-white/10 pt-4 flex items-center justify-between">
+                  <span className="text-2xl font-black text-white font-display">$4,999</span>
+                  <button onClick={() => addToCart(products[4])} className="bg-orange-500 hover:bg-orange-400 text-white font-black text-xs uppercase px-5 py-2.5 rounded-lg transition-all">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Pair 1208 */}
+            <div className="bg-[#131b42] rounded-2xl border border-white/10 overflow-hidden hover:border-orange-500/40 transition-all hover:shadow-xl hover:shadow-orange-500/5 flex flex-col">
+              <div className="relative bg-white/5 p-4 flex items-center justify-center" style={{height: "280px"}}>
+                <img src="/products/qingo-pair-1208.jpeg" alt="Qingo Pair 1208" className="h-full object-contain hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">High Capacity · Low Refill</span>
+                  <h3 className="text-xl font-black text-white mt-1 mb-1 font-display">Qingo Pair 1208</h3>
+                  <p className="text-slate-400 text-xs mb-4">36.4 cu ft · 388 lbs · Holds 672 bottles</p>
+                  <ul className="space-y-2 text-xs text-slate-300 mb-4">
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />16 Col × 7 Row × 6 Tier dual door</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />AI Dynamic Recognition — 99% accuracy</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />Nayax & Pax payment terminals</li>
+                    <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-orange-400 shrink-0" />36-46°F · Remote temp control</li>
+                  </ul>
+                </div>
+                <div className="border-t border-white/10 pt-4 flex items-center justify-between">
+                  <span className="text-2xl font-black text-white font-display">$6,999</span>
+                  <button onClick={() => addToCart(products[5])} className="bg-orange-500 hover:bg-orange-400 text-white font-black text-xs uppercase px-5 py-2.5 rounded-lg transition-all">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -1316,6 +1464,81 @@ export default function App() {
               </button>
             </div>
 
+          </div>
+
+          {/* Qingo Series Pricing Cards */}
+          <div className="mt-12">
+            <div className="text-center mb-8">
+              <span className="text-xs font-black tracking-widest text-orange-500 uppercase font-heading">QINGO AI VENDING SERIES</span>
+              <h3 className="text-2xl font-extrabold text-[#0A0F2C] mt-1 font-display">Qingo Models</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left text-[#0A0F2C]">
+
+              {/* Qingo King 509 */}
+              <div className="bg-white p-8 rounded-3xl border border-orange-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+                <div>
+                  <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">COMPACT & BEST VALUE</span>
+                  <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Qingo King 509</h3>
+                  <p className="text-slate-500 text-xs mb-6">14.8 cu ft · 9 Col × 7 Row × 6 Tier · Holds 378 bottles</p>
+                  <div className="flex items-baseline space-x-2 text-[#0A0F2C] mb-6">
+                    <span className="text-4xl font-extrabold font-display text-orange-600">$3,799.00</span>
+                  </div>
+                  <ul className="space-y-3 text-xs text-slate-700 mb-8 border-t border-slate-100 pt-4 font-sans">
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>AI Dynamic Recognition — 99% accuracy</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>Nayax &amp; Pax payment terminals</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>36-46°F · Remote temperature control</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>Beverage &amp; snack pusher compatible</span></li>
+                  </ul>
+                </div>
+                <button onClick={() => addToCart(products[3])} className="w-full bg-orange-500 hover:bg-orange-400 text-white font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl text-center transform hover:-translate-y-0.5 transition-all shadow-md mt-auto">
+                  Inquire &amp; Purchase King 509
+                </button>
+              </div>
+
+              {/* Qingo Ace 779 */}
+              <div className="bg-white p-8 rounded-3xl border-2 border-orange-500 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+                <div className="absolute -top-3.5 right-6 bg-orange-500 text-white text-[9px] font-extrabold px-3 py-1 rounded-full tracking-widest uppercase">FLAGSHIP</div>
+                <div>
+                  <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">LARGE CAPACITY · FULL FEATURED</span>
+                  <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Qingo Ace 779</h3>
+                  <p className="text-slate-500 text-xs mb-6">20.5 cu ft · 11 Col × 7 Row × 6 Tier · Holds 495 bottles</p>
+                  <div className="flex items-baseline space-x-2 text-[#0A0F2C] mb-6">
+                    <span className="text-4xl font-extrabold font-display text-orange-600">$4,999.00</span>
+                  </div>
+                  <ul className="space-y-3 text-xs text-slate-700 mb-8 border-t border-slate-100 pt-4 font-sans">
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span className="font-semibold">AI Dynamic Recognition — 99% accuracy</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span className="font-semibold">Nayax &amp; Pax payment terminals</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>36-46°F · Remote temperature control</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>Beverage &amp; snack pusher compatible</span></li>
+                  </ul>
+                </div>
+                <button onClick={() => addToCart(products[4])} className="w-full bg-[#0A0F2C] hover:bg-slate-900 text-white font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl text-center transform hover:-translate-y-0.5 transition-all shadow-md mt-auto">
+                  Inquire &amp; Purchase Ace 779
+                </button>
+              </div>
+
+              {/* Qingo Pair 1208 */}
+              <div className="bg-white p-8 rounded-3xl border border-orange-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+                <div>
+                  <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">HIGH CAPACITY · LOW REFILL</span>
+                  <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Qingo Pair 1208</h3>
+                  <p className="text-slate-500 text-xs mb-6">36.4 cu ft · 16 Col × 7 Row × 6 Tier · Holds 672 bottles</p>
+                  <div className="flex items-baseline space-x-2 text-[#0A0F2C] mb-6">
+                    <span className="text-4xl font-extrabold font-display text-orange-600">$6,999.00</span>
+                  </div>
+                  <ul className="space-y-3 text-xs text-slate-700 mb-8 border-t border-slate-100 pt-4 font-sans">
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>AI Dynamic Recognition — 99% accuracy</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>Nayax &amp; Pax payment terminals</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>36-46°F · Remote temperature control</span></li>
+                    <li className="flex items-center space-x-2"><Check className="w-4 h-4 text-orange-500" /><span>Dual door — minimal restocking needed</span></li>
+                  </ul>
+                </div>
+                <button onClick={() => addToCart(products[5])} className="w-full bg-orange-500 hover:bg-orange-400 text-white font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl text-center transform hover:-translate-y-0.5 transition-all shadow-md mt-auto">
+                  Inquire &amp; Purchase Pair 1208
+                </button>
+              </div>
+
+            </div>
           </div>
  
           {/* Secure Purchase Trust Badges strip */}
