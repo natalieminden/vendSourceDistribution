@@ -32,33 +32,33 @@ export default function App() {
   // Products definition with premium colors & specs
   const products: Product[] = [
     {
-      id: "haha",
-      name: "Haha Smart Cooler",
-      price: 1999, // Commercial Vending Unit Entry
-      originalPrice: 2499,
+      id: "haha1200ultra",
+      name: "Haha 1200 Ultra",
+      price: 6799,
+      originalPrice: 6999,
       badge: "Best Value Option",
       tagline: "The Smarter Vending Experience: Tap, Grab, and Go.",
-      accentColor: "#00D4FF", // Electric Cyan
+      accentColor: "#00D4FF",
       secondaryColor: "rgba(0, 212, 255, 0.15)",
       capacity: "460L Heavy Duty Cabinet (holds up to 240+ multi-size items)",
       battery: "Built-in uninterruptible battery backup (secures temp for 12 hours of power outage)",
       noise: "40 dB Quiet Eco Commercial Cooling Compressor",
-      solar: "Nayax Integrated payment processing & real-time VMS portal",
+      solar: "Nayax & Pax integrated payment processing & real-time VMS portal",
       weight: "115 kg (Sturdy secure metal frame)",
       bestFor: "Office breakrooms, gyms, hotel lobbies, residential apartment hubs.",
       description: "Smart micro-market vending cooler with physical high-accuracy load-cell shelves. Customers tap to unlock, grab their snacks or beverages, close the door, and get charged automatically. Zero spiral jams, coils, or dropped item damage.",
-      imgUrl: "https://images.unsplash.com/photo-1574757565409-e855c9f59380?auto=format&fit=crop&w=800&q=80",
+      imgUrl: "/products/haha-1200-ultra.jpeg",
       stock: 14,
-      specs: ["TAP, GRAB & GO CONVENIENCE", "LOAD-CELL WEIGHT MODULES", "NAYAX NFC / CREDIT PAYMENTS", "ANTI-FOG HEATED GLASS DOOR"]
+      specs: ["TAP, GRAB & GO CONVENIENCE", "LOAD-CELL WEIGHT MODULES", "NAYAX & PAX PAYMENTS", "ANTI-FOG HEATED GLASS DOOR"]
     },
     {
-      id: "qingo",
-      name: "Qingo Smart Cooler",
-      price: 3499, // Flagship model price
-      originalPrice: 4299,
+      id: "max620",
+      name: "Max 620",
+      price: 4899,
+      originalPrice: 4999,
       badge: "Recommended Flagship",
       tagline: "Redefining the Future of Vending with Dual AI Vision and Weight Fusion.",
-      accentColor: "#FB923C", // Energetic Amber/Orange
+      accentColor: "#FB923C",
       secondaryColor: "rgba(251, 146, 60, 0.15)",
       capacity: "650L Premium Double glass cabinet (holds 320+ items)",
       battery: "Continuous uptime battery & safety temperature backup system",
@@ -67,9 +67,29 @@ export default function App() {
       weight: "165 kg (Extremely robust anti-vandal retail structure)",
       bestFor: "High-traffic commercial complexes, medical systems, universities, airport lounges.",
       description: "Dual isolated glass-door smart cooling vending station. Fuses advanced digital weight sensors with internal multi-angle AI computer vision cameras to maintain supreme 99.9% transaction accuracy, perfect even for chaotic grab-and-return behaviors.",
-      imgUrl: "https://images.unsplash.com/photo-1583258292688-d0213df4a3a8?auto=format&fit=crop&w=800&q=80",
+      imgUrl: "/products/max-620.jpeg",
       stock: 6,
       specs: ["SCAN, GRAB & GO FLOW", "COMPUTER VISION CAMERA SENSORS", "99.9% TRANSACTION ACCURACY", "LIVE CLOUD MANAGEMENT DASHBOARD"]
+    },
+    {
+      id: "freezer",
+      name: "Smart Freezer",
+      price: 4699,
+      originalPrice: 4999,
+      badge: "Frozen & Specialty",
+      tagline: "Frozen & Chilled Items, Zero Hassle. Grab What You Need.",
+      accentColor: "#34D399",
+      secondaryColor: "rgba(52, 211, 153, 0.15)",
+      capacity: "380L Dedicated Frozen Cabinet (holds 180+ frozen items)",
+      battery: "Insulated thermal backup — maintains frozen temps for 8 hours during outage",
+      noise: "42 dB commercial-grade deep-freeze compressor",
+      solar: "Nayax & Pax integrated payment processing & real-time VMS portal",
+      weight: "120 kg (Heavy-duty steel frame with anti-vibration mounts)",
+      bestFor: "Break rooms, convenience stores, food courts, hospitality venues.",
+      description: "Purpose-built smart frozen vending unit with load-cell shelving and a deep-freeze glass door cabinet. Handles everything from ice cream and frozen meals to packaged snacks — all contactless, 24/7.",
+      imgUrl: "/products/freezer.jpeg",
+      stock: 9,
+      specs: ["DEEP-FREEZE LOAD CELL SHELVES", "ANTI-FOG HEATED GLASS DOOR", "NAYAX & PAX PAYMENTS", "LIVE CLOUD VMS DASHBOARD"]
     }
   ];
 
@@ -102,7 +122,7 @@ export default function App() {
   const [cookieConsent, setCookieConsent] = useState(false);
   const [countdown, setCountdown] = useState({ hours: 4, minutes: 28, seconds: 41 });
   const [exportOpen, setExportOpen] = useState(false);
-  const [activeCompareId, setActiveCompareId] = useState<string>("qingo");
+  const [activeCompareId, setActiveCompareId] = useState<string>("max620");
 
   useEffect(() => {
     // Show discount consent bar after 5 seconds
@@ -576,18 +596,24 @@ export default function App() {
             Double retail sales and provide 24/7 premium amenities with the Tap, Grab & Go self-service refrigeration experience. Features integrated load cells, AI vision models, and instant cellular Nayax checkouts.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
-            <a 
-              href="#haha-showcase" 
-              className="w-full sm:w-1/2 bg-[#00D4FF] hover:bg-cyan-300 text-[#0A0F2C] font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block shadow-lg shadow-cyan-400/20 uppercase tracking-tight font-heading"
+          <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 max-w-2xl mx-auto">
+            <a
+              href="#haha-showcase"
+              className="w-full sm:w-1/3 bg-[#00D4FF] hover:bg-cyan-300 text-[#0A0F2C] font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block shadow-lg shadow-cyan-400/20 uppercase tracking-tight font-heading"
             >
-              Haha Vending ($1,999)
+              Haha 1200 Ultra ($6,799)
             </a>
-            <a 
-              href="#qingo-showcase" 
-              className="w-full sm:w-1/2 bg-[#0A0F2C] hover:bg-slate-950 text-white font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading"
+            <a
+              href="#max620-showcase"
+              className="w-full sm:w-1/3 bg-[#0A0F2C] hover:bg-slate-950 text-white font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading"
             >
-              Qingo Vending ($3,499)
+              Max 620 ($4,899)
+            </a>
+            <a
+              href="#freezer-showcase"
+              className="w-full sm:w-1/3 bg-[#34D399] hover:bg-emerald-400 text-[#0A0F2C] font-black text-center px-6 py-4 rounded-xl text-sm transition-all transform hover:-translate-y-1 block uppercase tracking-tight font-heading"
+            >
+              Smart Freezer ($4,699)
             </a>
           </div>
 
@@ -635,7 +661,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* PRODUCT 1 SHOWCASE: HAHA SMART COOLER */}
+      {/* PRODUCT 1 SHOWCASE: HAHA 1200 ULTRA */}
       <section id="haha-showcase" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-1"></div>
@@ -644,9 +670,9 @@ export default function App() {
               <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
               <span>Perfect Micro-Retail Gateway Choice</span>
             </span>
-            
+
             <h2 className="text-3xl md:text-5xl font-extrabold font-display text-[#0A0F2C]">
-              Haha Smart Cooler
+              Haha 1200 Ultra
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed">
               The flagship smart cabinet from the Haha Vending series. Designed with a pristine glass door and high-accuracy weight sensors underneath every shelf. It turns any high-visibility office lounge or physical gym into a frictionless 24/7 retail slot.
@@ -685,14 +711,14 @@ export default function App() {
 
             <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-baseline sm:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-semibold text-slate-400 line-through block">MSRP: $2,499.00</span>
+                <span className="text-xs font-semibold text-slate-400 line-through block">MSRP: $6,999.00</span>
                 <div className="flex items-baseline space-x-3">
-                  <span className="text-4xl font-extrabold text-[#0A0F2C]">$1,999.00</span>
+                  <span className="text-4xl font-extrabold text-[#0A0F2C]">$6,799.00</span>
                   <span className="bg-red-100 text-red-800 font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase">
-                    SAVE $500 ON BUNDLE
+                    SAVE $200
                   </span>
                 </div>
-                <span className="text-xs text-[#0A0F2C] font-bold block mt-1">🏷️ Authorized Reseller — shipping directly via premium freight carriers</span>
+                <span className="text-xs text-[#0A0F2C] font-bold block mt-1">Authorized Reseller — shipping directly via premium freight carriers</span>
               </div>
 
               <div className="flex gap-2 w-full sm:w-auto">
@@ -710,36 +736,36 @@ export default function App() {
           <div className="lg:col-span-1"></div>
           <div className="lg:col-span-5 relative">
             <div className="relative overflow-hidden rounded-3xl p-4 bg-gradient-to-tr from-cyan-400/5 to-slate-200/50 border border-slate-200">
-              <img 
-                src="https://images.unsplash.com/photo-1574757565409-e855c9f59380?auto=format&fit=crop&w=1000&q=80" 
-                alt="Haha Smart Vending Cooler" 
-                className="w-full h-[400px] object-cover rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500"
+              <img
+                src="/products/haha-1200-ultra.jpeg"
+                alt="Haha 1200 Ultra Smart Vending Cooler"
+                className="w-full h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-8 left-8 bg-white/95 backdrop-blur shadow border border-slate-200 px-4 py-2 rounded-xl">
                 <span className="text-cyan-600 text-xs font-mono block uppercase">Haha Vending Series</span>
-                <span className="text-sm font-extrabold text-[#0A0F2C]">AMBIENT & CHILLED CABINET</span>
+                <span className="text-sm font-extrabold text-[#0A0F2C]">HAHA 1200 ULTRA</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* PRODUCT 2 SHOWCASE: QINGO SMART COOLER (FLAGSHIP RUGGED CHOICE) */}
-      <section id="qingo-showcase" className="py-24 bg-[#0A0F2C] text-white border-y border-white/5">
+      {/* PRODUCT 2 SHOWCASE: MAX 620 (FLAGSHIP DUAL-DOOR) */}
+      <section id="max620-showcase" className="py-24 bg-[#0A0F2C] text-white border-y border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Visual Column */}
             <div className="lg:col-span-6 relative order-2 lg:order-1">
               <div className="relative overflow-hidden rounded-3xl p-4 bg-gradient-to-tl from-orange-400/5 to-slate-200/50 border border-white/10">
-                <img 
-                  src="https://images.unsplash.com/photo-1583258292688-d0213df4a3a8?auto=format&fit=crop&w=1000&q=80" 
-                  alt="Qingo Smart Vending Cooler" 
-                  className="w-full h-[400px] object-cover rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500"
+                <img
+                  src="/products/max-620.jpeg"
+                  alt="Max 620 Smart Vending Cooler"
+                  className="w-full h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-8 left-8 bg-[#0A0F2C]/95 backdrop-blur shadow border border-white/10 px-4 py-2 rounded-xl">
-                  <span className="text-orange-400 text-xs font-mono block uppercase">Qingo Flagship</span>
-                  <span className="text-sm font-extrabold text-white">DUAL AI FUSION MERCHANDISER</span>
+                  <span className="text-orange-400 text-xs font-mono block uppercase">Max Series</span>
+                  <span className="text-sm font-extrabold text-white">MAX 620 DUAL-DOOR</span>
                 </div>
               </div>
             </div>
@@ -754,10 +780,10 @@ export default function App() {
               </span>
               
               <h2 className="text-3xl md:text-5xl font-extrabold font-display text-white">
-                Qingo Smart Cooler
+                Max 620
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
-                The absolute king of commercial micro-markets. Fuses dual-angle high-speed camera computer vision tracking with robust bottom physical scale-plates. By correlating the weight changes with visual gesture identification, Qingo secures an unrivaled 99.9% checkout scan accuracy.
+                The absolute king of commercial micro-markets. Fuses dual-angle high-speed camera computer vision tracking with robust bottom physical scale-plates. By correlating the weight changes with visual gesture identification, Max 620 secures an unrivaled 99.9% checkout scan accuracy.
               </p>
 
               <div className="grid grid-cols-2 gap-4 pt-2">
@@ -793,14 +819,14 @@ export default function App() {
 
               <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-baseline sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-semibold text-slate-400 line-through block">MSRP: $4,299.00</span>
+                  <span className="text-xs font-semibold text-slate-400 line-through block">MSRP: $4,999.00</span>
                   <div className="flex items-baseline space-x-3">
-                    <span className="text-4xl font-extrabold text-white">$3,499.00</span>
+                    <span className="text-4xl font-extrabold text-white">$4,899.00</span>
                     <span className="bg-orange-500/20 text-orange-400 font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase">
-                      SAVE $800 NOW
+                      SAVE $100 NOW
                     </span>
                   </div>
-                  <span className="text-xs text-slate-400 font-bold block mt-1">⭐ Authorized Reseller — full manufacturer warranty support</span>
+                  <span className="text-xs text-slate-400 font-bold block mt-1">Authorized Reseller — full manufacturer warranty support</span>
                 </div>
 
                 <div className="flex gap-2 w-full sm:w-auto">
@@ -814,6 +840,94 @@ export default function App() {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCT 3 SHOWCASE: SMART FREEZER */}
+      <section id="freezer-showcase" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-1"></div>
+          <div className="lg:col-span-5 space-y-6">
+            <span className="inline-flex items-center space-x-1.5 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Frozen &amp; Specialty Items</span>
+            </span>
+
+            <h2 className="text-3xl md:text-5xl font-extrabold font-display text-[#0A0F2C]">
+              Smart Freezer
+            </h2>
+            <p className="text-slate-600 text-lg leading-relaxed">
+              Purpose-built smart frozen vending unit with load-cell shelving and a deep-freeze glass door cabinet. Handles everything from ice cream and frozen meals to packaged snacks — all contactless, 24/7.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="flex items-start space-x-2">
+                <Check className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-slate-800 text-sm">380L Frozen Cabinet</span>
+                  <p className="text-slate-500 text-xs">Holds 180+ frozen items</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Check className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-slate-800 text-sm">8h Outage Backup</span>
+                  <p className="text-slate-500 text-xs">Maintains frozen temps during outage</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Check className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-slate-800 text-sm">Nayax Swiper Gateway</span>
+                  <p className="text-slate-500 text-xs">Accept credit, NFC, Pax &amp; employee cards</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Check className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-slate-800 text-sm">Cloud VMS Suite</span>
+                  <p className="text-slate-500 text-xs">Manage prices and inventory live</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-baseline sm:items-center justify-between gap-4">
+              <div>
+                <span className="text-xs font-semibold text-slate-400 line-through block">MSRP: $4,999.00</span>
+                <div className="flex items-baseline space-x-3">
+                  <span className="text-4xl font-extrabold text-[#0A0F2C]">$4,699.00</span>
+                  <span className="bg-red-100 text-red-800 font-mono text-[10px] font-bold px-2 py-0.5 rounded uppercase">
+                    SAVE $300
+                  </span>
+                </div>
+                <span className="text-xs text-[#0A0F2C] font-bold block mt-1">Authorized Reseller — shipping directly via premium freight carriers</span>
+              </div>
+
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button
+                  onClick={() => addToCart(products[2])}
+                  className="w-full sm:w-auto bg-[#34D399] hover:bg-emerald-400 text-[#0A0F2C] font-black uppercase tracking-tight text-xs px-8 py-4 rounded-xl transition-all shadow-md transform hover:-translate-y-0.5"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-1"></div>
+          <div className="lg:col-span-5 relative">
+            <div className="relative overflow-hidden rounded-3xl p-4 bg-gradient-to-tr from-emerald-400/5 to-slate-200/50 border border-slate-200">
+              <img
+                src="/products/freezer.jpeg"
+                alt="Smart Freezer Vending Unit"
+                className="w-full h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute top-8 left-8 bg-white/95 backdrop-blur shadow border border-slate-200 px-4 py-2 rounded-xl">
+                <span className="text-emerald-600 text-xs font-mono block uppercase">Smart Freezer Series</span>
+                <span className="text-sm font-extrabold text-[#0A0F2C]">DEEP-FREEZE VENDING UNIT</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -857,10 +971,10 @@ export default function App() {
               <thead>
                 <tr className="bg-slate-100/80 border-b border-slate-200 text-slate-800 text-xs uppercase tracking-wider font-heading">
                   <th className="p-4 font-bold">Specs Factors</th>
-                  <th className="p-4 font-bold text-center text-cyan-800">Haha Smart Vending</th>
+                  <th className="p-4 font-bold text-center text-cyan-800">Haha 1200 Ultra</th>
                   <th className="p-4 font-bold text-center text-orange-850 bg-orange-100/30">
                     <span className="inline-flex items-center gap-1">
-                      <span>Qingo Vending 👑</span>
+                      <span>Max 620</span>
                       <span className="text-[9px] bg-orange-500 text-white px-2 py-0.5 rounded-full font-sans uppercase font-black">MOST POPULAR</span>
                     </span>
                   </th>
@@ -884,8 +998,8 @@ export default function App() {
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-slate-800">Secure Payment Support</td>
-                  <td className="p-4 text-center">Inbuilt MDB Nayax card Reader</td>
-                  <td className="p-4 text-center bg-orange-50/15 font-bold text-slate-900">Nayax + RFID badge + direct QR portals</td>
+                  <td className="p-4 text-center">Inbuilt Nayax & Pax card reader</td>
+                  <td className="p-4 text-center bg-orange-50/15 font-bold text-slate-900">Nayax & Pax + RFID badge + direct QR portals</td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-slate-800">Cellular Cloud VMS</td>
@@ -904,8 +1018,8 @@ export default function App() {
                 </tr>
                 <tr className="bg-slate-50/40">
                   <td className="p-4 font-extrabold text-slate-900">Promo Reseller Price</td>
-                  <td className="p-4 text-center text-[#0A0F2C] font-black text-lg">$1,999.00</td>
-                  <td className="p-4 text-center bg-orange-50/15 text-orange-600 font-black text-xl">$3,499.00</td>
+                  <td className="p-4 text-center text-[#0A0F2C] font-black text-lg">$6,799.00</td>
+                  <td className="p-4 text-center bg-orange-50/15 text-orange-600 font-black text-xl">$4,899.00</td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-slate-800">Best Installed in</td>
@@ -919,28 +1033,28 @@ export default function App() {
           {/* Quick Mobile Compare Toggles */}
           <div className="md:hidden space-y-4">
             <div className="flex bg-slate-200 p-1.5 rounded-lg gap-2">
-              <button 
-                onClick={() => setActiveCompareId("haha")}
-                className={`flex-1 py-2 rounded font-bold text-xs ${activeCompareId === "haha" ? "bg-white text-[#0A0F2C] shadow-sm" : "text-slate-600"}`}
+              <button
+                onClick={() => setActiveCompareId("haha1200ultra")}
+                className={`flex-1 py-2 rounded font-bold text-xs ${activeCompareId === "haha1200ultra" ? "bg-white text-[#0A0F2C] shadow-sm" : "text-slate-600"}`}
               >
-                Haha specs view
+                Haha 1200 Ultra
               </button>
-              <button 
-                onClick={() => setActiveCompareId("qingo")}
-                className={`flex-1 py-2 rounded font-bold text-xs ${activeCompareId === "qingo" ? "bg-orange-500 text-white shadow-sm" : "text-slate-600"}`}
+              <button
+                onClick={() => setActiveCompareId("max620")}
+                className={`flex-1 py-2 rounded font-bold text-xs ${activeCompareId === "max620" ? "bg-orange-500 text-white shadow-sm" : "text-slate-600"}`}
               >
-                Qingo specs view
+                Max 620
               </button>
             </div>
 
-            {activeCompareId === "haha" ? (
+            {activeCompareId === "haha1200ultra" ? (
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3 text-sm">
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Volume & Zone</span><span className="font-bold">460L Plate Layout</span></div>
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Accuracy rate</span><span className="font-bold">~98.5% automatic scan</span></div>
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Battery Limit</span><span className="font-bold">12 Hours continuous</span></div>
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Payment interface</span><span className="font-bold">Nayax debit card</span></div>
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Cloud telemetry</span><span className="text-slate-800 font-bold">Sales VMS included</span></div>
-                <div className="pt-2 flex justify-between items-baseline"><span className="font-bold">Inquiry Price</span><span className="text-lg font-black text-cyan-600">$1,999</span></div>
+                <div className="pt-2 flex justify-between items-baseline"><span className="font-bold">Inquiry Price</span><span className="text-lg font-black text-cyan-600">$6,799</span></div>
               </div>
             ) : (
               <div className="bg-white p-6 rounded-2xl border border-orange-200 shadow-md space-y-3 text-sm">
@@ -949,7 +1063,7 @@ export default function App() {
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Battery Limit</span><span className="font-bold text-orange-600">18 Hours long endurance</span></div>
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Payment interface</span><span className="font-bold text-orange-600">Nayax + employee badge</span></div>
                 <div className="border-b pb-2 flex justify-between"><span className="text-slate-500">Cloud telemetry</span><span className="font-bold text-green-600">Premium audit with video</span></div>
-                <div className="pt-2 flex justify-between items-baseline"><span className="font-bold">Inquiry Price</span><span className="text-lg font-black text-orange-600">$3,499</span></div>
+                <div className="pt-2 flex justify-between items-baseline"><span className="font-bold">Inquiry Price</span><span className="text-lg font-black text-orange-600">$4,899</span></div>
               </div>
             )}
           </div>
@@ -1080,20 +1194,20 @@ export default function App() {
           <h2 className="text-4xl md:text-6xl font-black text-[#0A0F2C] mt-1 mb-4 font-display">Ready to Set Up Your Smarter Spot?</h2>
           <p className="text-slate-600 max-w-xl mx-auto mb-16 text-sm md:text-base font-sans">Claim these exclusive commercial reseller rates, free freight pallet delivery, and a complete 2-Year direct factory replacement warranty package.</p>
  
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left text-[#0A0F2C]">
-            
-            {/* Haha Unit Plan Card */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left text-[#0A0F2C]">
+
+            {/* Haha 1200 Ultra Card */}
             <div className="bg-white p-8 rounded-3xl border border-slate-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
               <div>
                 <span className="bg-cyan-100 text-cyan-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">BEST VALUE CABINET</span>
-                <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Haha Smart Cooler</h3>
+                <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Haha 1200 Ultra</h3>
                 <p className="text-slate-500 text-xs mb-6">460 Liters single unit layout featuring physical load cells.</p>
-                
+
                 <div className="flex items-baseline space-x-2 text-[#0A0F2C] mb-6">
-                  <span className="text-4xl font-extrabold font-display">$1,999.00</span>
-                  <span className="text-slate-400 text-xs line-through">$2,499.00 MSRP</span>
+                  <span className="text-4xl font-extrabold font-display">$6,799.00</span>
+                  <span className="text-slate-400 text-xs line-through">$6,999.00 MSRP</span>
                 </div>
- 
+
                 <ul className="space-y-3 text-xs text-slate-700 mb-8 border-t border-slate-100 pt-4 font-sans">
                   <li className="flex items-center space-x-2">
                     <Check className="w-4 h-4 text-cyan-600" />
@@ -1101,7 +1215,7 @@ export default function App() {
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="w-4 h-4 text-cyan-600" />
-                    <span>Inbuilt Nayax swipe + tap NFC credit reader</span>
+                    <span>Inbuilt Nayax & Pax swipe + tap NFC credit reader</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="w-4 h-4 text-cyan-600" />
@@ -1109,31 +1223,31 @@ export default function App() {
                   </li>
                 </ul>
               </div>
- 
-              <button 
+
+              <button
                 onClick={() => addToCart(products[0])}
                 className="w-full bg-[#00D4FF] hover:bg-cyan-300 text-[#0A0F2C] font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl text-center transform hover:-translate-y-0.5 transition-all shadow-md mt-auto"
               >
-                Inquire & Purchase Haha
+                Inquire &amp; Purchase Haha 1200 Ultra
               </button>
             </div>
- 
-            {/* Qingo Plan Card */}
+
+            {/* Max 620 Card */}
             <div className="bg-white p-8 rounded-3xl border-2 border-orange-500 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
               <div className="absolute -top-3.5 right-6 bg-orange-500 text-white text-[9px] font-extrabold px-3 py-1 rounded-full tracking-widest uppercase">
                 RECOMMENDED FLAGSHIP
               </div>
-              
+
               <div>
                 <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">PREMIUM AI MERCHANDISER</span>
-                <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Qingo Vending Cooler</h3>
-                <p className="text-slate-500 text-xs mb-6">650 Liters premium dual-fusion computer vision & weight layout.</p>
-                
+                <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Max 620</h3>
+                <p className="text-slate-500 text-xs mb-6">650 Liters premium dual-fusion computer vision &amp; weight layout.</p>
+
                 <div className="flex items-baseline space-x-2 text-[#0A0F2C] mb-6">
-                  <span className="text-4xl font-extrabold font-display text-orange-600">$3,499.00</span>
-                  <span className="text-slate-400 text-xs line-through">$4,299.00 MSRP</span>
+                  <span className="text-4xl font-extrabold font-display text-orange-600">$4,899.00</span>
+                  <span className="text-slate-400 text-xs line-through">$4,999.00 MSRP</span>
                 </div>
- 
+
                 <ul className="space-y-3 text-xs text-slate-700 mb-8 border-t border-slate-100 pt-4 font-sans">
                   <li className="flex items-center space-x-2">
                     <Check className="w-4 h-4 text-orange-500" />
@@ -1149,19 +1263,59 @@ export default function App() {
                   </li>
                   <li className="flex items-center space-x-2">
                     <Check className="w-4 h-4 text-orange-500" />
-                    <span>Nayax + RFID employee badges integration</span>
+                    <span>Nayax & Pax + RFID employee badges integration</span>
                   </li>
                 </ul>
               </div>
- 
-              <button 
+
+              <button
                 onClick={() => addToCart(products[1])}
                 className="w-full bg-[#0A0F2C] hover:bg-slate-900 text-white font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl text-center transform hover:-translate-y-0.5 transition-all shadow-md mt-auto"
               >
-                Inquire & Purchase Qingo
+                Inquire &amp; Purchase Max 620
               </button>
             </div>
- 
+
+            {/* Smart Freezer Card */}
+            <div className="bg-white p-8 rounded-3xl border border-emerald-300 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+              <div>
+                <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">FROZEN &amp; SPECIALTY</span>
+                <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Smart Freezer</h3>
+                <p className="text-slate-500 text-xs mb-6">380 Liters deep-freeze cabinet for frozen meals, ice cream &amp; more.</p>
+
+                <div className="flex items-baseline space-x-2 text-[#0A0F2C] mb-6">
+                  <span className="text-4xl font-extrabold font-display text-emerald-600">$4,699.00</span>
+                  <span className="text-slate-400 text-xs line-through">$4,999.00 MSRP</span>
+                </div>
+
+                <ul className="space-y-3 text-xs text-slate-700 mb-8 border-t border-slate-100 pt-4 font-sans">
+                  <li className="flex items-center space-x-2">
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span>Deep-freeze load cell shelf tracking system</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span>Inbuilt Nayax & Pax swipe + tap NFC credit reader</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span>8 hour frozen temp backup during outage</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span>Anti-fog heated glass door</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                onClick={() => addToCart(products[2])}
+                className="w-full bg-[#34D399] hover:bg-emerald-400 text-[#0A0F2C] font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl text-center transform hover:-translate-y-0.5 transition-all shadow-md mt-auto"
+              >
+                Inquire &amp; Purchase Smart Freezer
+              </button>
+            </div>
+
           </div>
  
           {/* Secure Purchase Trust Badges strip */}
