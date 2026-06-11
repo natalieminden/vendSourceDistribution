@@ -187,7 +187,7 @@ export default function App() {
   useEffect(() => {
     // Show discount consent bar after 5 seconds
     const timer = setTimeout(() => {
-      const alreadyClaimed = localStorage.getItem("cooltech_discount_claimed");
+      const alreadyClaimed = localStorage.getItem("vendsource_discount_claimed");
       if (!alreadyClaimed) {
         setCookieConsent(true);
       }
@@ -260,11 +260,11 @@ export default function App() {
   };
 
   const handleApplyPromo = () => {
-    if (promoCode.trim().toUpperCase() === "COOLTECH10") {
+    if (promoCode.trim().toUpperCase() === "VENDSOURCE10") {
       setPromoApplied(true);
       setPromoError("");
     } else {
-      setPromoError("Invalid code. Try using: COOLTECH10");
+      setPromoError("Invalid code. Try using: VENDSOURCE10");
     }
   };
 
@@ -285,10 +285,10 @@ export default function App() {
   };
 
   const claimCookieDiscount = () => {
-    setPromoCode("COOLTECH10");
+    setPromoCode("VENDSOURCE10");
     setPromoApplied(true);
     setCookieConsent(false);
-    localStorage.setItem("cooltech_discount_claimed", "true");
+    localStorage.setItem("vendsource_discount_claimed", "true");
   };
 
   // Automated standalone HTML generator code
@@ -298,11 +298,11 @@ export default function App() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CoolTech | AI-Powered Grab & Go Vending Coolers</title>
+  <title>VendSource | AI-Powered Grab & Go Vending Coolers</title>
   
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🧊</text></svg>">
-  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🤖</text></svg>">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -349,7 +349,7 @@ export default function App() {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
       <div class="flex items-center space-x-2">
         <span class="text-2xl font-black tracking-tight text-[#0A0F2C] font-display">
-          COOL<span class="text-[#00D4FF]">TECH</span> VENDING🧊
+          VEND<span class="text-[#00D4FF]">SOURCE</span> VENDING
         </span>
       </div>
       
@@ -431,7 +431,7 @@ export default function App() {
           <div>💎 Multi-sku weight plates</div>
           <div>💳 Nayax credit card / Apple Pay</div>
           <div>🔌 12Hr battery backup safety</div>
-          <div>🧊 Double-tempered heating glass</div>
+          <div>❄️ Double-tempered heating glass</div>
         </div>
 
         <div class="pt-6">
@@ -549,8 +549,8 @@ export default function App() {
 
   <!-- FOOTER -->
   <footer class="py-12 bg-slate-900 text-slate-400 text-center border-t border-slate-800 text-sm">
-    <p class="font-bold text-white mb-2">COOLTECH VENDING DISTRIBUTIONS INC.</p>
-    <p>&copy; 2026 CoolTech Vending. All rights reserved. Revolutionizing smart retail.</p>
+    <p class="font-bold text-white mb-2">VENDSOURCE VENDING DISTRIBUTIONS INC.</p>
+    <p>&copy; 2026 VendSource Vending. All rights reserved. Revolutionizing smart retail.</p>
   </footer>
 
 </body>
@@ -592,10 +592,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2 shrink-0">
             <div className="bg-[#0A0F2C] p-1.5 rounded-lg text-[#00D4FF]">
-              <span className="text-lg font-bold font-display">🧊</span>
+              <span className="text-lg font-bold font-display">VS</span>
             </div>
             <span className="text-lg font-black font-display tracking-tight text-[#0A0F2C] flex items-center whitespace-nowrap">
-              COOL<span className="text-cyan-500">TECH</span>
+              VEND<span className="text-cyan-500">SOURCE</span>
               <span className="text-[10px] ml-1.5 bg-cyan-100 text-cyan-800 font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">SMART</span>
             </span>
           </div>
@@ -623,11 +623,34 @@ export default function App() {
               )}
             </button>
 
-            <a href="#get-quote-block" className="whitespace-nowrap text-xs font-extrabold uppercase bg-cyan-400 hover:bg-cyan-300 text-[#0A0F2C] px-4 py-2.5 rounded-xl shadow-md transition-all">
+            <a href="#get-quote-block" className="hidden sm:block whitespace-nowrap text-xs font-extrabold uppercase bg-cyan-400 hover:bg-cyan-300 text-[#0A0F2C] px-4 py-2.5 rounded-xl shadow-md transition-all">
               Get Custom Quote
             </a>
+
+            <button
+              onClick={() => setMobileMenuOpen(prev => !prev)}
+              className="md:hidden p-2.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl text-slate-800 transition-all shadow-sm"
+              aria-label="Toggle mobile menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* MOBILE MENU DROPDOWN */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
+            <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col space-y-1 text-sm font-bold text-slate-600">
+              <a href="#features-deep" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Features</a>
+              <a href="#haha-showcase" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Haha</a>
+              <a href="#qingo-showcase" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Qingo</a>
+              <a href="#compare" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Compare</a>
+              <a href="#reviews" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Reviews</a>
+              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">FAQ</a>
+              <a href="#get-quote-block" onClick={() => setMobileMenuOpen(false)} className="mt-2 bg-cyan-400 hover:bg-cyan-300 text-[#0A0F2C] font-extrabold text-xs uppercase py-3 px-3 rounded-xl text-center transition-all">Get Custom Quote</a>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* HERO GLOW CONTAINER BACKGROUND */}
@@ -695,23 +718,6 @@ export default function App() {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* TRUSTED SOURCE LOGO MARQUEE */}
-      <section className="py-8 bg-slate-50 border-b border-slate-200 text-slate-500 text-sm font-semibold tracking-wider">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-xs font-black uppercase text-slate-400 tracking-widest">OFFICIAL COMMERCIAL partners:</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-slate-400 font-extrabold text-lg">
-            <span className="hover:text-[#0A0F2C] transition-colors duration-200">VEND GUYS</span>
-            <span className="hover:text-[#0A0F2C] transition-colors duration-200">NAYAX</span>
-            <span className="hover:text-[#0A0F2C] transition-colors duration-200">MICRO-MARKETS</span>
-            <span className="hover:text-[#0A0F2C] transition-colors duration-200">AI SMART RETAL</span>
-          </div>
-          <div className="flex items-center space-x-1.5">
-            <span className="text-yellow-500">★★★★★</span>
-            <span className="text-xs text-slate-700 font-bold">500+ Active Business Lobbies Rating 4.9★</span>
-          </div>
         </div>
       </section>
 
@@ -1719,7 +1725,7 @@ export default function App() {
           
           <div className="space-y-4 font-sans">
             <span className="text-xl font-black tracking-tight text-white font-display">
-              COOL<span className="text-cyan-500">TECH</span> VENDING🧊
+              VEND<span className="text-cyan-500">SOURCE</span> VENDING
             </span>
             <p className="text-slate-500 text-xs leading-relaxed">Providing high-end frictionless self-service setups, remote VMS cloud controllers, and automated retail solutions to businesses nationwide.</p>
           </div>
@@ -1747,7 +1753,7 @@ export default function App() {
         </div>
  
         <div className="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 font-medium font-sans">
-          <span>&copy; 2026 CoolTech Vending Inc. All rights reserve-cooled.</span>
+          <span>&copy; 2026 VendSource Vending Inc. All rights reserved.</span>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             <a href="#faq" className="hover:underline">Privacy Policy</a>
             <span>&bull;</span>
@@ -1979,7 +1985,7 @@ export default function App() {
                         <div className="flex gap-2 text-xs">
                           <input 
                             type="text" 
-                            placeholder="Enter Promo Code (COOLTECH10)" 
+                            placeholder="Enter Promo Code (VENDSOURCE10)" 
                             value={promoCode} 
                             onChange={(e) => setPromoCode(e.target.value)} 
                             className="border bg-white rounded-lg px-3 py-2 w-full focus:ring-1 focus:ring-cyan-500 text-slate-800 font-mono" 
@@ -2004,7 +2010,7 @@ export default function App() {
                       <div className="space-y-1.5 text-xs text-slate-600">
                         <div className="flex justify-between"><span>Subtotal Smart Items:</span><span className="font-bold text-slate-800">${itemsSubtotal.toFixed(2)}</span></div>
                         {addonsSubtotal > 0 && <div className="flex justify-between"><span>Selected Accessories:</span><span className="font-bold text-slate-800">${addonsSubtotal.toFixed(2)}</span></div>}
-                        {promoApplied && <div className="flex justify-between text-emerald-600 font-medium"><span>Promo Discount (COOLTECH10):</span><span>-${promoDiscount.toFixed(2)}</span></div>}
+                        {promoApplied && <div className="flex justify-between text-emerald-600 font-medium"><span>Promo Discount (VENDSOURCE10):</span><span>-${promoDiscount.toFixed(2)}</span></div>}
                         <div className="flex justify-between text-base font-black text-[#0A0F2C] border-t pt-2 mt-2">
                           <span>Grand Total Estimate:</span>
                           <span>${grandTotal.toFixed(2)}</span>
@@ -2049,7 +2055,7 @@ export default function App() {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CoolTech | The Smartest Coolers on the Planet</title>
+  <title>VendSource | AI-Powered Grab & Go Vending Coolers</title>
   ...`}</pre>
             </div>
 
@@ -2198,7 +2204,7 @@ const faqItems = [
   },
   {
     q: "Is specialized staff training required to operate and manage the VMS dashboard?",
-    a: "Not at all. The CoolTech Vending Management System (VMS) cloud dashboard is entirely web-based and highly intuitive. You can configure prices, review sales summaries, and analyze visual stock layout graphs directly from your phone or PC with zero coding."
+    a: "Not at all. The VendSource Vending Management System (VMS) cloud dashboard is entirely web-based and highly intuitive. You can configure prices, review sales summaries, and analyze visual stock layout graphs directly from your phone or PC with zero coding."
   },
   {
     q: "What is your warranty and shipping dispatch policy?",
