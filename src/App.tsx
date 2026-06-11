@@ -603,7 +603,7 @@ export default function App() {
           <nav className="hidden md:flex items-center space-x-5 lg:space-x-7 text-sm font-bold text-slate-600">
             <a href="#features-deep" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Features</a>
             <a href="#haha-showcase" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Haha</a>
-            <a href="#qingo-showcase" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Qingo</a>
+            <a href="#qingo-series" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Qingo</a>
             <a href="#compare" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Compare</a>
             <a href="#reviews" className="whitespace-nowrap hover:text-cyan-600 transition-colors">Reviews</a>
             <a href="#faq" className="whitespace-nowrap hover:text-cyan-600 transition-colors">FAQ</a>
@@ -643,7 +643,7 @@ export default function App() {
             <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col space-y-1 text-sm font-bold text-slate-600">
               <a href="#features-deep" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Features</a>
               <a href="#haha-showcase" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Haha</a>
-              <a href="#qingo-showcase" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Qingo</a>
+              <a href="#qingo-series" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Qingo</a>
               <a href="#compare" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Compare</a>
               <a href="#reviews" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">Reviews</a>
               <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-2.5 px-3 rounded-lg hover:bg-slate-100 hover:text-cyan-600 transition-colors">FAQ</a>
@@ -654,7 +654,7 @@ export default function App() {
       </header>
 
       {/* HERO GLOW CONTAINER BACKGROUND */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 pt-10 pb-16 md:pt-14 md:pb-20 px-4 border-b border-slate-100">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 pt-8 pb-12 md:pt-14 md:pb-20 px-4 border-b border-slate-100">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(0,212,255,0.06),transparent_60%)]"></div>
         <div className="absolute top-1/3 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-glow"></div>
 
@@ -668,7 +668,7 @@ export default function App() {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-extrabold font-display leading-[1.08] tracking-tight text-[#0A0F2C]">
+          <h1 className="text-3xl sm:text-4xl md:text-7xl font-extrabold font-display leading-[1.08] tracking-tight text-[#0A0F2C]">
             AI-Powered Grab & Go <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-indigo-600 to-blue-700">
               Vending Coolers.
@@ -695,7 +695,7 @@ export default function App() {
           </div>
 
           {/* Core Specs Dashboard Grid in Center Layout */}
-          <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto text-[#0A0F2C] font-sans">
+          <div className="mt-8 md:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto text-[#0A0F2C] font-sans">
             <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center">
               <span className="text-2xl mb-1">⚖️</span>
               <p className="text-xs font-bold font-heading">LOAD CELL SHELVES</p>
@@ -722,16 +722,16 @@ export default function App() {
       </section>
 
       {/* PRODUCT 1 SHOWCASE: HAHA 1200 ULTRA */}
-      <section id="haha-showcase" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-1"></div>
+      <section id="haha-showcase" className="py-12 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="hidden lg:block lg:col-span-1"></div>
           <div className="lg:col-span-5 space-y-6">
             <span className="inline-flex items-center space-x-1.5 bg-cyan-100 text-cyan-800 text-xs font-bold px-3 py-1 rounded">
               <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
               <span>Perfect Micro-Retail Gateway Choice</span>
             </span>
 
-            <h2 className="text-3xl md:text-5xl font-extrabold font-display text-[#0A0F2C]">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold font-display text-[#0A0F2C]">
               Haha 1200 Ultra
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed">
@@ -793,13 +793,13 @@ export default function App() {
           </div>
 
           {/* Product Showcase Visual Layout (Right side) */}
-          <div className="lg:col-span-1"></div>
+          <div className="hidden lg:block lg:col-span-1"></div>
           <div className="lg:col-span-5 relative">
             <div className="relative overflow-hidden rounded-3xl p-4 bg-gradient-to-tr from-cyan-400/5 to-slate-200/50 border border-slate-200">
               <img
                 src="/products/haha-1200-ultra.jpeg"
                 alt="Haha 1200 Ultra Smart Vending Cooler"
-                className="w-full h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
+                className="w-full h-52 sm:h-72 lg:h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-8 left-8 bg-white/95 backdrop-blur shadow border border-slate-200 px-4 py-2 rounded-xl">
                 <span className="text-cyan-600 text-xs font-mono block uppercase">Haha Vending Series</span>
@@ -811,17 +811,17 @@ export default function App() {
       </section>
 
       {/* PRODUCT 2 SHOWCASE: MAX 620 (FLAGSHIP DUAL-DOOR) */}
-      <section id="max620-showcase" className="py-24 bg-[#0A0F2C] text-white border-y border-white/5">
+      <section id="max620-showcase" className="py-12 lg:py-24 bg-[#0A0F2C] text-white border-y border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
             {/* Visual Column */}
             <div className="lg:col-span-6 relative order-2 lg:order-1">
               <div className="relative overflow-hidden rounded-3xl p-4 bg-gradient-to-tl from-orange-400/5 to-slate-200/50 border border-white/10">
                 <img
                   src="/products/max-620.jpeg"
                   alt="Max 620 Smart Vending Cooler"
-                  className="w-full h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
+                  className="w-full h-52 sm:h-72 lg:h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-8 left-8 bg-[#0A0F2C]/95 backdrop-blur shadow border border-white/10 px-4 py-2 rounded-xl">
                   <span className="text-orange-400 text-xs font-mono block uppercase">Max Series</span>
@@ -830,7 +830,7 @@ export default function App() {
               </div>
             </div>
             
-            <div className="lg:col-span-1 order-2"></div>
+            <div className="hidden lg:block lg:col-span-1 order-2"></div>
 
             {/* Custom Description Content Column */}
             <div className="lg:col-span-5 order-1 lg:order-3 space-y-6">
@@ -839,7 +839,7 @@ export default function App() {
                 <span>Certified High-Traffic Vending Solution</span>
               </span>
               
-              <h2 className="text-3xl md:text-5xl font-extrabold font-display text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold font-display text-white">
                 Max 620
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
@@ -905,16 +905,16 @@ export default function App() {
       </section>
 
       {/* PRODUCT 3 SHOWCASE: SMART FREEZER */}
-      <section id="freezer-showcase" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-1"></div>
+      <section id="freezer-showcase" className="py-12 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="hidden lg:block lg:col-span-1"></div>
           <div className="lg:col-span-5 space-y-6">
             <span className="inline-flex items-center space-x-1.5 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded">
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               <span>Frozen &amp; Specialty Items</span>
             </span>
 
-            <h2 className="text-3xl md:text-5xl font-extrabold font-display text-[#0A0F2C]">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold font-display text-[#0A0F2C]">
               Smart Freezer
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed">
@@ -975,13 +975,13 @@ export default function App() {
             </div>
           </div>
 
-          <div className="lg:col-span-1"></div>
+          <div className="hidden lg:block lg:col-span-1"></div>
           <div className="lg:col-span-5 relative">
             <div className="relative overflow-hidden rounded-3xl p-4 bg-gradient-to-tr from-emerald-400/5 to-slate-200/50 border border-slate-200">
               <img
                 src="/products/freezer.jpeg"
                 alt="Smart Freezer Vending Unit"
-                className="w-full h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
+                className="w-full h-52 sm:h-72 lg:h-[400px] object-contain rounded-2xl hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-8 left-8 bg-white/95 backdrop-blur shadow border border-slate-200 px-4 py-2 rounded-xl">
                 <span className="text-emerald-600 text-xs font-mono block uppercase">Smart Freezer Series</span>
@@ -993,9 +993,9 @@ export default function App() {
       </section>
 
       {/* QINGO AI VENDING SERIES SHOWCASE */}
-      <section id="qingo-series" className="py-24 bg-[#0A0F2C] text-white border-y border-white/5">
+      <section id="qingo-series" className="py-12 lg:py-24 bg-[#0A0F2C] text-white border-y border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
             <span className="text-xs font-black tracking-widest text-orange-400 uppercase font-heading">QINGO AI VENDING SERIES</span>
             <h2 className="text-3xl md:text-5xl font-extrabold font-display text-white mt-2">Three Models. One Smart Platform.</h2>
             <p className="text-slate-300 mt-4 font-sans">AI Dynamic Recognition with 99% transaction accuracy. Choose the capacity that fits your location.</p>
@@ -1087,10 +1087,10 @@ export default function App() {
       </section>
 
       {/* HOW IT WORKS: 3 STEP STRATEGY */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+      <section className="py-12 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
           <span className="text-xs font-black tracking-widest text-cyan-600 uppercase font-heading">EXTREMELY SIMPLE UTILITY</span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0F2C] font-display mt-2">How It Works in 3 Steps</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#0A0F2C] font-display mt-2">How It Works in 3 Steps</h2>
           <p className="text-slate-500 mt-4 font-sans">Simple, straightforward integration to keep all offgrid moments healthy.</p>
         </div>
 
@@ -1111,11 +1111,11 @@ export default function App() {
       </section>
 
       {/* SIDE-BY-SIDE COMPARISON TABLE */}
-      <section id="compare" className="py-24 bg-slate-50 border-y border-slate-200">
+      <section id="compare" className="py-12 lg:py-24 bg-slate-50 border-y border-slate-200">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
             <span className="text-xs font-black tracking-widest text-orange-600 uppercase font-heading">COMPARISON CHART</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A0F2C] font-display mt-2">Which Cooler Is Right for You?</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-[#0A0F2C] font-display mt-2">Which Cooler Is Right for You?</h2>
             <p className="text-slate-500 mt-3 text-sm">Compare technical factors of our premium active units side by side.</p>
           </div>
 
@@ -1225,14 +1225,14 @@ export default function App() {
       </section>
 
       {/* FEATURES DEEP-DIVE SECTION WITH ALTERNATING COLUMNS */}
-      <section id="features-deep" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-20">
+      <section id="features-deep" className="py-12 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-20">
           <span className="text-xs font-black tracking-widest text-cyan-600 uppercase font-heading">INDUSTRIAL SMART LOGISTICS</span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0F2C] font-display mt-2">Modernize Traditional Vending Jams</h2>
           <p className="text-slate-500 mt-4 leading-relaxed font-sans">Eliminate mechanical spirals, item lodging, physical coins, and tedious manual inventory tracking. Run a fully automated smart-refrigeration business with 24/7 web accessibility.</p>
         </div>
 
-        <div className="space-y-28">
+        <div className="space-y-16 lg:space-y-28">
           {deepDiveFeatures.map((feat, idx) => (
             <div 
               key={idx} 
@@ -1243,7 +1243,7 @@ export default function App() {
                 <img 
                   src={feat.image} 
                   alt={feat.title} 
-                  className="w-full h-[360px] object-cover rounded-2xl shadow-lg border border-slate-200 relative z-10 transition-transform duration-500 group-hover:scale-[1.01]"
+                  className="w-full h-52 sm:h-72 lg:h-[360px] object-cover rounded-2xl shadow-lg border border-slate-200 relative z-10 transition-transform duration-500 group-hover:scale-[1.01]"
                 />
               </div>
 
@@ -1267,9 +1267,9 @@ export default function App() {
       </section>
 
       {/* REVIEWS GRID (CUSTOMER PROOF BLOCK) */}
-      <section id="reviews" className="py-24 bg-slate-50 border-y border-slate-200">
+      <section id="reviews" className="py-12 lg:py-24 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
             <span className="text-xs font-black tracking-widest text-[#0A0F2C] uppercase font-heading">PROVEN B2B OPERATORS</span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0F2C] mt-2 font-display">What Vending Operators Say</h2>
             <p className="text-slate-500 mt-4 font-sans">Read firsthand success stories from regional micro-market operators, office community coordinators, and gym facility directors.</p>
@@ -1303,11 +1303,11 @@ export default function App() {
       </section>
 
       {/* ACCORDION FAQ CONTAINER */}
-      <section id="faq" className="py-24 bg-[#0A0F2C] text-white border-t border-white/5">
+      <section id="faq" className="py-12 lg:py-24 bg-[#0A0F2C] text-white border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <span className="text-xs font-black tracking-widest text-[#00D4FF] uppercase font-heading">VENDING QUESTIONS ANSWERED</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-2 font-display">Frequently Asked Questions</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mt-2 font-display">Frequently Asked Questions</h2>
             <p className="text-slate-300 mt-4 font-sans">All technical, network, MDB payment gateway, and cooling telemetry inquiries answered by our micro-market operations team.</p>
           </div>
 
@@ -1340,18 +1340,18 @@ export default function App() {
       </section>
 
       {/* FINAL BUY NOW/CTA & PRICING PLANS */}
-      <section id="pricing-cards" className="py-24 bg-white text-[#0A0F2C] overflow-hidden relative border-t border-slate-200">
+      <section id="pricing-cards" className="py-12 lg:py-24 bg-white text-[#0A0F2C] overflow-hidden relative border-t border-slate-200">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,212,255,0.04),transparent_65%)]"></div>
         
         <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
           <span className="text-xs font-black tracking-widest text-cyan-600 uppercase font-heading">SECURE YOUR CHILL TODAY</span>
-          <h2 className="text-4xl md:text-6xl font-black text-[#0A0F2C] mt-1 mb-4 font-display">Ready to Set Up Your Smarter Spot?</h2>
-          <p className="text-slate-600 max-w-xl mx-auto mb-16 text-sm md:text-base font-sans">Claim these exclusive commercial reseller rates, free freight pallet delivery, and a complete 2-Year direct factory replacement warranty package.</p>
+          <h2 className="text-3xl md:text-6xl font-black text-[#0A0F2C] mt-1 mb-4 font-display">Ready to Set Up Your Smarter Spot?</h2>
+          <p className="text-slate-600 max-w-xl mx-auto mb-8 md:mb-16 text-sm md:text-base font-sans">Claim these exclusive commercial reseller rates, free freight pallet delivery, and a complete 2-Year direct factory replacement warranty package.</p>
  
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left text-[#0A0F2C]">
 
             {/* Haha 1200 Ultra Card */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+            <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
               <div>
                 <span className="bg-cyan-100 text-cyan-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">BEST VALUE CABINET</span>
                 <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Haha 1200 Ultra</h3>
@@ -1387,7 +1387,7 @@ export default function App() {
             </div>
 
             {/* Max 620 Card */}
-            <div className="bg-white p-8 rounded-3xl border-2 border-orange-500 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+            <div className="bg-white p-6 md:p-8 rounded-3xl border-2 border-orange-500 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
               <div className="absolute -top-3.5 right-6 bg-orange-500 text-white text-[9px] font-extrabold px-3 py-1 rounded-full tracking-widest uppercase">
                 RECOMMENDED FLAGSHIP
               </div>
@@ -1431,7 +1431,7 @@ export default function App() {
             </div>
 
             {/* Smart Freezer Card */}
-            <div className="bg-white p-8 rounded-3xl border border-emerald-300 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+            <div className="bg-white p-6 md:p-8 rounded-3xl border border-emerald-300 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
               <div>
                 <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">FROZEN &amp; SPECIALTY</span>
                 <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Smart Freezer</h3>
@@ -1473,15 +1473,15 @@ export default function App() {
           </div>
 
           {/* Qingo Series Pricing Cards */}
-          <div className="mt-12">
-            <div className="text-center mb-8">
+          <div className="mt-8 md:mt-12">
+            <div className="text-center mb-6 md:mb-8">
               <span className="text-xs font-black tracking-widest text-orange-500 uppercase font-heading">QINGO AI VENDING SERIES</span>
               <h3 className="text-2xl font-extrabold text-[#0A0F2C] mt-1 font-display">Qingo Models</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left text-[#0A0F2C]">
 
               {/* Qingo King 509 */}
-              <div className="bg-white p-8 rounded-3xl border border-orange-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+              <div className="bg-white p-6 md:p-8 rounded-3xl border border-orange-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
                 <div>
                   <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">COMPACT & BEST VALUE</span>
                   <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Qingo King 509</h3>
@@ -1502,7 +1502,7 @@ export default function App() {
               </div>
 
               {/* Qingo Ace 779 */}
-              <div className="bg-white p-8 rounded-3xl border-2 border-orange-500 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+              <div className="bg-white p-6 md:p-8 rounded-3xl border-2 border-orange-500 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
                 <div className="absolute -top-3.5 right-6 bg-orange-500 text-white text-[9px] font-extrabold px-3 py-1 rounded-full tracking-widest uppercase">FLAGSHIP</div>
                 <div>
                   <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">LARGE CAPACITY · FULL FEATURED</span>
@@ -1524,7 +1524,7 @@ export default function App() {
               </div>
 
               {/* Qingo Pair 1208 */}
-              <div className="bg-white p-8 rounded-3xl border border-orange-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
+              <div className="bg-white p-6 md:p-8 rounded-3xl border border-orange-200 relative hover:shadow-xl hover:scale-[1.01] transition-all flex flex-col justify-between">
                 <div>
                   <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-4 inline-block font-heading">HIGH CAPACITY · LOW REFILL</span>
                   <h3 className="text-2xl font-black text-[#0A0F2C] mb-1 font-display">Qingo Pair 1208</h3>
@@ -1548,7 +1548,7 @@ export default function App() {
           </div>
  
           {/* Secure Purchase Trust Badges strip */}
-          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto text-slate-600 text-xs border-t border-slate-200 pt-10 font-sans font-semibold">
+          <div className="mt-10 md:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto text-slate-600 text-xs border-t border-slate-200 pt-6 md:pt-10 font-sans font-semibold">
             <div className="flex items-center justify-center space-x-2 bg-slate-50 px-4 py-3 rounded-lg border border-slate-200">
               <Lock className="w-4 h-4 text-cyan-600" />
               <span>Commercial encrypted checkout</span>
@@ -1570,11 +1570,11 @@ export default function App() {
       </section>
 
       {/* CHRIS CUSTOM INTERACTIVE GET QUOTE SECTION */}
-      <section id="get-quote-block" className="py-24 bg-slate-50 border-t border-slate-200">
+      <section id="get-quote-block" className="py-12 lg:py-24 bg-slate-50 border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <span className="text-xs font-black tracking-widest text-cyan-600 uppercase font-heading">CUSTOM COMMERCIAL SOLUTIONS</span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0F2C] mt-2 mb-4 font-display">Get a Custom Pricing Quote</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto mb-16 text-sm font-sans">Fill in the quick parameters below to receive specialized volume discounts, freight options, and cellular remote Nayax configuration templates.</p>
+          <p className="text-slate-500 max-w-2xl mx-auto mb-8 md:mb-16 text-sm font-sans">Fill in the quick parameters below to receive specialized volume discounts, freight options, and cellular remote Nayax configuration templates.</p>
 
           <div className="max-w-3xl mx-auto">
             <div className="bg-white rounded-3xl p-6 md:p-8 border-2 border-slate-200 shadow-xl relative text-left">
@@ -1720,7 +1720,7 @@ export default function App() {
       </section>
  
       {/* FOOTER SECTION */}
-      <footer className="py-16 bg-slate-900 border-t border-slate-800 text-slate-400 text-sm">
+      <footer className="py-10 md:py-16 bg-slate-900 border-t border-slate-800 text-slate-400 text-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
           
           <div className="space-y-4 font-sans">
