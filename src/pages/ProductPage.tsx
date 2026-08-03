@@ -123,7 +123,7 @@ export default function ProductPage() {
                   <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {product.specs.map((spec, idx) => (
                       <li key={idx} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
-                        <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-slate-950 shrink-0 mt-0.5" />
                         <span className="text-sm text-slate-700">{spec}</span>
                       </li>
                     ))}
@@ -150,19 +150,19 @@ export default function ProductPage() {
                   <h2 className="text-lg font-semibold text-slate-900">What's included</h2>
                   <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-medium text-slate-600">
                     <div className="flex items-center gap-2.5 bg-slate-50 px-4 py-3.5 rounded-xl border border-slate-200">
-                      <Lock className="w-4 h-4 text-blue-600 shrink-0" />
+                      <Lock className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>Commercial encrypted checkout</span>
                     </div>
                     <div className="flex items-center gap-2.5 bg-slate-50 px-4 py-3.5 rounded-xl border border-slate-200">
-                      <Truck className="w-4 h-4 text-blue-600 shrink-0" />
-                      <span>Ships within 24 hours via premium freight</span>
+                      <Truck className="w-4 h-4 text-slate-950 shrink-0" />
+                      <span>Ships within 24 hours via premium shipping</span>
                     </div>
                     <div className="flex items-center gap-2.5 bg-slate-50 px-4 py-3.5 rounded-xl border border-slate-200">
-                      <RotateCcw className="w-4 h-4 text-blue-600 shrink-0" />
+                      <RotateCcw className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>30-day satisfaction warranty return</span>
                     </div>
                     <div className="flex items-center gap-2.5 bg-slate-50 px-4 py-3.5 rounded-xl border border-slate-200">
-                      <Award className="w-4 h-4 text-blue-600 shrink-0" />
+                      <Award className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>2-year direct factory warranty</span>
                     </div>
                   </div>
@@ -171,10 +171,10 @@ export default function ProductPage() {
             </div>
           </div>
 
-          {/* Sticky purchase rail */}
-          <aside className="lg:sticky lg:top-24">
+          {/* Purchase rail */}
+          <aside>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <span className="inline-flex items-center bg-blue-50 text-blue-700 text-[11px] font-semibold px-2.5 py-1 rounded-full">
+              <span className="inline-flex items-center bg-slate-100 text-slate-900 text-[11px] font-semibold px-2.5 py-1 rounded-full">
                 {product.badge}
               </span>
 
@@ -199,7 +199,7 @@ export default function ProductPage() {
 
               <button
                 onClick={() => addToCart(product)}
-                className="mt-4 w-full bg-gradient-to-r from-blue-500/90 via-indigo-500/90 to-violet-500/90 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500 border border-white/25 text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all shadow-lg shadow-indigo-500/30 hover:-translate-y-0.5"
+                className="mt-4 w-full bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 hover:from-slate-900 hover:via-slate-800 hover:to-indigo-900 border border-white/25 text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all shadow-lg shadow-slate-950/30 hover:-translate-y-0.5"
               >
                 Add to Cart
               </button>
@@ -211,7 +211,7 @@ export default function ProductPage() {
               </Link>
 
               <p className="mt-3 text-[11px] text-slate-500 leading-relaxed">
-                Authorized reseller — shipping directly via premium freight carriers.
+                Authorized reseller — shipping directly via premium carriers.
               </p>
 
               <dl className="mt-5 pt-5 border-t border-slate-100 space-y-2.5 text-xs">
@@ -256,13 +256,13 @@ export default function ProductPage() {
                     <h3 className="text-sm font-semibold text-slate-900">{p.name}</h3>
                     <span className="text-sm text-slate-500">${p.price.toLocaleString()}</span>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-blue-600" />
+                  <ArrowRight className="w-4 h-4 text-slate-950" />
                 </div>
               </Link>
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link to="/shop" className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm hover:underline">
+            <Link to="/shop" className="inline-flex items-center gap-2 text-slate-950 font-semibold text-sm hover:underline">
               View Full Catalog
               <ArrowRight className="w-4 h-4" />
             </Link>

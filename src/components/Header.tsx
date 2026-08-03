@@ -7,12 +7,15 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cartCount, setCartOpen, setCheckoutStep } = useCart();
 
+  // "Bulk Pricing" and "Contact Us" deliberately point at the same page — buyers
+  // look for one or the other, rarely both.
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/shop", label: "Shop" },
+    { to: "/contact", label: "Bulk Pricing" },
     { to: "/#reviews", label: "Reviews" },
     { to: "/faq", label: "FAQ" },
-    { to: "/#contact", label: "Contact Us" },
+    { to: "/contact", label: "Contact Us" },
   ];
 
   return (

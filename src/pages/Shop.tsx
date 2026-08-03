@@ -9,9 +9,6 @@ export default function Shop() {
       <section className="bg-slate-50 border-b border-slate-200 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900">Shop All Machines</h1>
-          <p className="text-slate-600 max-w-2xl mx-auto mt-4">
-            Six commercial-grade smart vending and refrigeration models, each built for a different capacity and traffic level. Pick a machine to see full specs, pricing, and availability.
-          </p>
         </div>
       </section>
 
@@ -28,7 +25,7 @@ export default function Shop() {
               </div>
               <div className="p-6 flex flex-col flex-1 justify-between">
                 <div>
-                  <span className="text-[11px] font-semibold text-blue-600 uppercase tracking-wide">{product.category}</span>
+                  <span className="text-[11px] font-semibold text-slate-950 uppercase tracking-wide">{product.category}</span>
                   <h2 className="text-lg font-bold text-slate-900 mt-1 mb-1">{product.name}</h2>
                   <p className="text-slate-500 text-sm mb-3">{product.tagline}</p>
                   <p className="text-slate-400 text-xs">{product.capacity}</p>
@@ -53,8 +50,8 @@ export default function Shop() {
       <section className="pb-16 lg:pb-24 max-w-4xl mx-auto px-4 text-center">
         <p className="text-slate-500 text-sm">
           Not sure which model fits your location?{" "}
-          <Link to="/#contact" className="text-blue-600 font-semibold hover:underline">Talk to our team</Link> or email{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 font-semibold hover:underline">{CONTACT_EMAIL}</a>.
+          <Link to="/contact" className="text-slate-950 font-semibold hover:underline">Talk to our team</Link> or email{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-950 font-semibold hover:underline">{CONTACT_EMAIL}</a>.
         </p>
       </section>
     </>

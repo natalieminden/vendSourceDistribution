@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/vendSourceDistribution/',
+    base: '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -13,6 +13,8 @@ export default defineConfig(() => {
       },
     },
     server: {
+      // Honour an injected PORT so tooling can place the dev server.
+      port: Number(process.env.PORT) || 5173,
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',

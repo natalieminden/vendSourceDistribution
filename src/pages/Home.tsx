@@ -1,8 +1,10 @@
-import { useEffect, useState, FormEvent } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Scale, Camera, Wifi, CreditCard, Star, ChevronDown, ChevronUp, ArrowRight, CheckCircle, Mail } from "lucide-react";
+import { Scale, Camera, Wifi, CreditCard, Star, ChevronDown, ChevronUp, ArrowRight, Mail } from "lucide-react";
 import { products, steps, reviews, faqItems, CONTACT_EMAIL } from "../data/products";
 import { asset } from "../lib/asset";
+import ContactCta from "../components/ContactCta";
+import ReviewSlideshow from "../components/ReviewSlideshow";
 
 const featuredIds = ["haha1200ultra", "qingoking509"];
 
@@ -18,16 +20,6 @@ const platformSpecs = [
 export default function Home() {
   const location = useLocation();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [quoteForm, setQuoteForm] = useState({
-    name: "",
-    businessName: "",
-    email: "",
-    phone: "",
-    model: "multiple",
-    locations: "1",
-    notes: ""
-  });
-  const [quoteSubmitted, setQuoteSubmitted] = useState(false);
 
   useEffect(() => {
     if (location.hash) {
@@ -40,29 +32,13 @@ export default function Home() {
 
   const featured = featuredIds.map(id => products.find(p => p.id === id)!);
 
-  const handleQuoteSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const subject = `Vending Machine Quote Request — ${quoteForm.businessName || quoteForm.name}`;
-    const body = [
-      `Name: ${quoteForm.name}`,
-      `Business: ${quoteForm.businessName}`,
-      `Email: ${quoteForm.email}`,
-      `Phone: ${quoteForm.phone}`,
-      `Cabinet Model: ${quoteForm.model}`,
-      `Planned Locations: ${quoteForm.locations}`,
-      `Notes: ${quoteForm.notes}`
-    ].join("\n");
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setQuoteSubmitted(true);
-  };
-
   return (
     <div className="relative bg-white overflow-x-clip">
       {/* FLOATING MOBILE STICKY SHOP CTA */}
       <div className="fixed bottom-4 right-4 z-30 md:hidden">
         <Link
           to="/shop"
-          className="bg-gradient-to-r from-blue-500/90 via-indigo-500/90 to-violet-500/90 backdrop-blur-xl border border-white/25 text-white font-semibold px-5 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-indigo-500/30 text-xs"
+          className="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 backdrop-blur-xl border border-white/25 text-white font-semibold px-5 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-slate-950/30 text-xs"
         >
           <span>Shop Machines</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -108,9 +84,9 @@ export default function Home() {
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </Link>
-                  <a href="#contact" className="inline-flex items-center justify-center border border-white/30 hover:border-white/60 bg-white/10 hover:bg-white/15 text-white font-semibold text-sm px-6 py-3 rounded-full transition-colors backdrop-blur-xl">
+                  <Link to="/contact" className="inline-flex items-center justify-center border border-white/30 hover:border-white/60 bg-white/10 hover:bg-white/15 text-white font-semibold text-sm px-6 py-3 rounded-full transition-colors backdrop-blur-xl">
                     Talk to Our Team
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -181,7 +157,7 @@ export default function Home() {
           <div className="lg:self-start">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Popular Smart Coolers</h2>
             <p className="text-slate-500 mt-4 text-sm leading-relaxed">A few of our best-selling models. Browse the full lineup — including the Qingo AI Vending series — in the shop.</p>
-            <Link to="/shop" className="group mt-6 inline-flex items-center gap-3 bg-gradient-to-r from-blue-500/90 via-indigo-500/90 to-violet-500/90 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500 backdrop-blur-xl border border-white/25 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-indigo-500/30 hover:-translate-y-0.5">
+            <Link to="/shop" className="group mt-6 inline-flex items-center gap-3 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 hover:from-slate-900 hover:via-slate-800 hover:to-indigo-900 backdrop-blur-xl border border-white/25 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-slate-950/30 hover:-translate-y-0.5">
               Shop All 6 Machines
               <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
                 <ArrowRight className="w-4 h-4" />
@@ -262,28 +238,7 @@ export default function Home() {
             <p className="text-slate-500 mt-4 text-sm leading-relaxed">Read firsthand success stories from regional micro-market operators, office community coordinators, and gym facility directors.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
-            {reviews.map((rev, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-3xl border border-slate-200 shadow-[0_4px_20px_rgba(2,6,23,0.04)] p-6 lg:p-7 flex flex-col justify-between hover:shadow-[0_12px_32px_rgba(2,6,23,0.08)] hover:-translate-y-1 transition-all"
-              >
-                <div>
-                  <div className="flex items-center space-x-1 mb-4">
-                    {[...Array(rev.stars)].map((_, s) => (
-                      <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-slate-600 text-sm leading-relaxed">"{rev.text}"</p>
-                </div>
-
-                <div className="mt-6 border-t border-slate-100 pt-4">
-                  <span className="font-semibold text-sm text-slate-900 block">{rev.name}</span>
-                  <span className="text-xs text-slate-400">{rev.location}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ReviewSlideshow />
         </div>
       </section>
 
@@ -294,7 +249,7 @@ export default function Home() {
             <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">Ready to browse the full lineup?</h3>
             <p className="text-slate-500 text-sm mt-2">See specs, pricing, and availability for every model.</p>
           </div>
-          <Link to="/shop" className="group shrink-0 inline-flex items-center gap-3 bg-gradient-to-r from-blue-500/90 via-indigo-500/90 to-violet-500/90 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500 backdrop-blur-xl border border-white/25 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-indigo-500/30 hover:-translate-y-0.5">
+          <Link to="/shop" className="group shrink-0 inline-flex items-center gap-3 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 hover:from-slate-900 hover:via-slate-800 hover:to-indigo-900 backdrop-blur-xl border border-white/25 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-slate-950/30 hover:-translate-y-0.5">
             Shop All Machines
             <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
               <ArrowRight className="w-4 h-4" />
@@ -302,6 +257,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <ContactCta />
 
       {/* FAQ — split editorial layout */}
       <section id="faq" className="hidden md:block py-14 lg:py-24">
@@ -336,156 +293,6 @@ export default function Home() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT / QUOTE — split panel */}
-      <section id="contact" className="pb-16 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[2rem] lg:rounded-[2.5rem] border border-slate-200 overflow-hidden grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr]">
-
-            {/* Dark info panel */}
-            <div className="bg-slate-950 p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Talk to Our Team</h2>
-              <p className="text-slate-400 mt-4 text-sm leading-relaxed">Fill in the quick parameters below to receive specialized volume discounts, freight options, and cellular remote Nayax configuration templates. Submitting opens your email client with the details pre-filled and addressed to our sales team.</p>
-
-              <a href={`mailto:${CONTACT_EMAIL}`} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white hover:underline underline-offset-4 transition-colors">
-                <Mail className="w-4 h-4" />
-                {CONTACT_EMAIL}
-              </a>
-            </div>
-
-            {/* Form panel */}
-            <div className="bg-slate-50 p-6 sm:p-8 lg:p-12">
-              {quoteSubmitted ? (
-                <div className="text-center py-8 space-y-4">
-                  <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto text-emerald-600">
-                    <CheckCircle className="w-10 h-10" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900">Your Email Client Should Be Open</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    We pre-filled a message to <strong className="text-slate-900">{CONTACT_EMAIL}</strong> with your details. Just hit send and our team will reply within one business day. If nothing opened, email us directly at{" "}
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-900 font-medium underline underline-offset-4">{CONTACT_EMAIL}</a>.
-                  </p>
-                  <div className="pt-4">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setQuoteSubmitted(false);
-                        setQuoteForm({ name: "", businessName: "", email: "", phone: "", model: "multiple", locations: "1", notes: "" });
-                      }}
-                      className="bg-slate-100 text-slate-900 hover:bg-slate-200 px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wide transition-colors"
-                    >
-                      Submit Another Inquiry
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleQuoteSubmit} className="space-y-4 text-left">
-                  <div className="space-y-3">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      <div>
-                        <label className="text-[11px] font-semibold text-slate-700 block mb-1 uppercase tracking-wide">Your Name *</label>
-                        <input
-                          required
-                          id="quote-name-input"
-                          type="text"
-                          placeholder="John Doe"
-                          value={quoteForm.name}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, name: e.target.value })}
-                          className="bg-white border border-slate-300 focus:border-slate-900 text-sm rounded-xl block w-full p-3 text-slate-800 outline-none transition-colors"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-[11px] font-semibold text-slate-700 block mb-1 uppercase tracking-wide">Business Name *</label>
-                        <input
-                          required
-                          type="text"
-                          placeholder="Acme Corp"
-                          value={quoteForm.businessName}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, businessName: e.target.value })}
-                          className="bg-white border border-slate-300 focus:border-slate-900 text-sm rounded-xl block w-full p-3 text-slate-800 outline-none transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      <div>
-                        <label className="text-[11px] font-semibold text-slate-700 block mb-1 uppercase tracking-wide">Business Email *</label>
-                        <input
-                          required
-                          type="email"
-                          placeholder="john@example.com"
-                          value={quoteForm.email}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, email: e.target.value })}
-                          className="bg-white border border-slate-300 focus:border-slate-900 text-sm rounded-xl block w-full p-3 text-slate-800 outline-none transition-colors"
-                        />
-                      </div>
-                      <div>
-                        <label className="text-[11px] font-semibold text-slate-700 block mb-1 uppercase tracking-wide">Phone Number *</label>
-                        <input
-                          required
-                          type="tel"
-                          placeholder="(555) 000-0000"
-                          value={quoteForm.phone}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, phone: e.target.value })}
-                          className="bg-white border border-slate-300 focus:border-slate-900 text-sm rounded-xl block w-full p-3 text-slate-800 outline-none transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      <div>
-                        <label className="text-[11px] font-semibold text-slate-700 block mb-1 uppercase tracking-wide">Cabinet Model</label>
-                        <select
-                          value={quoteForm.model}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, model: e.target.value })}
-                          className="bg-white border border-slate-300 focus:border-slate-900 text-sm rounded-xl block w-full p-3 text-slate-800 outline-none cursor-pointer"
-                        >
-                          {products.map(p => (
-                            <option key={p.id} value={p.name}>{p.name} (${p.price.toLocaleString()})</option>
-                          ))}
-                          <option value="multiple">Bundle (Multiple Units)</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="text-[11px] font-semibold text-slate-700 block mb-1 uppercase tracking-wide">Planned Locations</label>
-                        <select
-                          value={quoteForm.locations}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, locations: e.target.value })}
-                          className="bg-white border border-slate-300 focus:border-slate-900 text-sm rounded-xl block w-full p-3 text-slate-800 outline-none cursor-pointer"
-                        >
-                          <option value="1">1 Placement Spot</option>
-                          <option value="2-4">2 - 4 Placement Spots</option>
-                          <option value="5+">5+ Regional Lobbies</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="text-[11px] font-semibold text-slate-700 block mb-1 uppercase tracking-wide">Special Requirements</label>
-                      <textarea
-                        rows={2}
-                        placeholder="RFID reader options, custom branding..."
-                        value={quoteForm.notes}
-                        onChange={(e) => setQuoteForm({ ...quoteForm, notes: e.target.value })}
-                        className="bg-white border border-slate-300 focus:border-slate-900 text-sm rounded-xl block w-full p-3 text-slate-800 outline-none resize-none transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-blue-500/90 via-indigo-500/90 to-violet-500/90 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500 border border-white/25 text-white font-semibold text-sm py-3.5 rounded-full transition-all shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2"
-                  >
-                    <Mail className="w-4 h-4" />
-                    Email Our Team
-                  </button>
-                  <p className="text-xs text-center text-slate-400">Opens your email client, addressed to {CONTACT_EMAIL}.</p>
-                </form>
-              )}
-            </div>
           </div>
         </div>
       </section>

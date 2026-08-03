@@ -8,14 +8,15 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
           <div className="flex flex-col sm:flex-row sm:items-center gap-6 lg:gap-10">
             <span className="text-base font-semibold tracking-tight text-white">
-              VendSource <span className="font-normal text-slate-400">Vending</span>
+              VendSource <span className="font-normal text-slate-400">Distribution</span>
             </span>
 
             <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
               <Link to="/shop" className="text-slate-400 hover:text-white transition-colors">Shop</Link>
               <Link to="/#reviews" className="text-slate-400 hover:text-white transition-colors">Reviews</Link>
               <Link to="/faq" className="text-slate-400 hover:text-white transition-colors">FAQ</Link>
-              <Link to="/#contact" className="text-slate-400 hover:text-white transition-colors">Contact Us</Link>
+              <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">Bulk Pricing</Link>
+              <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">Contact Us</Link>
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-400 hover:text-white transition-colors">{CONTACT_EMAIL}</a>
             </nav>
           </div>
