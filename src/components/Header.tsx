@@ -7,14 +7,14 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cartCount, setCartOpen, setCheckoutStep } = useCart();
 
-  // "Bulk Pricing" and "Contact Us" deliberately point at the same page — buyers
+  //"Bulk Pricing" and"Contact Us" deliberately point at the same page — buyers
   // look for one or the other, rarely both.
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/shop", label: "Shop" },
     { to: "/contact", label: "Bulk Pricing" },
     { to: "/#reviews", label: "Reviews" },
-    { to: "/faq", label: "FAQ" },
+    { to: "/#faq", label: "FAQ" },
     { to: "/contact", label: "Contact Us" },
   ];
 
@@ -23,7 +23,7 @@ export default function Header() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-6 lg:space-x-8 text-sm font-medium text-slate-600">
           {navLinks.map(link => (
-            <Link key={link.label} to={link.to} className="whitespace-nowrap hover:text-slate-900 transition-colors">
+            <Link key={link.label} to={link.to} className="whitespace-nowrap transition-colors">
               {link.label}
             </Link>
           ))}
@@ -31,8 +31,11 @@ export default function Header() {
 
         <div className="flex items-center space-x-2 shrink-0 ml-auto">
           <button
-            onClick={() => { setCartOpen(true); setCheckoutStep("cart"); }}
-            className="relative p-2.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg text-slate-700 transition-colors"
+            onClick={() => {
+              setCartOpen(true);
+              setCheckoutStep("cart");
+            }}
+            className="relative p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-slate-700 transition-colors"
             aria-label="Open cart"
           >
             <ShoppingBag className="w-5 h-5" />
@@ -45,7 +48,7 @@ export default function Header() {
 
           <button
             onClick={() => setMobileMenuOpen(prev => !prev)}
-            className="md:hidden p-2.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg text-slate-700 transition-colors"
+            className="md:hidden p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-slate-700 transition-colors"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -61,7 +64,7 @@ export default function Header() {
                 key={link.label}
                 to={link.to}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2.5 px-3 rounded-lg hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                className="py-2.5 px-3 rounded-lg transition-colors"
               >
                 {link.label}
               </Link>

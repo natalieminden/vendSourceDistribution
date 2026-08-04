@@ -32,11 +32,7 @@ export function RepAuthProvider({ children }: { children: ReactNode }) {
 
   const loadRep = useCallback(async (userId: string) => {
     // RLS restricts this to the caller's own row.
-    const { data, error } = await supabase
-      .from("reps")
-      .select("*")
-      .eq("id", userId)
-      .maybeSingle();
+    const { data, error } = await supabase.from("reps").select("*").eq("id", userId).maybeSingle();
 
     if (error) {
       console.error("Failed to load rep profile", error);
@@ -91,9 +87,7 @@ export function RepAuthProvider({ children }: { children: ReactNode }) {
       error.name === "AuthRetryableFetchError" || /failed to fetch|network/i.test(error.message);
 
     throw new Error(
-      isNetworkError
-        ? "Can't reach the server. Check your connection and try again."
-        : error.message
+      isNetworkError ? "Can't reach the server. Check your connection and try again." : error.message,
     );
   };
 

@@ -23,8 +23,14 @@ export default function ReviewSlideshow() {
   }, [paused, count]);
 
   const onKeyDown = (e: ReactKeyboardEvent) => {
-    if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1); }
-    if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1); }
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      go(index - 1);
+    }
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      go(index + 1);
+    }
   };
 
   const active = reviews[index];
@@ -43,7 +49,7 @@ export default function ReviewSlideshow() {
       className="focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4 rounded-3xl"
     >
       {/* Fixed min-height stops the section from jolting as reviews of different
-          lengths cycle through. */}
+ lengths cycle through. */}
       <div
         className="bg-white rounded-3xl border border-slate-200 shadow-[0_4px_20px_rgba(2,6,23,0.04)] p-7 lg:p-10 flex flex-col justify-between min-h-[19rem] sm:min-h-[17rem]"
         aria-live="polite"
@@ -61,7 +67,7 @@ export default function ReviewSlideshow() {
 
         <div className="mt-6 border-t border-slate-100 pt-4">
           <span className="font-semibold text-sm text-slate-900 block">{active.name}</span>
-          <span className="text-xs text-slate-400">{active.location}</span>
+          <span className="text-xs text-slate-500">{active.location}</span>
         </div>
       </div>
 
@@ -72,7 +78,7 @@ export default function ReviewSlideshow() {
             type="button"
             onClick={() => go(index - 1)}
             aria-label="Previous review"
-            className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-700 hover:border-slate-400 hover:text-slate-900 grid place-items-center transition-colors"
+            className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-700 grid place-items-center transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -80,7 +86,7 @@ export default function ReviewSlideshow() {
             type="button"
             onClick={() => go(index + 1)}
             aria-label="Next review"
-            className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-700 hover:border-slate-400 hover:text-slate-900 grid place-items-center transition-colors"
+            className="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-700 grid place-items-center transition-colors"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -95,7 +101,7 @@ export default function ReviewSlideshow() {
               aria-label={`Show review ${i + 1} of ${count}`}
               aria-current={i === index}
               className={`h-2 rounded-full transition-all ${
-                i === index ? "w-6 bg-slate-900" : "w-2 bg-slate-300 hover:bg-slate-400"
+                i === index ? "w-6 bg-slate-900" : "w-2 bg-slate-300"
               }`}
             />
           ))}

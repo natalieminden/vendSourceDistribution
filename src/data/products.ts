@@ -32,9 +32,15 @@ export const products: Product[] = [
     payments: "Nayax & Pax integrated payment processing & real-time VMS portal",
     weight: "115 kg (sturdy secure metal frame)",
     bestFor: "Office breakrooms, gyms, hotel lobbies, residential apartment hubs.",
-    description: "Smart micro-market vending cooler with physical high-accuracy load-cell shelves. Customers tap to unlock, grab their snacks or beverages, close the door, and get charged automatically. Zero spiral jams, coils, or dropped item damage.",
+    description:
+      "Smart micro-market vending cooler with physical high-accuracy load-cell shelves. Customers tap to unlock, grab their snacks or beverages, close the door, and get charged automatically. Zero spiral jams, coils, or dropped item damage.",
     imgUrl: "products/haha-1200-ultra.jpeg",
-    specs: ["Tap, grab & go convenience", "Load-cell weight modules", "Nayax & Pax payments", "Anti-fog heated glass door"]
+    specs: [
+      "Tap, grab & go convenience",
+      "Load-cell weight modules",
+      "Nayax & Pax payments",
+      "Anti-fog heated glass door",
+    ],
   },
   {
     id: "max620",
@@ -50,9 +56,15 @@ export const products: Product[] = [
     payments: "Nayax & Pax integrated payment processing & real-time VMS portal",
     weight: "165 kg (extremely robust anti-vandal retail structure)",
     bestFor: "High-traffic commercial complexes, medical systems, universities, airport lounges.",
-    description: "Dual isolated glass-door smart cooling vending station. Fuses advanced digital weight sensors with internal multi-angle AI computer vision cameras to maintain supreme 99.9% transaction accuracy, perfect even for chaotic grab-and-return behaviors.",
+    description:
+      "Dual isolated glass-door smart cooling vending station. Fuses advanced digital weight sensors with internal multi-angle AI computer vision cameras to maintain supreme 99.9% transaction accuracy, perfect even for chaotic grab-and-return behaviors.",
     imgUrl: "products/max-620.jpeg",
-    specs: ["Scan, grab & go flow", "Computer vision camera sensors", "99.9% transaction accuracy", "Live cloud management dashboard"]
+    specs: [
+      "Scan, grab & go flow",
+      "Computer vision camera sensors",
+      "99.9% transaction accuracy",
+      "Live cloud management dashboard",
+    ],
   },
   {
     id: "qingoking509",
@@ -68,9 +80,10 @@ export const products: Product[] = [
     payments: "Nayax & Pax integrated payment processing & real-time VMS portal",
     weight: "194 lbs (W26.38 × D25.39 × H73.62 inch)",
     bestFor: "Offices, gyms, break rooms, hotel lobbies.",
-    description: "Compact single-door AI smart vending machine with 9 columns × 7 rows × 6 tiers. AI Dynamic Recognition technology delivers 99% transaction accuracy. Standard US outlet (120V/60Hz), Nayax & Pax payment terminals included.",
+    description:
+      "Compact single-door AI smart vending machine with 9 columns × 7 rows × 6 tiers. AI Dynamic Recognition technology delivers 99% transaction accuracy. Standard US outlet (120V/60Hz), Nayax & Pax payment terminals included.",
     imgUrl: "products/qingo-king-509.jpeg",
-    specs: ["AI Dynamic Recognition", "99% accuracy", "Nayax & Pax payments", "Remote temp control"]
+    specs: ["AI Dynamic Recognition", "99% accuracy", "Nayax & Pax payments", "Remote temp control"],
   },
   {
     id: "qingoace779",
@@ -86,9 +99,10 @@ export const products: Product[] = [
     payments: "Nayax & Pax integrated payment processing & real-time VMS portal",
     weight: "276 lbs (W32.64 × D26.18 × H78.66 inch)",
     bestFor: "High-traffic offices, universities, medical facilities, hotel lobbies.",
-    description: "Full-featured single-door AI smart vending machine with 11 columns × 7 rows × 6 tiers (plus 11 × 3 × 1 tiers). AI Dynamic Recognition with 99% accuracy. Nayax & Pax terminals, beverage & snack pushers available.",
+    description:
+      "Full-featured single-door AI smart vending machine with 11 columns × 7 rows × 6 tiers (plus 11 × 3 × 1 tiers). AI Dynamic Recognition with 99% accuracy. Nayax & Pax terminals, beverage & snack pushers available.",
     imgUrl: "products/qingo-ace-779.jpeg",
-    specs: ["AI Dynamic Recognition", "99% accuracy", "Nayax & Pax payments", "Remote temp control"]
+    specs: ["AI Dynamic Recognition", "99% accuracy", "Nayax & Pax payments", "Remote temp control"],
   },
   {
     id: "qingopair1208",
@@ -104,9 +118,10 @@ export const products: Product[] = [
     payments: "Nayax & Pax integrated payment processing & real-time VMS portal",
     weight: "388 lbs (W48.23 × D27.76 × H82.09 inch)",
     bestFor: "Airports, transit hubs, large event venues, major commercial complexes.",
-    description: "Dual glass-door high-capacity AI smart vending machine with 16 columns × 7 rows × 6 tiers. AI Dynamic Recognition with 99% accuracy. Built for locations that demand maximum throughput with minimal restocking frequency.",
+    description:
+      "Dual glass-door high-capacity AI smart vending machine with 16 columns × 7 rows × 6 tiers. AI Dynamic Recognition with 99% accuracy. Built for locations that demand maximum throughput with minimal restocking frequency.",
     imgUrl: "products/qingo-pair-1208.jpeg",
-    specs: ["Dual door high capacity", "99% AI accuracy", "Nayax & Pax payments", "Remote temp control"]
+    specs: ["Dual door high capacity", "99% AI accuracy", "Nayax & Pax payments", "Remote temp control"],
   },
   {
     id: "freezer",
@@ -122,22 +137,45 @@ export const products: Product[] = [
     payments: "Nayax & Pax integrated payment processing & real-time VMS portal",
     weight: "120 kg (heavy-duty steel frame with anti-vibration mounts)",
     bestFor: "Break rooms, convenience stores, food courts, hospitality venues.",
-    description: "Purpose-built smart frozen vending unit with load-cell shelving and a deep-freeze glass door cabinet. Handles everything from ice cream and frozen meals to packaged snacks — all contactless, 24/7.",
+    description:
+      "Purpose-built smart frozen vending unit with load-cell shelving and a deep-freeze glass door cabinet. Handles everything from ice cream and frozen meals to packaged snacks — all contactless, 24/7.",
     imgUrl: "products/freezer.jpeg",
-    specs: ["Deep-freeze load cell shelves", "Anti-fog heated glass door", "Nayax & Pax payments", "Live cloud VMS dashboard"]
-  }
+    specs: [
+      "Deep-freeze load cell shelves",
+      "Anti-fog heated glass door",
+      "Nayax & Pax payments",
+      "Live cloud VMS dashboard",
+    ],
+  },
 ];
 
 export const addonOptions = [
   { id: "solar_mat", name: "100W Foldable Ultra-Thin Solar Panel", price: 129, badge: "Eco Essential" },
   { id: "spare_cell", name: "Spare Premium 72h Backup Battery Module", price: 169, badge: "Double Distance" },
-  { id: "ballistic_case", name: "Heavy-Duty Ballistic Armor Nylon Cover", price: 59, badge: "Adventure Proof" }
+  {
+    id: "ballistic_case",
+    name: "Heavy-Duty Ballistic Armor Nylon Cover",
+    price: 59,
+    badge: "Adventure Proof",
+  },
 ];
 
 export const steps = [
-  { no: "01", title: "Tap Card or Scan QR", desc: "Customers present their credit/debit card, phone wallet (Apple/Google Pay), or scan the unique QR code on the glass front. The magnetic secure lock releases the door instantly." },
-  { no: "02", title: "Grab Desired Items", desc: "Open the double-tempered anti-fog glass door and take any combination of beverages, fresh foods, snacks, or salads. Customers can inspect labels and return unwanted items freely." },
-  { no: "03", title: "Close Door & Go", desc: "Upon door closure, the door locks, physical load-cell shelves measure the exact items removed, and the cloud computer processes the bill seamlessly in under 3 seconds." }
+  {
+    no: "01",
+    title: "Tap Card or Scan QR",
+    desc: "Customers present their credit/debit card, phone wallet (Apple/Google Pay), or scan the unique QR code on the glass front. The magnetic secure lock releases the door instantly.",
+  },
+  {
+    no: "02",
+    title: "Grab Desired Items",
+    desc: "Open the double-tempered anti-fog glass door and take any combination of beverages, fresh foods, snacks, or salads. Customers can inspect labels and return unwanted items freely.",
+  },
+  {
+    no: "03",
+    title: "Close Door & Go",
+    desc: "Upon door closure, the door locks, physical load-cell shelves measure the exact items removed, and the cloud computer processes the bill seamlessly in under 3 seconds.",
+  },
 ];
 
 export const reviews = [
@@ -146,52 +184,52 @@ export const reviews = [
     text: "We placed three Qingo smart cooling fridges across our hotel lobby halls. It has completely eliminated standard vending refunds. Guests love how seamless it is—just tap, choose a fresh cold salad, and walk away. Dynamic inventory tracking has cut restock trips in half.",
     name: "Marcus V.",
     location: "Austin, Texas - Marriott Franchise Owner",
-    product: "Qingo Smart Cooler"
+    product: "Qingo Smart Cooler",
   },
   {
     stars: 5,
     text: "Absolutely stunning technology. No gears, coils, or plastic spirals to jam, meaning zero dropped carbonated soda cans. Our team easily configured different pricing tags for sandwiches and craft energy beers. Simple to set up in our corporate breakrooms.",
     name: "Sarah L.",
     location: "Seattle, Washington - Corporate HR Mgr",
-    product: "Haha Smart Cooler"
+    product: "Haha Smart Cooler",
   },
   {
     stars: 5,
     text: "As an overland rest facility operator in Utah, we left the Haha Smart Cooler in our 24/7 self-service hub. Customers swipe high frequency credit cards to buy fresh local provisions. The Nayax credit system works flawlessly even with bad satellite delay.",
     name: "Brandon K.",
     location: "Denver, Colorado - Micro-Market Operator",
-    product: "Haha Smart Cooler"
+    product: "Haha Smart Cooler",
   },
   {
     stars: 5,
     text: "The Qingo visual computer vision is brilliant. Hospital staff grab pre-packaged dinners at midnight, and even if they pick an item up, look at the label, and return it to a different shelf, the machine auto-adjusts before billing. Truly premium customer satisfaction experience.",
     name: "Cap. Dave H.",
     location: "Miami, Florida - Healthcare Operations Director",
-    product: "Qingo Smart Cooler"
-  }
+    product: "Qingo Smart Cooler",
+  },
 ];
 
 export const faqItems = [
   {
     q: "How does the machine accurately detect which item was grabbed?",
-    a: "Our smart coolers use advanced pressure-sensitive load-cell arrays embedded below each individual SKU slot. Flagship Qingo coolers additionally pair this weight telemetry with multi-angle Computer Vision cameras inside the chassis. The dual sensor fusion accurately identifies purchases up to a 99.9% precision metric."
+    a: "Our smart coolers use advanced pressure-sensitive load-cell arrays embedded below each individual SKU slot. Flagship Qingo coolers additionally pair this weight telemetry with multi-angle Computer Vision cameras inside the chassis. The dual sensor fusion accurately identifies purchases up to a 99.9% precision metric.",
   },
   {
     q: "What payment terminals and currencies are supported?",
-    a: "Every unit comes fully pre-wired with native mounting space for standard Nayax Onyx card readers, supporting magnetic stripes, chip inserting, contactless tap-to-pay credit/debit cards, Apple Pay, Google Pay, and custom RFID employee badges."
+    a: "Every unit comes fully pre-wired with native mounting space for standard Nayax Onyx card readers, supporting magnetic stripes, chip inserting, contactless tap-to-pay credit/debit cards, Apple Pay, Google Pay, and custom RFID employee badges.",
   },
   {
     q: "What happens if a customer returns an item back to a different shelf?",
-    a: "Our system is designed to handle this effortlessly. If a customer changes their mind, both the load plates and the machine's AI identify the placement. It registers the item as returned, ensuring they are only billed for whatever they successfully walk away with."
+    a: "Our system is designed to handle this effortlessly. If a customer changes their mind, both the load plates and the machine's AI identify the placement. It registers the item as returned, ensuring they are only billed for whatever they successfully walk away with.",
   },
   {
     q: "Do I need a continuous internet connection for these coolers?",
-    a: "Yes. Both Haha and Qingo utilize real-time authorization to unlock their magnetic locks safely. Our systems come equipped with active Wi-Fi receivers and robust 4G LTE eSIM cellular multi-carrier antennas, ensuring connectivity out-of-the-box."
+    a: "Yes. Both Haha and Qingo utilize real-time authorization to unlock their magnetic locks safely. Our systems come equipped with active Wi-Fi receivers and robust 4G LTE eSIM cellular multi-carrier antennas, ensuring connectivity out-of-the-box.",
   },
   {
     q: "Is specialized staff training required to operate and manage the VMS dashboard?",
-    a: "Not at all. The VendSource Vending Management System (VMS) cloud dashboard is entirely web-based and highly intuitive. You can configure prices, review sales summaries, and analyze visual stock layout graphs directly from your phone or PC with zero coding."
-  }
+    a: "Not at all. The VendSource Vending Management System (VMS) cloud dashboard is entirely web-based and highly intuitive. You can configure prices, review sales summaries, and analyze visual stock layout graphs directly from your phone or PC with zero coding.",
+  },
 ];
 
 export const CONTACT_EMAIL = "info@vendsourcedistribution.com";

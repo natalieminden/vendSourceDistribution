@@ -42,7 +42,13 @@ function ReferralTracker() {
 /** Marketing chrome: header, footer, cart. Deliberately absent from the portal. */
 function StoreFront({ children }: { children: ReactNode }) {
   return (
-    <div className="bg-white text-slate-900 min-h-screen font-sans relative selection:bg-blue-600 selection:text-white">
+    <div className="isolate bg-white text-slate-900 min-h-screen font-sans relative selection:bg-blue-600 selection:text-white">
+      {/* Ambient backdrop. Sits behind everything via -z-10 and never intercepts
+          pointer events, so it can't swallow clicks on content above it. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="bg-grid absolute inset-0" />
+      </div>
+
       <ReferralTracker />
       <Header />
       {children}
@@ -76,12 +82,54 @@ export default function App() {
         />
 
         {/* Storefront */}
-        <Route path="/" element={<StoreFront><Home /></StoreFront>} />
-        <Route path="/shop" element={<StoreFront><Shop /></StoreFront>} />
-        <Route path="/shop/:id" element={<StoreFront><ProductPage /></StoreFront>} />
-        <Route path="/faq" element={<StoreFront><Faq /></StoreFront>} />
-        <Route path="/contact" element={<StoreFront><Contact /></StoreFront>} />
-        <Route path="/checkout/success" element={<StoreFront><CheckoutSuccess /></StoreFront>} />
+        <Route
+          path="/"
+          element={
+            <StoreFront>
+              <Home />
+            </StoreFront>
+          }
+        />
+        <Route
+          path="/shop"
+          element={
+            <StoreFront>
+              <Shop />
+            </StoreFront>
+          }
+        />
+        <Route
+          path="/shop/:id"
+          element={
+            <StoreFront>
+              <ProductPage />
+            </StoreFront>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <StoreFront>
+              <Faq />
+            </StoreFront>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <StoreFront>
+              <Contact />
+            </StoreFront>
+          }
+        />
+        <Route
+          path="/checkout/success"
+          element={
+            <StoreFront>
+              <CheckoutSuccess />
+            </StoreFront>
+          }
+        />
       </Routes>
     </CartProvider>
   );

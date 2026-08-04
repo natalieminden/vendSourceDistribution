@@ -2,7 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import { Product, addonOptions } from "../data/products";
 import { createCheckoutSession, validatePromo, trackEvent } from "../lib/api";
 
-type Addon = typeof addonOptions[0];
+type Addon = (typeof addonOptions)[0];
 type CartItem = { product: Product; quantity: number };
 
 interface CartContextValue {
@@ -49,7 +49,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCart(prev => {
       const existing = prev.find(item => item.product.id === product.id);
       if (existing) {
-        return prev.map(item => item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
+        return prev.map(item =>
+          item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item,
+        );
       }
       return [...prev, { product, quantity: 1 }];
     });
@@ -57,13 +59,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const updateQty = (productId: string, delta: number) => {
-    setCart(prev => prev.map(item => {
-      if (item.product.id === productId) {
-        const nextQty = item.quantity + delta;
-        return nextQty > 0 ? { ...item, quantity: nextQty } : null;
-      }
-      return item;
-    }).filter(Boolean) as CartItem[]);
+    setCart(
+      prev =>
+        prev
+          .map(item => {
+            if (item.product.id === productId) {
+              const nextQty = item.quantity + delta;
+              return nextQty > 0 ? { ...item, quantity: nextQty } : null;
+            }
+            return item;
+          })
+          .filter(Boolean) as CartItem[],
+    );
   };
 
   const toggleAddonOption = (addon: Addon) => {
@@ -106,7 +113,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const itemsSubtotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  const itemsSubtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   const addonsSubtotal = selectedAddons.reduce((sum, ad) => sum + ad.price, 0);
   const aggregateTotal = itemsSubtotal + addonsSubtotal;
   const promoDiscount = promoApplied ? aggregateTotal * promoRate : 0;
@@ -152,13 +159,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <CartContext.Provider value={{
-      cart, selectedAddons, cartOpen, setCartOpen,
-      promoCode, setPromoCode, promoApplied, promoRate, promoError, promoChecking,
-      checkoutError, checkoutLoading,
-      addToCart, updateQty, toggleAddonOption, handleApplyPromo, startCheckout,
-      resetCart, itemsSubtotal, addonsSubtotal, promoDiscount, grandTotal, cartCount
-    }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        selectedAddons,
+        cartOpen,
+        setCartOpen,
+        promoCode,
+        setPromoCode,
+        promoApplied,
+        promoRate,
+        promoError,
+        promoChecking,
+        checkoutError,
+        checkoutLoading,
+        addToCart,
+        updateQty,
+        toggleAddonOption,
+        handleApplyPromo,
+        startCheckout,
+        resetCart,
+        itemsSubtotal,
+        addonsSubtotal,
+        promoDiscount,
+        grandTotal,
+        cartCount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

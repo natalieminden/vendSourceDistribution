@@ -5,17 +5,37 @@ import { asset } from "../lib/asset";
 
 export default function CartDrawer() {
   const {
-    cart, selectedAddons, cartOpen, setCartOpen,
-    promoCode, setPromoCode, promoApplied, promoRate, promoError, promoChecking,
-    checkoutError, checkoutLoading,
-    updateQty, toggleAddonOption, handleApplyPromo, startCheckout,
-    itemsSubtotal, addonsSubtotal, promoDiscount, grandTotal
+    cart,
+    selectedAddons,
+    cartOpen,
+    setCartOpen,
+    promoCode,
+    setPromoCode,
+    promoApplied,
+    promoRate,
+    promoError,
+    promoChecking,
+    checkoutError,
+    checkoutLoading,
+    updateQty,
+    toggleAddonOption,
+    handleApplyPromo,
+    startCheckout,
+    itemsSubtotal,
+    addonsSubtotal,
+    promoDiscount,
+    grandTotal,
   } = useCart();
 
   if (!cartOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div
+      className="fixed inset-0 z-50 overflow-hidden"
+      aria-labelledby="slide-over-title"
+      role="dialog"
+      aria-modal="true"
+    >
       <div className="absolute inset-0 overflow-hidden">
         <button
           onClick={() => setCartOpen(false)}
@@ -26,7 +46,6 @@ export default function CartDrawer() {
         <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
           <div className="pointer-events-auto w-screen max-w-md">
             <div className="flex h-full flex-col bg-white shadow-2xl border-l border-slate-200">
-
               {/* Cart Header */}
               <div className="px-6 py-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <span className="text-lg font-semibold text-slate-900 flex items-center gap-2">
@@ -35,7 +54,7 @@ export default function CartDrawer() {
                 </span>
                 <button
                   onClick={() => setCartOpen(false)}
-                  className="text-slate-400 hover:text-slate-900 p-1.5 hover:bg-slate-200 rounded-lg transition-colors"
+                  className="text-slate-500 p-1.5 rounded-lg transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -49,30 +68,58 @@ export default function CartDrawer() {
                     <p className="text-slate-500 text-xs mt-1">Select a smart cooler to get started.</p>
                   </div>
                   <button
-                    onClick={() => { setCartOpen(false); }}
-                    className="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs px-6 py-3 rounded-lg transition-colors"
+                    onClick={() => {
+                      setCartOpen(false);
+                    }}
+                    className="bg-slate-900 text-white font-semibold text-xs px-6 py-3 rounded-lg transition-colors"
                   >
                     Browse Coolers
                   </button>
                 </div>
               ) : (
                 <div className="flex-1 overflow-y-auto p-6 space-y-6">
-
                   {/* Products items in cart */}
                   <div className="space-y-4">
-                    <span className="text-xs uppercase font-semibold text-slate-400 tracking-wide block">Items</span>
+                    <span className="text-xs uppercase font-semibold text-slate-500 tracking-wide block">
+                      Items
+                    </span>
                     {cart.map((item, index) => (
-                      <div key={index} className="flex gap-4 p-4 rounded-xl border border-slate-200 bg-slate-50">
-                        <img src={asset(item.product.imgUrl)} alt={item.product.name} className="w-16 h-16 object-cover rounded-lg border border-slate-200" />
+                      <div
+                        key={index}
+                        className="flex gap-4 p-4 rounded-xl border border-slate-200 bg-slate-50"
+                      >
+                        <img
+                          src={asset(item.product.imgUrl)}
+                          alt={item.product.name}
+                          className="w-16 h-16 object-cover rounded-lg border border-slate-200"
+                        />
                         <div className="flex-1 min-w-0">
-                          <span className="font-semibold text-slate-900 text-sm block truncate">{item.product.name}</span>
-                          <span className="text-xs text-slate-500 truncate block">{item.product.tagline}</span>
+                          <span className="font-semibold text-slate-900 text-sm block truncate">
+                            {item.product.name}
+                          </span>
+                          <span className="text-xs text-slate-500 truncate block">
+                            {item.product.tagline}
+                          </span>
                           <div className="mt-2 flex items-center justify-between">
-                            <span className="font-semibold text-slate-800 text-sm">${item.product.price}</span>
+                            <span className="font-semibold text-slate-800 text-sm">
+                              ${item.product.price}
+                            </span>
                             <div className="flex items-center space-x-2 bg-white rounded-lg border border-slate-200 p-1">
-                              <button onClick={() => updateQty(item.product.id, -1)} className="p-1 hover:bg-slate-100 rounded text-slate-500"><Minus className="w-3.5 h-3.5" /></button>
-                              <span className="text-xs font-semibold text-slate-800 px-1">{item.quantity}</span>
-                              <button onClick={() => updateQty(item.product.id, 1)} className="p-1 hover:bg-slate-100 rounded text-slate-500"><Plus className="w-3.5 h-3.5" /></button>
+                              <button
+                                onClick={() => updateQty(item.product.id, -1)}
+                                className="p-1 rounded text-slate-500"
+                              >
+                                <Minus className="w-3.5 h-3.5" />
+                              </button>
+                              <span className="text-xs font-semibold text-slate-800 px-1">
+                                {item.quantity}
+                              </span>
+                              <button
+                                onClick={() => updateQty(item.product.id, 1)}
+                                className="p-1 rounded text-slate-500"
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -83,25 +130,31 @@ export default function CartDrawer() {
                   {/* Recommended Accessories */}
                   <div className="border-t border-slate-200 pt-6 space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs uppercase font-semibold text-slate-400 tracking-wide block">Recommended Accessories</span>
+                      <span className="text-xs uppercase font-semibold text-slate-500 tracking-wide block">
+                        Recommended Accessories
+                      </span>
                     </div>
 
                     <div className="space-y-2">
-                      {addonOptions.map((addon) => {
+                      {addonOptions.map(addon => {
                         const isAdded = selectedAddons.some(ad => ad.id === addon.id);
                         return (
                           <button
                             key={addon.id}
                             onClick={() => toggleAddonOption(addon)}
-                            className={`w-full text-left p-3.5 rounded-xl border transition-colors flex items-center justify-between ${isAdded ? "bg-blue-50 border-blue-600" : "bg-white border-slate-200 hover:border-slate-300"}`}
+                            className={`w-full text-left p-3.5 rounded-xl border transition-colors flex items-center justify-between ${isAdded ? "bg-blue-50 border-blue-600" : "bg-white border-slate-200"}`}
                           >
                             <div className="flex items-center space-x-3">
-                              <div className={`w-5 h-5 rounded flex items-center justify-center border text-white ${isAdded ? "bg-blue-600 border-blue-600" : "border-slate-300 bg-white"}`}>
+                              <div
+                                className={`w-5 h-5 rounded flex items-center justify-center border text-white ${isAdded ? "bg-blue-600 border-blue-600" : "border-slate-300 bg-white"}`}
+                              >
                                 {isAdded && <Check className="w-4 h-4 stroke-[3]" />}
                               </div>
                               <div>
-                                <span className="text-xs font-semibold text-slate-800 block">{addon.name}</span>
-                                <span className="text-[11px] text-slate-400">{addon.badge}</span>
+                                <span className="text-xs font-semibold text-slate-800 block">
+                                  {addon.name}
+                                </span>
+                                <span className="text-[11px] text-slate-500">{addon.badge}</span>
                               </div>
                             </div>
                             <span className="text-xs font-semibold text-slate-900">${addon.price}</span>
@@ -116,7 +169,6 @@ export default function CartDrawer() {
               {/* Pricing summary footer */}
               {cart.length > 0 && (
                 <div className="border-t border-slate-200 bg-slate-50 p-6 space-y-4">
-
                   {/* Promo Code */}
                   {!promoApplied ? (
                     <div className="flex gap-2 text-xs">
@@ -124,8 +176,10 @@ export default function CartDrawer() {
                         type="text"
                         placeholder="Promo or rep code"
                         value={promoCode}
-                        onChange={(e) => setPromoCode(e.target.value)}
-                        onKeyDown={(e) => { if (e.key === "Enter") void handleApplyPromo(); }}
+                        onChange={e => setPromoCode(e.target.value)}
+                        onKeyDown={e => {
+                          if (e.key === "Enter") void handleApplyPromo();
+                        }}
                         className="border border-slate-300 bg-white rounded-lg px-3 py-2 w-full focus:border-blue-600 outline-none text-slate-800 font-mono uppercase"
                       />
                       <button
@@ -140,16 +194,31 @@ export default function CartDrawer() {
                   ) : (
                     <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 flex justify-between items-center text-xs text-emerald-800">
                       <span className="font-semibold">Promo code applied</span>
-                      <span>-{Math.round(promoRate * 100)}% (-${promoDiscount.toFixed(2)})</span>
+                      <span>
+                        -{Math.round(promoRate * 100)}% (-${promoDiscount.toFixed(2)})
+                      </span>
                     </div>
                   )}
 
                   {promoError && <p className="text-red-500 text-xs">{promoError}</p>}
 
                   <div className="space-y-1.5 text-xs text-slate-600">
-                    <div className="flex justify-between"><span>Subtotal:</span><span className="font-semibold text-slate-800">${itemsSubtotal.toFixed(2)}</span></div>
-                    {addonsSubtotal > 0 && <div className="flex justify-between"><span>Selected Accessories:</span><span className="font-semibold text-slate-800">${addonsSubtotal.toFixed(2)}</span></div>}
-                    {promoApplied && <div className="flex justify-between text-emerald-600 font-medium"><span>Promo Discount ({promoCode.trim().toUpperCase()}):</span><span>-${promoDiscount.toFixed(2)}</span></div>}
+                    <div className="flex justify-between">
+                      <span>Subtotal:</span>
+                      <span className="font-semibold text-slate-800">${itemsSubtotal.toFixed(2)}</span>
+                    </div>
+                    {addonsSubtotal > 0 && (
+                      <div className="flex justify-between">
+                        <span>Selected Accessories:</span>
+                        <span className="font-semibold text-slate-800">${addonsSubtotal.toFixed(2)}</span>
+                      </div>
+                    )}
+                    {promoApplied && (
+                      <div className="flex justify-between text-emerald-600 font-medium">
+                        <span>Promo Discount ({promoCode.trim().toUpperCase()}):</span>
+                        <span>-${promoDiscount.toFixed(2)}</span>
+                      </div>
+                    )}
                     <div className="flex justify-between text-base font-bold text-slate-900 border-t pt-2 mt-2">
                       <span>Total:</span>
                       <span>${grandTotal.toFixed(2)}</span>
@@ -166,7 +235,7 @@ export default function CartDrawer() {
                   <button
                     onClick={() => void startCheckout()}
                     disabled={checkoutLoading}
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3.5 rounded-lg text-xs uppercase tracking-wide transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                    className="w-full bg-slate-900 text-white font-semibold py-3.5 rounded-lg text-xs uppercase tracking-wide transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
                   >
                     {checkoutLoading ? (
                       <>
@@ -181,16 +250,14 @@ export default function CartDrawer() {
                     )}
                   </button>
 
-                  <p className="text-[11px] text-slate-400 text-center">
+                  <p className="text-[11px] text-slate-500 text-center">
                     Shipping and payment details are collected securely by Stripe.
                   </p>
                 </div>
               )}
-
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

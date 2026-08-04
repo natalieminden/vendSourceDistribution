@@ -47,7 +47,7 @@ export default function PortalMyLink() {
             <input
               readOnly
               value={link}
-              onFocus={(e) => e.currentTarget.select()}
+              onFocus={e => e.currentTarget.select()}
               className="bg-slate-50 border border-slate-300 text-sm rounded-lg block w-full p-2.5 text-slate-800 font-mono"
             />
             <button
@@ -68,7 +68,7 @@ export default function PortalMyLink() {
             <input
               readOnly
               value={code}
-              onFocus={(e) => e.currentTarget.select()}
+              onFocus={e => e.currentTarget.select()}
               className="bg-slate-50 border border-slate-300 text-sm rounded-lg block w-full p-2.5 text-slate-800 font-mono font-semibold"
             />
             <button
@@ -80,8 +80,8 @@ export default function PortalMyLink() {
             </button>
           </div>
           <p className="text-xs text-slate-500 mt-2">
-            Customers can also enter this at checkout for {percent(rep?.commission_rate)} off — you
-            still get credit.
+            Customers can also enter this at checkout for {percent(rep?.commission_rate)} off — you still get
+            credit.
           </p>
         </div>
       </section>

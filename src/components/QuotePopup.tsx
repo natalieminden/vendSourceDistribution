@@ -33,7 +33,7 @@ export default function QuotePopup() {
       <button
         type="button"
         onClick={dismiss}
-        className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 hover:bg-slate-100 rounded-full"
+        className="absolute top-4 right-4 text-slate-500 p-1 rounded-full"
         aria-label="Close bundle pricing popup"
       >
         <X className="w-4 h-4" />
@@ -46,7 +46,7 @@ export default function QuotePopup() {
         <a
           href={`mailto:${CONTACT_EMAIL}`}
           onClick={dismiss}
-          className="inline-flex items-center gap-1.5 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 hover:from-slate-900 hover:via-slate-800 hover:to-indigo-900 border border-white/25 text-white font-semibold text-xs px-4 py-2.5 rounded-full transition-all shadow-lg shadow-slate-950/30"
+          className="inline-flex items-center gap-1.5 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 border border-white/25 text-white font-semibold text-xs px-4 py-2.5 rounded-full transition-all shadow-lg shadow-slate-950/30"
         >
           <Mail className="w-3.5 h-3.5" />
           <span>Contact Sales</span>

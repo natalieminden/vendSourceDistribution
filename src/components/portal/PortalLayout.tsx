@@ -60,10 +60,7 @@ export default function PortalLayout({ children }: { children: ReactNode }) {
               ? "An admin needs to activate your account before you can start earning."
               : "Your account has been suspended. Please contact your administrator."}
           </p>
-          <button
-            onClick={() => void signOut()}
-            className="text-sm font-semibold text-slate-700 underline"
-          >
+          <button onClick={() => void signOut()} className="text-sm font-semibold text-slate-700 underline">
             Sign out
           </button>
         </div>

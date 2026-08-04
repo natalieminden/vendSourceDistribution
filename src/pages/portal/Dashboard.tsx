@@ -16,7 +16,13 @@ interface Stats {
 }
 
 const EMPTY: Stats = {
-  visits: 0, checkoutStarts: 0, orders: 0, revenue: 0, pending: 0, clearable: 0, paid: 0,
+  visits: 0,
+  checkoutStarts: 0,
+  orders: 0,
+  revenue: 0,
+  pending: 0,
+  clearable: 0,
+  paid: 0,
 };
 
 export default function PortalDashboard() {
@@ -67,7 +73,9 @@ export default function PortalDashboard() {
     }
 
     void load();
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, []);
 
   if (loading) {
@@ -94,8 +102,7 @@ export default function PortalDashboard() {
           Welcome back{rep?.name ? `, ${rep.name.split(" ")[0]}` : ""}
         </h1>
         <p className="text-sm text-slate-500 mt-1">
-          Your code is{" "}
-          <span className="font-mono font-semibold text-slate-800">{rep?.referral_code}</span>
+          Your code is <span className="font-mono font-semibold text-slate-800">{rep?.referral_code}</span>
           {" · "}earning {percent(rep?.commission_rate)} per sale
         </p>
       </div>
@@ -115,11 +122,7 @@ export default function PortalDashboard() {
       <section>
         <h2 className="text-xs uppercase font-semibold text-slate-400 tracking-wide mb-3">Earnings</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <Stat
-            label="Pending"
-            value={money(stats.pending)}
-            hint="Held until the refund window closes"
-          />
+          <Stat label="Pending" value={money(stats.pending)} hint="Held until the refund window closes" />
           <Stat label="Ready to pay" value={money(stats.clearable)} hint="Cleared and awaiting payout" />
           <Stat label="Paid out" value={money(stats.paid)} hint="Transferred to you" />
         </div>

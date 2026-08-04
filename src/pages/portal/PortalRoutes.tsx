@@ -18,10 +18,38 @@ export default function PortalRoutes() {
     <RepAuthProvider>
       <Routes>
         <Route path="login" element={<PortalLogin />} />
-        <Route index element={<PortalLayout><PortalDashboard /></PortalLayout>} />
-        <Route path="link" element={<PortalLayout><PortalMyLink /></PortalLayout>} />
-        <Route path="orders" element={<PortalLayout><PortalOrders /></PortalLayout>} />
-        <Route path="commissions" element={<PortalLayout><PortalCommissions /></PortalLayout>} />
+        <Route
+          index
+          element={
+            <PortalLayout>
+              <PortalDashboard />
+            </PortalLayout>
+          }
+        />
+        <Route
+          path="link"
+          element={
+            <PortalLayout>
+              <PortalMyLink />
+            </PortalLayout>
+          }
+        />
+        <Route
+          path="orders"
+          element={
+            <PortalLayout>
+              <PortalOrders />
+            </PortalLayout>
+          }
+        />
+        <Route
+          path="commissions"
+          element={
+            <PortalLayout>
+              <PortalCommissions />
+            </PortalLayout>
+          }
+        />
       </Routes>
     </RepAuthProvider>
   );

@@ -2,6 +2,7 @@ import { useState, FormEvent, ChangeEvent, ComponentType, ReactNode } from "reac
 import { Link } from "react-router-dom";
 import { CheckCircle, Check, Mail, ArrowRight, Clock, HelpCircle, Package } from "lucide-react";
 import { products, CONTACT_EMAIL } from "../data/products";
+import { usePageMeta } from "../lib/seo";
 
 const EMPTY_FORM = {
   name: "",
@@ -31,14 +32,33 @@ const FIELD =
 
 const LABEL = "text-[11px] font-semibold text-slate-300 block mb-1.5 uppercase tracking-wide";
 
+const CONTACT_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact VendSource Distribution",
+  mainEntity: {
+    "@type": "Organization",
+    name: "SB Vendsource Distribution LLC",
+    email: CONTACT_EMAIL,
+  },
+};
+
 export default function Contact() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [machines, setMachines] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
 
-  const update = (field: keyof typeof EMPTY_FORM) => (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => setForm(prev => ({ ...prev, [field]: e.target.value }));
+  usePageMeta({
+    title: "Contact & Bulk Pricing",
+    description:
+      "Get volume pricing, shipping estimates and Nayax setup details for VendSource smart vending coolers. Tell us how many machines you need.",
+    jsonLd: CONTACT_JSONLD,
+  });
+
+  const update =
+    (field: keyof typeof EMPTY_FORM) =>
+    (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+      setForm(prev => ({ ...prev, [field]: e.target.value }));
 
   const toggleMachine = (name: string) =>
     setMachines(prev => (prev.includes(name) ? prev.filter(m => m !== name) : [...prev, name]));
@@ -46,7 +66,7 @@ export default function Contact() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const reasonLabel = REASONS.find(r => r.value === form.reason)?.label ?? form.reason;
-    const subject = `${reasonLabel} — ${form.businessName || form.name}`;
+    const subject = `${reasonLabel}: ${form.businessName || form.name}`;
     const body = [
       `Enquiry type: ${reasonLabel}`,
       `Name: ${form.name}`,
@@ -65,24 +85,15 @@ export default function Contact() {
   return (
     <main className="py-12 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Page heading */}
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
-            Bulk pricing &amp; general enquiries
-          </span>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">
-            Contact our team
-          </h1>
-          <p className="text-slate-600 mt-4 leading-relaxed">
-            Whether you're pricing a multi-machine rollout or just have a question about specs,
-            payments or installation, send us the details and we'll come back with volume
-            pricing, shipping options and Nayax configuration templates.
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Contact our team</h1>
+          <p className="text-slate-600 mt-4 text-lg leading-relaxed">
+            Pricing a rollout, or just have a question? Send us the details.
           </p>
         </div>
 
         <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-start">
-
           {/* Form card — carries the hero's navy treatment. */}
           <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 shadow-2xl shadow-slate-950/30">
             <div className="absolute -top-24 -left-16 w-96 h-96 rounded-full bg-indigo-500/25 blur-3xl pointer-events-none" />
@@ -99,8 +110,8 @@ export default function Contact() {
                     Your email client should be open
                   </h2>
                   <p className="text-slate-200 text-sm leading-relaxed max-w-md mx-auto">
-                    We pre-filled a message to <strong className="text-white">{CONTACT_EMAIL}</strong>{" "}
-                    with your details. Just hit send. If nothing opened, email us directly.
+                    We pre-filled a message to <strong className="text-white">{CONTACT_EMAIL}</strong> with
+                    your details. Just hit send. If nothing opened, email us directly.
                   </p>
                   <button
                     type="button"
@@ -109,7 +120,7 @@ export default function Contact() {
                       setForm(EMPTY_FORM);
                       setMachines([]);
                     }}
-                    className="mt-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wide transition-colors"
+                    className="mt-2 bg-white/15 border border-white/30 text-white px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wide transition-colors"
                   >
                     Submit another inquiry
                   </button>
@@ -117,7 +128,9 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 text-left">
                   <div>
-                    <label htmlFor="contact-reason" className={LABEL}>How can we help? *</label>
+                    <label htmlFor="contact-reason" className={LABEL}>
+                      How can we help? *
+                    </label>
                     <select
                       id="contact-reason"
                       value={form.reason}
@@ -125,14 +138,18 @@ export default function Contact() {
                       className={`${FIELD} cursor-pointer`}
                     >
                       {REASONS.map(reason => (
-                        <option key={reason.value} value={reason.value}>{reason.label}</option>
+                        <option key={reason.value} value={reason.value}>
+                          {reason.label}
+                        </option>
                       ))}
                     </select>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="contact-name" className={LABEL}>Your name *</label>
+                      <label htmlFor="contact-name" className={LABEL}>
+                        Your name *
+                      </label>
                       <input
                         required
                         id="contact-name"
@@ -144,7 +161,9 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="contact-business" className={LABEL}>Business name *</label>
+                      <label htmlFor="contact-business" className={LABEL}>
+                        Business name *
+                      </label>
                       <input
                         required
                         id="contact-business"
@@ -159,7 +178,9 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="contact-email" className={LABEL}>Business email *</label>
+                      <label htmlFor="contact-email" className={LABEL}>
+                        Business email *
+                      </label>
                       <input
                         required
                         id="contact-email"
@@ -172,7 +193,9 @@ export default function Contact() {
                     </div>
                     <div>
                       {/* Optional: a general question shouldn't demand a phone number. */}
-                      <label htmlFor="contact-phone" className={LABEL}>Phone number</label>
+                      <label htmlFor="contact-phone" className={LABEL}>
+                        Phone number
+                      </label>
                       <input
                         id="contact-phone"
                         type="tel"
@@ -186,7 +209,9 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="contact-machine-count" className={LABEL}>Number of machines</label>
+                      <label htmlFor="contact-machine-count" className={LABEL}>
+                        Number of machines
+                      </label>
                       <select
                         id="contact-machine-count"
                         value={form.machineCount}
@@ -201,7 +226,9 @@ export default function Contact() {
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="contact-locations" className={LABEL}>Planned locations</label>
+                      <label htmlFor="contact-locations" className={LABEL}>
+                        Planned locations
+                      </label>
                       <select
                         id="contact-locations"
                         value={form.locations}
@@ -216,7 +243,9 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="contact-notes" className={LABEL}>Special requirements</label>
+                    <label htmlFor="contact-notes" className={LABEL}>
+                      Special requirements
+                    </label>
                     <textarea
                       id="contact-notes"
                       rows={4}
@@ -234,15 +263,10 @@ export default function Contact() {
                       {products.map(product => {
                         const checked = machines.includes(product.name);
                         return (
-                          <label
-                            key={product.id}
-                            className="flex items-center gap-2.5 cursor-pointer group"
-                          >
+                          <label key={product.id} className="flex items-center gap-2.5 cursor-pointer group">
                             <span
                               className={`w-4 h-4 rounded border grid place-items-center transition-colors shrink-0 ${
-                                checked
-                                  ? "bg-white border-white text-slate-900"
-                                  : "border-white/40 group-hover:border-white/70"
+                                checked ? "bg-white border-white text-slate-900" : "border-white/40"
                               }`}
                             >
                               {checked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -262,13 +286,13 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="group w-full inline-flex items-center justify-between gap-3 bg-white hover:bg-slate-100 text-slate-900 font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-black/20 hover:-translate-y-0.5"
+                    className="group w-full inline-flex items-center justify-between gap-3 bg-white text-slate-900 font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-black/20"
                   >
                     <span className="flex items-center gap-2">
                       <Mail className="w-4 h-4" />
                       Send message
                     </span>
-                    <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover:translate-x-0.5 transition-transform shrink-0">
+                    <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center transition-transform shrink-0">
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </button>
@@ -284,32 +308,30 @@ export default function Contact() {
           {/* Sidebar */}
           <aside className="space-y-4">
             <InfoCard icon={Mail} title="Email us">
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 Prefer to write your own message? Reach the sales team directly.
               </p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="mt-2 inline-block text-sm font-semibold text-slate-900 underline underline-offset-4 hover:text-slate-950 transition-colors break-all"
+                className="mt-2 inline-block text-sm font-semibold text-slate-900 underline underline-offset-4 transition-colors break-all"
               >
                 {CONTACT_EMAIL}
               </a>
             </InfoCard>
 
             <InfoCard icon={Clock} title="What to expect">
-              <p className="text-xs text-slate-500 leading-relaxed">
-                A written reply covering volume pricing, shipping estimates and lead times for
-                your region.
+              <p className="text-xs text-slate-600 leading-relaxed">
+                A written reply covering volume pricing, shipping estimates and lead times for your region.
               </p>
             </InfoCard>
 
             <InfoCard icon={Package} title="Browse first">
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Not sure which cabinet fits? Compare capacity, sensors and pricing across the
-                full range.
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Not sure which cabinet fits? Compare capacity, sensors and pricing across the full range.
               </p>
               <Link
                 to="/shop"
-                className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 hover:text-slate-950 transition-colors"
+                className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 transition-colors"
               >
                 View all machines
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -317,13 +339,12 @@ export default function Contact() {
             </InfoCard>
 
             <InfoCard icon={HelpCircle} title="Common questions">
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Connectivity, payment terminals, restocking and warranty are all covered in
-                our FAQ.
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Connectivity, payment terminals, restocking and warranty are all covered in our FAQ.
               </p>
               <Link
-                to="/faq"
-                className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 hover:text-slate-950 transition-colors"
+                to="/#faq"
+                className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 transition-colors"
               >
                 Read the FAQ
                 <ArrowRight className="w-3.5 h-3.5" />

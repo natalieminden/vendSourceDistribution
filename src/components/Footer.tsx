@@ -1,50 +1,110 @@
 import { Link } from "react-router-dom";
+import { Mail } from "lucide-react";
 import { CONTACT_EMAIL } from "../data/products";
+
+const SHOP_LINKS = [
+  { to: "/shop", label: "All machines" },
+  { to: "/shop/haha1200ultra", label: "Haha 1200 Ultra" },
+  { to: "/shop/max620", label: "Max 620" },
+  { to: "/shop/qingoking509", label: "Qingo King 509" },
+];
+
+const COMPANY_LINKS = [
+  { to: "/contact", label: "Bulk pricing" },
+  { to: "/contact", label: "Contact us" },
+  { to: "/#reviews", label: "Reviews" },
+  { to: "/#faq", label: "FAQ" },
+];
 
 export default function Footer() {
   return (
-    <footer className="py-8 md:py-10 bg-slate-950 text-slate-400 text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6 lg:gap-10">
-            <span className="text-base font-semibold tracking-tight text-white">
-              VendSource <span className="font-normal text-slate-400">Distribution</span>
-            </span>
-
-            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
-              <Link to="/shop" className="text-slate-400 hover:text-white transition-colors">Shop</Link>
-              <Link to="/#reviews" className="text-slate-400 hover:text-white transition-colors">Reviews</Link>
-              <Link to="/faq" className="text-slate-400 hover:text-white transition-colors">FAQ</Link>
-              <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">Bulk Pricing</Link>
-              <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">Contact Us</Link>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-400 hover:text-white transition-colors">{CONTACT_EMAIL}</a>
-            </nav>
+    // Background matches the fade strip above it in StoreFront, so the page
+    // arrives here without a visible seam.
+    <footer className="bg-slate-950 text-slate-400 text-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 lg:pt-20 lg:pb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr] gap-x-8 gap-y-12">
+          {/* Brand */}
+          <div className="col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-2.5">
+              <span className="w-8 h-8 rounded-lg bg-white text-slate-950 grid place-items-center font-bold text-sm">
+                V
+              </span>
+              <span className="text-base font-semibold tracking-tight text-white">
+                VendSource <span className="font-normal text-slate-400">Distribution</span>
+              </span>
+            </div>
+            <p className="text-xs leading-relaxed mt-4 max-w-xs">
+              Authorized distributor of Haha and Qingo smart vending coolers. Tap, grab and go retail for
+              offices, gyms, hotels and micro-markets.
+            </p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="inline-flex items-center gap-2 text-xs font-semibold text-white mt-5"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              {CONTACT_EMAIL}
+            </a>
           </div>
 
-          <div className="lg:max-w-xs w-full">
-            <span className="text-white font-semibold text-xs uppercase tracking-wide block">Newsletter</span>
-            <p className="text-xs text-slate-500 leading-relaxed mt-1.5">Micro-market discount codes and cellular VMS platform release notes.</p>
-            <div className="flex bg-slate-900 border border-slate-800 p-1 rounded-full mt-3">
-              <input type="email" placeholder="Your business email" className="bg-transparent px-4 py-2 text-xs focus:outline-none text-white w-full" />
+          <FooterColumn title="Shop" links={SHOP_LINKS} />
+          <FooterColumn title="Company" links={COMPANY_LINKS} />
+
+          {/* Newsletter */}
+          <div className="col-span-2 lg:col-span-1">
+            <h2 className="text-white font-semibold text-xs uppercase tracking-[0.14em]">Stay in the loop</h2>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                alert("Successfully joined!");
+              }}
+              className="flex bg-slate-900 border border-slate-800 p-1 rounded-full mt-4"
+            >
+              <label htmlFor="footer-email" className="sr-only">
+                Your business email
+              </label>
+              <input
+                id="footer-email"
+                type="email"
+                required
+                placeholder="Your business email"
+                className="bg-transparent px-4 py-2 text-xs outline-none text-white placeholder:text-slate-500 w-full min-w-0"
+              />
               <button
-                onClick={() => alert("Successfully joined!")}
-                className="shrink-0 bg-white hover:bg-slate-200 text-slate-900 px-4 py-1.5 rounded-full font-semibold text-xs transition-colors"
+                type="submit"
+                className="shrink-0 bg-white text-slate-950 px-4 py-1.5 rounded-full font-semibold text-xs"
               >
                 Join
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <span>&copy; 2026 VendSource Vending Inc. All rights reserved.</span>
-          <div className="flex gap-4">
-            <Link to="/faq" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/faq" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link to="/faq" className="hover:text-white transition-colors">Warranty</Link>
-          </div>
+        <div className="mt-14 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <span>&copy; 2026 SB Vendsource Distribution LLC. All rights reserved.</span>
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <Link to="/#faq">Privacy Policy</Link>
+            <Link to="/#faq">Terms of Service</Link>
+            <Link to="/#faq">Warranty</Link>
+          </nav>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({ title, links }: { title: string; links: { to: string; label: string }[] }) {
+  return (
+    <div>
+      <h2 className="text-white font-semibold text-xs uppercase tracking-[0.14em]">{title}</h2>
+      <ul className="mt-4 space-y-2.5">
+        {links.map(link => (
+          <li key={link.label}>
+            <Link to={link.to} className="text-xs">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

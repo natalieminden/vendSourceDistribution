@@ -40,7 +40,10 @@ export default function PortalLogin() {
           <span className="font-semibold text-slate-900 text-lg">Rep Portal</span>
         </div>
 
-        <form onSubmit={onSubmit} className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-sm">
+        <form
+          onSubmit={onSubmit}
+          className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-sm"
+        >
           <div>
             <h1 className="text-lg font-bold text-slate-900">Sign in</h1>
             <p className="text-xs text-slate-500 mt-1">Track your referrals and commissions.</p>
@@ -56,7 +59,7 @@ export default function PortalLogin() {
               required
               autoComplete="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               className="bg-white border border-slate-300 text-sm rounded-lg block w-full p-2.5 focus:border-blue-600 outline-none text-slate-800"
             />
           </div>
@@ -71,7 +74,7 @@ export default function PortalLogin() {
               required
               autoComplete="current-password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               className="bg-white border border-slate-300 text-sm rounded-lg block w-full p-2.5 focus:border-blue-600 outline-none text-slate-800"
             />
           </div>

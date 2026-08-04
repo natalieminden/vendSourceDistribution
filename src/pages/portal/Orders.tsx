@@ -37,7 +37,9 @@ export default function PortalOrders() {
         setLoading(false);
       });
 
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, []);
 
   if (loading) {
@@ -68,9 +70,7 @@ export default function PortalOrders() {
         <div className="bg-white border border-slate-200 rounded-xl p-12 text-center">
           <Package className="w-12 h-12 text-slate-300 mx-auto stroke-[1.25]" />
           <span className="font-semibold text-slate-800 block mt-4">No orders yet</span>
-          <p className="text-sm text-slate-500 mt-1">
-            Share your referral link to start earning.
-          </p>
+          <p className="text-sm text-slate-500 mt-1">Share your referral link to start earning.</p>
         </div>
       ) : (
         <div className="bg-white border border-slate-200 rounded-xl overflow-x-auto">
@@ -87,10 +87,14 @@ export default function PortalOrders() {
             <tbody>
               {orders.map(order => (
                 <tr key={order.id} className="border-b border-slate-100 last:border-0">
-                  <td className="px-5 py-4 text-slate-600 whitespace-nowrap">{shortDate(order.created_at)}</td>
+                  <td className="px-5 py-4 text-slate-600 whitespace-nowrap">
+                    {shortDate(order.created_at)}
+                  </td>
                   <td className="px-5 py-4">
                     <span className="text-slate-900 font-medium block">{order.customer_name ?? "—"}</span>
-                    <span className="text-xs text-slate-400 font-mono">{maskEmail(order.customer_email)}</span>
+                    <span className="text-xs text-slate-400 font-mono">
+                      {maskEmail(order.customer_email)}
+                    </span>
                   </td>
                   <td className="px-5 py-4 text-slate-600">
                     {(order.line_items ?? []).map((item, i) => (
@@ -103,7 +107,9 @@ export default function PortalOrders() {
                     {money(order.total)}
                   </td>
                   <td className="px-5 py-4">
-                    <span className={`text-xs font-semibold px-2 py-1 rounded-full border ${STATUS_STYLES[order.status]}`}>
+                    <span
+                      className={`text-xs font-semibold px-2 py-1 rounded-full border ${STATUS_STYLES[order.status]}`}
+                    >
                       {order.status}
                     </span>
                   </td>
