@@ -41,13 +41,18 @@ function ReferralTracker() {
 
 /** Marketing chrome: header, footer, cart. Deliberately absent from the portal. */
 function StoreFront({ children }: { children: ReactNode }) {
+  // The grid is a home-page treatment only; every other page stays plain white.
+  const isHome = useLocation().pathname === "/";
+
   return (
     <div className="isolate bg-white text-slate-900 min-h-screen font-sans relative selection:bg-blue-600 selection:text-white">
-      {/* Ambient backdrop. Sits behind everything via -z-10 and never intercepts
-          pointer events, so it can't swallow clicks on content above it. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="bg-grid absolute inset-0" />
-      </div>
+      {isHome && (
+        // Ambient backdrop. Sits behind everything via -z-10 and never intercepts
+        // pointer events, so it can't swallow clicks on content above it.
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          <div className="bg-grid absolute inset-0" />
+        </div>
+      )}
 
       <ReferralTracker />
       <Header />

@@ -27,10 +27,10 @@ const REASONS = [
 const MACHINE_COUNTS = ["1", "2", "3", "4", "5", "6-10", "11-20", "20+"];
 
 const FIELD =
-  "w-full rounded-xl bg-white/95 border border-white/40 text-sm text-slate-800 p-3 outline-none " +
-  "placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-white/70 transition-all";
+  "w-full rounded-xl bg-white border border-slate-300 text-sm text-slate-800 p-3 outline-none " +
+  "placeholder:text-slate-400 focus:border-slate-900 focus:ring-2 focus:ring-slate-900/15 transition-all";
 
-const LABEL = "text-[11px] font-semibold text-slate-300 block mb-1.5 uppercase tracking-wide";
+const LABEL = "text-[11px] font-semibold text-slate-700 block mb-1.5 uppercase tracking-wide";
 
 const CONTACT_JSONLD = {
   "@context": "https://schema.org",
@@ -88,30 +88,23 @@ export default function Contact() {
         {/* Page heading */}
         <div className="text-center max-w-2xl mx-auto">
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Contact our team</h1>
-          <p className="text-slate-600 mt-4 text-lg leading-relaxed">
-            Pricing a rollout, or just have a question? Send us the details.
-          </p>
         </div>
 
         <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-start">
-          {/* Form card — carries the hero's navy treatment. */}
-          <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 shadow-2xl shadow-slate-950/30">
-            <div className="absolute -top-24 -left-16 w-96 h-96 rounded-full bg-indigo-500/25 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-32 -right-10 w-96 h-96 rounded-full bg-violet-500/20 blur-3xl pointer-events-none" />
-            <div className="absolute inset-0 bg-grain opacity-[0.12] mix-blend-overlay pointer-events-none" />
-
+          {/* Form card — soft daylight gradient panel. */}
+          <div className="bg-daylight relative rounded-[2rem] overflow-hidden">
             <div className="relative p-6 sm:p-8 lg:p-10">
               {submitted ? (
                 <div className="text-center py-12 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-white/20 border border-white/30 grid place-items-center mx-auto text-white">
+                  <div className="w-16 h-16 rounded-full bg-white border border-slate-200 grid place-items-center mx-auto text-emerald-600">
                     <CheckCircle className="w-9 h-9" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white uppercase tracking-tight [text-shadow:0_2px_16px_rgb(0_0_0_/_35%)]">
+                  <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
                     Your email client should be open
                   </h2>
-                  <p className="text-slate-200 text-sm leading-relaxed max-w-md mx-auto">
-                    We pre-filled a message to <strong className="text-white">{CONTACT_EMAIL}</strong> with
-                    your details. Just hit send. If nothing opened, email us directly.
+                  <p className="text-slate-700 text-sm leading-relaxed max-w-md mx-auto">
+                    We pre-filled a message to <strong className="text-slate-900">{CONTACT_EMAIL}</strong>{" "}
+                    with your details. Just hit send. If nothing opened, email us directly.
                   </p>
                   <button
                     type="button"
@@ -120,7 +113,7 @@ export default function Contact() {
                       setForm(EMPTY_FORM);
                       setMachines([]);
                     }}
-                    className="mt-2 bg-white/15 border border-white/30 text-white px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wide transition-colors"
+                    className="mt-2 bg-white border border-slate-300 text-slate-800 px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wide"
                   >
                     Submit another inquiry
                   </button>
@@ -266,7 +259,7 @@ export default function Contact() {
                           <label key={product.id} className="flex items-center gap-2.5 cursor-pointer group">
                             <span
                               className={`w-4 h-4 rounded border grid place-items-center transition-colors shrink-0 ${
-                                checked ? "bg-white border-white text-slate-900" : "border-white/40"
+                                checked ? "bg-slate-900 border-slate-900 text-white" : "border-slate-400"
                               }`}
                             >
                               {checked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -277,27 +270,29 @@ export default function Contact() {
                               checked={checked}
                               onChange={() => toggleMachine(product.name)}
                             />
-                            <span className="text-sm text-slate-200">{product.name}</span>
+                            <span className="text-sm text-slate-700">{product.name}</span>
                           </label>
                         );
                       })}
                     </div>
                   </fieldset>
 
+                  {/* Shaped like the input field on Meta's support page: a white
+                      pill carrying a violet circular action. */}
                   <button
                     type="submit"
-                    className="group w-full inline-flex items-center justify-between gap-3 bg-white text-slate-900 font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-black/20"
+                    className="w-full inline-flex items-center justify-between gap-3 bg-white border border-slate-200 text-slate-900 font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-sm"
                   >
                     <span className="flex items-center gap-2">
-                      <Mail className="w-4 h-4" />
+                      <Mail className="w-4 h-4 text-slate-500" />
                       Send message
                     </span>
-                    <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center transition-transform shrink-0">
+                    <span className="bg-robin w-9 h-9 rounded-full text-white flex items-center justify-center shrink-0">
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </button>
 
-                  <p className="text-xs text-center text-slate-400">
+                  <p className="text-xs text-center text-slate-600">
                     Opens your email client, addressed to {CONTACT_EMAIL}.
                   </p>
                 </form>

@@ -6,6 +6,25 @@
   --color-ink: #0f172a;
   --color-brand: #2563eb;
   --color-brand-dark: #1d4ed8;
+
+  /* Soft periwinkle for the contact submit action. Nudged a shade deeper than
+     the reference so the white arrow inside still clears 3:1. */
+  --color-robin: #6d80d8;
+  --color-robin-dark: #5c6fc9;
+}
+
+/*
+ * Inter's alternate glyphs pull it closer to San Francisco: cv02/cv03/cv04 give
+ * the single-storey g and straighter a/l, cv11 the flat-topped 1.
+ */
+body {
+  font-feature-settings:
+    "cv02" 1,
+    "cv03" 1,
+    "cv04" 1,
+    "cv11" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /*
@@ -122,6 +141,41 @@ textarea:focus-visible,
   animation: marquee 28s linear infinite;
 }
 
+/*
+ * Shop product cards. Written as a plain rule rather than a Tailwind arbitrary
+ * hover utility so the lift cannot depend on JIT class scanning.
+ *
+ * This is the only hover effect on the site: the cards are borderless white on
+ * grey, so the lift is what signals they are clickable.
+ */
+.product-card {
+  background-color: #fff;
+  border-radius: 1.25rem;
+  /* The page behind these is white, so the resting ring has to carry the card
+     edge on its own. */
+  box-shadow:
+    0 0 0 1px rgb(2 6 23 / 0.08),
+    0 1px 2px rgb(2 6 23 / 0.04);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.product-card:hover,
+.product-card:focus-visible {
+  box-shadow:
+    0 18px 40px rgb(2 6 23 / 0.14),
+    0 2px 8px rgb(2 6 23 / 0.06);
+  transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card:hover,
+  .product-card:focus-visible {
+    transform: none;
+  }
+}
+
 /* Ambient motion, since hover feedback is switched off site-wide. */
 @keyframes nudge-x {
   0%,
@@ -155,10 +209,26 @@ textarea:focus-visible,
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
-  /* Runs the full height of the light content and fades before the closing dark
-     block, rather than dying just below the hero. */
+  /* Runs the full height of the page and fades out near the bottom, rather than
+     dying just below the hero. */
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 96%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 96%);
+}
+
+/*
+ * Footer: starts at the page's own white and sinks into the daylight palette,
+ * so the page arrives at the footer with no seam and no dark band.
+ */
+.bg-footer-daylight {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f4f9fc 26%, #e7f1fa 58%, #d8e9f6 82%, #cfe4f5 100%);
+}
+
+/*
+ * Soft daylight panel: pale blue on the left easing through near-white into a
+ * faint mint on the right. Used for the contact form card and the home CTA.
+ */
+.bg-daylight {
+  background-image: linear-gradient(105deg, #cfe4f5 0%, #dcecf9 20%, #eaf3fb 46%, #f1f7f6 70%, #e4f1ea 100%);
 }
 
 .bg-grain {

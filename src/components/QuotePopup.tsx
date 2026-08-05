@@ -46,7 +46,7 @@ export default function QuotePopup() {
         <a
           href={`mailto:${CONTACT_EMAIL}`}
           onClick={dismiss}
-          className="inline-flex items-center gap-1.5 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 border border-white/25 text-white font-semibold text-xs px-4 py-2.5 rounded-full transition-all shadow-lg shadow-slate-950/30"
+          className="inline-flex items-center gap-1.5 bg-slate-950 text-white font-semibold text-xs px-4 py-2.5 rounded-full shadow-lg shadow-slate-950/20"
         >
           <Mail className="w-3.5 h-3.5" />
           <span>Contact Sales</span>

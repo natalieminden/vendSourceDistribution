@@ -49,7 +49,7 @@ export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   usePageMeta({
-    title: "AI-Powered Grab & Go Vending Coolers",
+    title: "AI-Powered Smart Vending Coolers",
     description:
       "Smart vending coolers with load-cell shelves, AI vision and Nayax tap-to-pay. Compare six commercial models, see pricing and request volume quotes.",
     jsonLd: HOME_JSONLD,
@@ -222,7 +222,7 @@ export default function Home() {
             </p>
             <Link
               to="/shop"
-              className="group mt-6 inline-flex items-center gap-3 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 backdrop-blur-xl border border-white/25 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full transition-all shadow-lg shadow-slate-950/30"
+              className="mt-6 inline-flex items-center gap-3 bg-slate-950 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
             >
               Shop All 6 Machines
               <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center transition-transform">
@@ -278,9 +278,6 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
                 How It Works in 3 Steps
               </h2>
-              <p className="text-slate-500 mt-4 text-sm leading-relaxed">
-                Simple, straightforward integration to keep every location running smoothly.
-              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
@@ -333,25 +330,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LINEUP CTA — deliberately no card: sits directly on the page grid so
-          the backdrop does some work between the white panels. */}
-      <section className="py-14 lg:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-[1.05]">
-            Browse the full lineup
-          </h2>
-          <p className="text-slate-600 text-base leading-relaxed mt-5">
-            Six models, all in stock. Compare capacity, sensors and pricing.
-          </p>
-          <Link
-            to="/shop"
-            className="mt-8 inline-flex items-center justify-between gap-3 bg-slate-950 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
-          >
-            Shop all machines
-            <span className="w-8 h-8 rounded-full bg-white text-slate-950 flex items-center justify-center">
-              <ArrowRight className="animate-nudge-x w-4 h-4" />
-            </span>
-          </Link>
+      {/* LINEUP CTA — borrows the product page's window-chrome treatment so the
+          block reads as an app window rather than another flat panel. */}
+      <section className="py-10 lg:py-14">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="relative rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white overflow-hidden shadow-xl shadow-slate-950/5">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200/70 bg-white/60 backdrop-blur">
+              <div className="flex items-center gap-1.5" aria-hidden="true">
+                <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+                <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
+              </div>
+            </div>
+
+            <div className="px-6 py-12 sm:px-10 sm:py-16 text-center">
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-[1.05]">
+                Browse the full lineup
+              </h2>
+              <Link
+                to="/shop"
+                className="mt-8 inline-flex items-center justify-between gap-3 bg-slate-950 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
+              >
+                Shop all machines
+                <span className="w-8 h-8 rounded-full bg-white text-slate-950 flex items-center justify-center">
+                  <ArrowRight className="animate-nudge-x w-4 h-4" />
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
