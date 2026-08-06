@@ -71,7 +71,7 @@ export default function CartDrawer() {
                     onClick={() => {
                       setCartOpen(false);
                     }}
-                    className="bg-slate-900 text-white font-semibold text-xs px-6 py-3 rounded-lg transition-colors"
+                    className="bg-robin text-white font-semibold text-xs px-6 py-3 rounded-lg transition-colors"
                   >
                     Browse Coolers
                   </button>
@@ -186,7 +186,7 @@ export default function CartDrawer() {
                         type="button"
                         onClick={() => void handleApplyPromo()}
                         disabled={promoChecking}
-                        className="bg-slate-900 text-white font-semibold px-4 rounded-lg uppercase disabled:opacity-60"
+                        className="bg-robin text-white font-semibold px-4 rounded-lg uppercase disabled:opacity-60"
                       >
                         {promoChecking ? "…" : "Apply"}
                       </button>
@@ -235,7 +235,7 @@ export default function CartDrawer() {
                   <button
                     onClick={() => void startCheckout()}
                     disabled={checkoutLoading}
-                    className="w-full bg-slate-900 text-white font-semibold py-3.5 rounded-lg text-xs uppercase tracking-wide transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                    className="w-full bg-robin text-white font-semibold py-3.5 rounded-lg text-xs uppercase tracking-wide transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
                   >
                     {checkoutLoading ? (
                       <>

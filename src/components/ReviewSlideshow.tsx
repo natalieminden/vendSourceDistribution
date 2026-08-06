@@ -101,7 +101,7 @@ export default function ReviewSlideshow() {
               aria-label={`Show review ${i + 1} of ${count}`}
               aria-current={i === index}
               className={`h-2 rounded-full transition-all ${
-                i === index ? "w-6 bg-slate-900" : "w-2 bg-slate-300"
+                i === index ? "w-6 bg-robin" : "w-2 bg-slate-300"
               }`}
             />
           ))}

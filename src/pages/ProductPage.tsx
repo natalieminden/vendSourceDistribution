@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Check, ArrowRight, ArrowLeft, Lock, Truck, RotateCcw, Award } from "lucide-react";
-import { products } from "../data/products";
+import { products, productViews } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { asset } from "../lib/asset";
 import { usePageMeta } from "../lib/seo";
@@ -19,10 +19,12 @@ export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState<ProductTab>("overview");
+  const [activeIndex, setActiveIndex] = useState(0);
   const product = products.find(p => p.id === id);
 
   useEffect(() => {
     setActiveTab("overview");
+    setActiveIndex(0);
   }, [id]);
 
   // Called before the not-found return below so hook order stays stable.
@@ -64,7 +66,7 @@ export default function ProductPage() {
         </p>
         <Link
           to="/shop"
-          className="inline-flex items-center gap-2 bg-slate-900 text-white font-semibold text-sm px-6 py-3.5 rounded-lg transition-colors"
+          className="inline-flex items-center gap-2 bg-robin text-white font-semibold text-sm px-6 py-3.5 rounded-lg transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Shop
@@ -75,6 +77,10 @@ export default function ProductPage() {
 
   const otherProducts = products.filter(p => p.id !== product.id).slice(0, 3);
   const saveAmount = product.originalPrice - product.price;
+
+  const views = productViews(product);
+  // Guards the frame between a product switch and the effect resetting the index.
+  const activeView = views[activeIndex] ?? views[0];
 
   const specRows: [string, string][] = [
     ["Capacity", product.capacity],
@@ -110,22 +116,10 @@ export default function ProductPage() {
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-8 lg:gap-12 items-start">
           <aside className="lg:col-start-2 lg:row-start-1">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <span className="inline-flex items-center bg-slate-100 text-slate-900 text-[11px] font-semibold px-2.5 py-1 rounded-full">
-                {product.badge}
-              </span>
-
-              <h1 className="mt-4 text-2xl font-bold text-slate-900 leading-tight">{product.name}</h1>
-              <p className="mt-1.5 text-sm text-slate-600">{product.tagline}</p>
-
-              <div className="mt-4 flex items-center gap-2 pb-5 border-b border-slate-100">
-                <div className="w-8 h-8 rounded-full bg-slate-900 text-white text-[11px] font-bold flex items-center justify-center">
-                  VS
-                </div>
-                <div className="leading-tight">
-                  <p className="text-xs font-semibold text-slate-900">VendSource Distribution</p>
-                  <p className="text-[11px] text-slate-500">{product.category}</p>
-                </div>
-              </div>
+              <h1 className="text-2xl font-bold text-slate-900 leading-tight">{product.name}</h1>
+              <p className="mt-1.5 text-sm text-slate-600 pb-5 border-b border-slate-100">
+                {product.tagline}
+              </p>
 
               <div className="pt-5 flex items-baseline gap-2.5">
                 <span className="text-3xl font-bold text-slate-900">
@@ -143,7 +137,7 @@ export default function ProductPage() {
 
               <button
                 onClick={() => addToCart(product)}
-                className="mt-4 w-full bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 border border-white/25 text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all shadow-lg shadow-slate-950/30"
+                className="mt-4 w-full bg-robin text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-colors"
               >
                 Add to Cart
               </button>
@@ -153,10 +147,6 @@ export default function ProductPage() {
               >
                 Browse all machines
               </Link>
-
-              <p className="mt-3 text-[11px] text-slate-500 leading-relaxed">
-                Authorized reseller. Ships direct via premium carriers.
-              </p>
 
               <dl className="mt-5 pt-5 border-t border-slate-100 space-y-2.5 text-xs">
                 <div className="flex justify-between gap-4">
@@ -189,19 +179,60 @@ export default function ProductPage() {
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
                   <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
                 </div>
-                <span className="text-[11px] font-medium text-slate-500 tracking-wide">
-                  {product.category}
-                </span>
-                <span className="text-[11px] font-medium text-slate-500">Preview</span>
               </div>
               <div className="p-6 sm:p-10 lg:p-14 flex items-center justify-center">
                 <img
-                  src={asset(product.imgUrl)}
-                  alt={product.name}
+                  key={activeView.src}
+                  src={asset(activeView.src)}
+                  alt={
+                    activeIndex === 0 ? product.name : `${product.name} — ${activeView.label.toLowerCase()}`
+                  }
+                  width={activeView.w}
+                  height={activeView.h}
+                  /* Only the first view is above the fold on load; the rest are
+                     fetched when the visitor asks for them. */
+                  fetchPriority={activeIndex === 0 ? "high" : "auto"}
                   className="w-auto max-w-full h-72 sm:h-[420px] lg:h-[520px] object-contain drop-shadow-xl"
                 />
               </div>
             </div>
+
+            {/* View switcher — only where we hold more than one render. */}
+            {views.length > 1 && (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {views.map((view, idx) => {
+                  const isActive = idx === activeIndex;
+                  return (
+                    <button
+                      key={view.src}
+                      type="button"
+                      onClick={() => setActiveIndex(idx)}
+                      aria-label={`Show ${view.label.toLowerCase()} view`}
+                      aria-current={isActive}
+                      className={`w-20 h-24 rounded-xl bg-white grid place-items-center p-2 overflow-hidden transition-shadow ${
+                        isActive
+                          ? "shadow-[0_0_0_2px_theme(colors.slate.900)]"
+                          : "shadow-[0_0_0_1px_theme(colors.slate.200)]"
+                      }`}
+                    >
+                      <img
+                        src={asset(view.src)}
+                        alt=""
+                        width={view.w}
+                        height={view.h}
+                        loading="lazy"
+                        decoding="async"
+                        /* Fixed caps, not max-h-full: a percentage max-height does
+                           not resolve against the grid area, so the tall cabinet
+                           renders spilled past the button. 16/20 = the 64x80 content
+                           box left by w-20 h-24 minus p-2. */
+                        className="max-w-16 max-h-20 w-auto h-auto object-contain"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
             {/* Tab bar — swaps content in place, no scrolling */}
             <div
@@ -317,8 +348,8 @@ export default function ProductPage() {
                   <img
                     src={asset(p.imgUrl)}
                     alt={`${p.name} smart vending cooler`}
-                    width={480}
-                    height={480}
+                    width={p.imgW}
+                    height={p.imgH}
                     loading="lazy"
                     decoding="async"
                     className="h-full w-auto object-contain"

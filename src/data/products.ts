@@ -1,3 +1,11 @@
+export interface ProductImage {
+  src: string;
+  w: number;
+  h: number;
+  /** Names the view. Used for the thumbnail's accessible name and the alt text. */
+  label: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -13,8 +21,24 @@ export interface Product {
   weight: string;
   description: string;
   imgUrl: string;
+  /* Intrinsic pixel size of imgUrl. The cabinet renders are portrait and the
+     older photos square, so a shared hint would mis-size one or the other
+     before the file lands. */
+  imgW: number;
+  imgH: number;
+  /* Additional views for the product page gallery, in display order after the
+     primary. Absent on models we only have one render of. */
+  gallery?: ProductImage[];
   bestFor: string;
   specs: string[];
+}
+
+/** The primary image plus any extra views, as the gallery renders them. */
+export function productViews(product: Product): ProductImage[] {
+  return [
+    { src: product.imgUrl, w: product.imgW, h: product.imgH, label: "Stocked" },
+    ...(product.gallery ?? []),
+  ];
 }
 
 export const products: Product[] = [
@@ -34,7 +58,9 @@ export const products: Product[] = [
     bestFor: "Office breakrooms, gyms, hotel lobbies, residential apartment hubs.",
     description:
       "Smart micro-market vending cooler with physical high-accuracy load-cell shelves. Customers tap to unlock, grab their snacks or beverages, close the door, and get charged automatically. Zero spiral jams, coils, or dropped item damage.",
-    imgUrl: "products/haha-1200-ultra.jpeg",
+    imgUrl: "products/haha-1200-ultra.png",
+    imgW: 466,
+    imgH: 667,
     specs: [
       "Tap, grab & go convenience",
       "Load-cell weight modules",
@@ -58,7 +84,9 @@ export const products: Product[] = [
     bestFor: "High-traffic commercial complexes, medical systems, universities, airport lounges.",
     description:
       "Dual isolated glass-door smart cooling vending station. Fuses advanced digital weight sensors with internal multi-angle AI computer vision cameras to maintain supreme 99.9% transaction accuracy, perfect even for chaotic grab-and-return behaviors.",
-    imgUrl: "products/max-620.jpeg",
+    imgUrl: "products/max-620.png",
+    imgW: 277,
+    imgH: 668,
     specs: [
       "Scan, grab & go flow",
       "Computer vision camera sensors",
@@ -82,7 +110,13 @@ export const products: Product[] = [
     bestFor: "Offices, gyms, break rooms, hotel lobbies.",
     description:
       "Compact single-door AI smart vending machine with 9 columns × 7 rows × 6 tiers. AI Dynamic Recognition technology delivers 99% transaction accuracy. Standard US outlet (120V/60Hz), Nayax & Pax payment terminals included.",
-    imgUrl: "products/qingo-king-509.jpeg",
+    imgUrl: "products/qingo-king-509.png",
+    imgW: 731,
+    imgH: 1024,
+    gallery: [
+      { src: "products/qingo-king-509-angle.png", w: 663, h: 1024, label: "Side profile" },
+      { src: "products/qingo-king-509-interior.png", w: 407, h: 1100, label: "Empty shelving" },
+    ],
     specs: ["AI Dynamic Recognition", "99% accuracy", "Nayax & Pax payments", "Remote temp control"],
   },
   {
@@ -101,7 +135,13 @@ export const products: Product[] = [
     bestFor: "High-traffic offices, universities, medical facilities, hotel lobbies.",
     description:
       "Full-featured single-door AI smart vending machine with 11 columns × 7 rows × 6 tiers (plus 11 × 3 × 1 tiers). AI Dynamic Recognition with 99% accuracy. Nayax & Pax terminals, beverage & snack pushers available.",
-    imgUrl: "products/qingo-ace-779.jpeg",
+    imgUrl: "products/qingo-ace-779.png",
+    imgW: 587,
+    imgH: 1100,
+    gallery: [
+      { src: "products/qingo-ace-779-angle.png", w: 535, h: 1100, label: "Side profile" },
+      { src: "products/qingo-ace-779-interior.png", w: 539, h: 1100, label: "Empty shelving" },
+    ],
     specs: ["AI Dynamic Recognition", "99% accuracy", "Nayax & Pax payments", "Remote temp control"],
   },
   {
@@ -120,7 +160,13 @@ export const products: Product[] = [
     bestFor: "Airports, transit hubs, large event venues, major commercial complexes.",
     description:
       "Dual glass-door high-capacity AI smart vending machine with 16 columns × 7 rows × 6 tiers. AI Dynamic Recognition with 99% accuracy. Built for locations that demand maximum throughput with minimal restocking frequency.",
-    imgUrl: "products/qingo-pair-1208.jpeg",
+    imgUrl: "products/qingo-pair-1208.png",
+    imgW: 768,
+    imgH: 1019,
+    gallery: [
+      { src: "products/qingo-pair-1208-angle.png", w: 738, h: 1024, label: "Side profile" },
+      { src: "products/qingo-pair-1208-interior.png", w: 768, h: 1019, label: "Empty shelving" },
+    ],
     specs: ["Dual door high capacity", "99% AI accuracy", "Nayax & Pax payments", "Remote temp control"],
   },
   {
@@ -139,7 +185,9 @@ export const products: Product[] = [
     bestFor: "Break rooms, convenience stores, food courts, hospitality venues.",
     description:
       "Purpose-built smart frozen vending unit with load-cell shelving and a deep-freeze glass door cabinet. Handles everything from ice cream and frozen meals to packaged snacks — all contactless, 24/7.",
-    imgUrl: "products/freezer.jpeg",
+    imgUrl: "products/freezer.png",
+    imgW: 221,
+    imgH: 622,
     specs: [
       "Deep-freeze load cell shelves",
       "Anti-fog heated glass door",

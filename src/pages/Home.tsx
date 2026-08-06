@@ -15,11 +15,20 @@ import { products, steps, reviews, faqItems, CONTACT_EMAIL } from "../data/produ
 import { asset } from "../lib/asset";
 import { usePageMeta } from "../lib/seo";
 import FinalCta from "../components/FinalCta";
+import MachineViewer from "../components/MachineViewer";
+import ProductCarousel from "../components/ProductCarousel";
 import ReviewSlideshow from "../components/ReviewSlideshow";
 
-const featuredIds = ["haha1200ultra", "qingoking509"];
-
 const partners = ["Vend Guys", "Nayax Certified", "AI Merchandising", "Micro-Markets"];
+
+const platformCapabilities = [
+  "Remote Management",
+  "Inventory Tracking",
+  "Sales Analytics",
+  "Smart Alerts",
+  "Multi-Location Management",
+  "AI Business Insights",
+];
 
 const platformSpecs = [
   { icon: Scale, title: "Load Cell Shelves", desc: "True sub-2g pressure scales" },
@@ -48,6 +57,18 @@ export default function Home() {
   const location = useLocation();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+  // The 3D model we hold is this machine specifically, so the section is tied
+  // to it by id rather than to whatever happens to be first in the catalogue.
+  const showcase = products.find(p => p.id === "haha1200ultra");
+  const showcaseSpecs: [string, string][] = showcase
+    ? [
+        ["Capacity", showcase.capacity],
+        ["Noise", showcase.noise],
+        ["Weight", showcase.weight],
+        ["Warranty", "2-year direct factory"],
+      ]
+    : [];
+
   usePageMeta({
     title: "AI-Powered Smart Vending Coolers",
     description:
@@ -64,8 +85,6 @@ export default function Home() {
     }
   }, [location]);
 
-  const featured = featuredIds.map(id => products.find(p => p.id === id)!);
-
   return (
     // Transparent, not white: the ambient grid in StoreFront sits behind this.
     <div className="relative overflow-x-clip">
@@ -73,7 +92,7 @@ export default function Home() {
       <div className="fixed bottom-4 right-4 z-30 md:hidden">
         <Link
           to="/shop"
-          className="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 backdrop-blur-xl border border-white/25 text-white font-semibold px-5 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-slate-950/30 text-xs"
+          className="bg-robin text-white font-semibold px-5 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-slate-950/30 text-xs"
         >
           <span>Shop Machines</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -108,12 +127,7 @@ export default function Home() {
             <div className="w-full px-5 sm:px-10 pb-8 lg:pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
               {/* Left: copy + CTAs */}
               <div className="max-w-xl">
-                <p className="text-slate-200 text-sm leading-relaxed max-w-md [text-shadow:0_1px_10px_rgb(0_0_0_/_40%)]">
-                  Double retail sales and provide 24/7 premium amenities with the Tap, Grab &amp; Go
-                  self-service refrigeration experience. Features integrated load cells, AI vision models, and
-                  instant cellular Nayax checkouts.
-                </p>
-                <h1 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white uppercase leading-[1.05] [text-shadow:0_2px_16px_rgb(0_0_0_/_35%)]">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white uppercase leading-[1.05] [text-shadow:0_2px_16px_rgb(0_0_0_/_35%)]">
                   AI-Powered Grab &amp; Go
                   <br />
                   Vending Coolers.
@@ -210,65 +224,117 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED MACHINES — side-column catalog */}
-      <section id="machines" className="py-10 lg:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white border border-slate-200 rounded-[2rem] p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-[0.32fr_0.68fr] gap-10 lg:gap-14">
-          <div className="lg:self-start">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              Popular Smart Coolers
-            </h2>
-            <p className="text-slate-600 mt-4 text-base leading-relaxed">
-              Our best-selling models. See all six in the shop.
-            </p>
-            <Link
-              to="/shop"
-              className="mt-6 inline-flex items-center gap-3 bg-slate-950 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
-            >
-              Shop All 6 Machines
-              <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center transition-transform">
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {featured.map(product => (
-              <Link key={product.id} to={`/shop/${product.id}`} className="group">
-                <div className="relative rounded-3xl bg-slate-100 overflow-hidden h-80 lg:h-96 flex items-center justify-center p-6">
-                  <span className="absolute top-4 left-4 bg-white text-slate-900 text-[10px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
-                    {product.badge}
-                  </span>
-                  <img
-                    src={asset(product.imgUrl)}
-                    alt={`${product.name} smart vending cooler`}
-                    width={480}
-                    height={480}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
-                <div className="mt-4 flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-base font-bold text-slate-900 underline-offset-4">{product.name}</h3>
-                    <p className="text-slate-500 text-xs mt-1 leading-relaxed">{product.tagline}</p>
-                  </div>
-                  <div className="text-right shrink-0">
-                    {product.originalPrice > product.price && (
-                      <span className="text-xs text-slate-500 line-through block">
-                        ${product.originalPrice.toLocaleString()}
-                      </span>
-                    )}
-                    <span className="text-base font-bold text-slate-900">
-                      ${product.price.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
+      {/* FEATURED MACHINES — heading over a rail that runs off the right edge.
+          Deliberately not wrapped in the usual bordered card: the whole point of
+          the treatment is that the row escapes the page gutter. */}
+      <section id="machines" className="py-10 lg:py-12">
+        {/* The middle column reproduces the page container, so the panel's left
+            edge sits exactly where every other section's card starts. Spanning
+            it into the third column runs the panel — and the rail inside it —
+            off the right of the page, which is what leaves the next card cut in
+            half. The right border and radius come off for the same reason. */}
+        <div className="grid grid-cols-[1fr_minmax(0,80rem)_1fr]">
+          <div className="col-start-2 col-end-4 ml-4 sm:ml-6 lg:ml-8 bg-white border border-r-0 border-slate-200 rounded-l-[2rem] py-6 sm:py-10 lg:py-12">
+            <div className="px-6 sm:px-10 lg:px-12 flex flex-wrap items-center justify-between gap-x-8 gap-y-5">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Our Products</h2>
+              <Link
+                to="/shop"
+                className="inline-flex items-center gap-3 bg-robin text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
+              >
+                Shop All 6 Machines
+                <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center transition-transform">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
               </Link>
-            ))}
+            </div>
+
+            <div className="mt-8 lg:mt-10">
+              <ProductCarousel products={products} />
+            </div>
           </div>
         </div>
       </section>
+
+      {/* PLATFORM CAPABILITIES — numbered index of what the software covers */}
+      <section className="py-10 lg:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white border border-slate-200 rounded-[2rem] p-6 sm:p-10 lg:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-10 lg:gap-14 items-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-[1.1]">
+              One intelligent platform for every vending operation.
+            </h2>
+
+            <img
+              src={asset("hero/platform-dashboard.webp")}
+              alt="Cloud dashboard showing sales totals, order volume and machine status on desktop and mobile"
+              width={1574}
+              height={1288}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto"
+            />
+          </div>
+
+          {/* The index runs the full width under both columns. Rules sit on each
+              row rather than on a divide-y so the columns stay aligned when a
+              title wraps to two lines. */}
+          <ol className="mt-10 lg:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10">
+            {platformCapabilities.map((label, idx) => (
+              <li
+                key={label}
+                className="flex items-baseline gap-4 py-5 border-t border-slate-200 first:border-t-0 sm:[&:nth-child(2)]:border-t-0 lg:[&:nth-child(3)]:border-t-0"
+              >
+                <span className="text-xs font-bold tabular-nums text-robin shrink-0">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base font-semibold text-slate-900 leading-snug">{label}</span>
+              </li>
+            ))}
+          </ol>
+
+          <p className="mt-8 pt-6 border-t border-slate-200 text-xs text-slate-500 leading-relaxed">
+            Cloud platform features are available on Qingo AI Vending Series models only.
+          </p>
+        </div>
+      </section>
+
+      {/* 3D SHOWCASE — the flagship, rotating, with its headline specs */}
+      {showcase && (
+        <section className="py-10 lg:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white border border-slate-200 rounded-[2rem] p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-[0.45fr_0.55fr] gap-10 lg:gap-14 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+                {showcase.name}
+              </h2>
+              <p className="text-slate-600 mt-3 text-base leading-relaxed">{showcase.tagline}</p>
+
+              <dl className="mt-8 divide-y divide-slate-200 border-t border-slate-200">
+                {showcaseSpecs.map(([label, value]) => (
+                  <div key={label} className="py-4 grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-1 sm:gap-4">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</dt>
+                    <dd className="text-sm text-slate-800 leading-relaxed">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <Link
+                to={`/shop/${showcase.id}`}
+                className="mt-8 inline-flex items-center gap-3 bg-robin text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
+              >
+                View the {showcase.name}
+                <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
+            </div>
+
+            <MachineViewer
+              src="models/haha-1200-ultra.glb"
+              poster={showcase.imgUrl}
+              posterAlt={`${showcase.name} smart vending cooler`}
+            />
+          </div>
+        </section>
+      )}
 
       {/* HOW IT WORKS — photo + numbered list rows */}
       <section className="py-10 lg:py-12">
@@ -296,7 +362,7 @@ export default function Home() {
               <div className="divide-y divide-slate-200">
                 {steps.map((step, idx) => (
                   <div key={idx} className="flex items-start gap-5 py-7 first:pt-0 last:pb-0">
-                    <span className="w-11 h-11 shrink-0 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">
+                    <span className="w-11 h-11 shrink-0 rounded-full bg-robin text-white text-xs font-bold flex items-center justify-center">
                       {step.no}
                     </span>
                     <div>
@@ -349,10 +415,10 @@ export default function Home() {
               </h2>
               <Link
                 to="/shop"
-                className="mt-8 inline-flex items-center justify-between gap-3 bg-slate-950 text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
+                className="mt-8 inline-flex items-center justify-between gap-3 bg-robin text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
               >
                 Shop all machines
-                <span className="w-8 h-8 rounded-full bg-white text-slate-950 flex items-center justify-center">
+                <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center">
                   <ArrowRight className="animate-nudge-x w-4 h-4" />
                 </span>
               </Link>

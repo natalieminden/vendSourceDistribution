@@ -51,7 +51,7 @@ export default function CheckoutSuccess() {
       <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
         <Link
           to="/shop"
-          className="bg-slate-900 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors"
+          className="bg-robin text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors"
         >
           Continue browsing
         </Link>

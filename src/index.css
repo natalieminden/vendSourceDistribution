@@ -176,6 +176,17 @@ textarea:focus-visible,
   }
 }
 
+/*
+ * Scroll rails: the snap points and the peeking next card already say the row
+ * scrolls, so the bar is redundant chrome across the middle of the page.
+ */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Ambient motion, since hover feedback is switched off site-wide. */
 @keyframes nudge-x {
   0%,
@@ -213,14 +224,6 @@ textarea:focus-visible,
      dying just below the hero. */
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 96%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 96%);
-}
-
-/*
- * Footer: starts at the page's own white and sinks into the daylight palette,
- * so the page arrives at the footer with no seam and no dark band.
- */
-.bg-footer-daylight {
-  background-image: linear-gradient(180deg, #ffffff 0%, #f4f9fc 26%, #e7f1fa 58%, #d8e9f6 82%, #cfe4f5 100%);
 }
 
 /*

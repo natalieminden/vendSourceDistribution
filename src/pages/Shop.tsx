@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { products, CONTACT_EMAIL } from "../data/products";
+import { products } from "../data/products";
 import { asset } from "../lib/asset";
 import { usePageMeta } from "../lib/seo";
 
@@ -52,8 +52,8 @@ export default function Shop() {
                   <img
                     src={asset(product.imgUrl)}
                     alt={`${product.name} smart vending cooler`}
-                    width={480}
-                    height={480}
+                    width={product.imgW}
+                    height={product.imgH}
                     loading="lazy"
                     decoding="async"
                     className="max-h-full w-auto object-contain"
@@ -80,20 +80,28 @@ export default function Shop() {
           </div>
         </div>
 
-        {/* Inside the grey section so the page runs to the footer without a
-            stray band of white between the grid and the footer. */}
-        <div className="max-w-4xl mx-auto px-4 pb-14 lg:pb-20 text-center">
-          <p className="text-slate-600 text-sm">
-            Not sure which model fits your location?{" "}
-            <Link to="/contact" className="text-slate-950 font-semibold">
-              Talk to our team
-            </Link>{" "}
-            or email{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-950 font-semibold">
-              {CONTACT_EMAIL}
-            </a>
-            .
-          </p>
+        {/* Closing CTA, same grey panel shape as the home page's contact block. */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 lg:pb-20">
+          <div className="bg-slate-100 rounded-[1.5rem] p-8 sm:p-12 lg:p-14">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_auto] gap-8 lg:gap-12 lg:items-center">
+              <div className="max-w-xl">
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                  Get bulk pricing
+                </h2>
+                <p className="text-slate-700 text-base leading-relaxed mt-3">
+                  Tell us how many machines you need and where they are going. We will come back with volume
+                  pricing, shipping and lead times.
+                </p>
+              </div>
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-white border border-slate-300 text-slate-900 font-semibold text-sm px-6 py-3 rounded-full shrink-0 justify-self-start"
+              >
+                Get bulk pricing
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

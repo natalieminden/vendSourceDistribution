@@ -86,7 +86,7 @@ export default function Contact() {
     <main className="py-12 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page heading */}
-        <div className="text-center max-w-2xl mx-auto">
+        <div className="max-w-2xl">
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Contact our team</h1>
         </div>
 
@@ -291,10 +291,6 @@ export default function Contact() {
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </button>
-
-                  <p className="text-xs text-center text-slate-600">
-                    Opens your email client, addressed to {CONTACT_EMAIL}.
-                  </p>
                 </form>
               )}
             </div>
