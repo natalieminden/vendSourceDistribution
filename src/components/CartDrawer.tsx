@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ShoppingBag, X, Minus, Plus, Check, Lock, Loader2, AlertCircle } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { addonOptions } from "../data/products";
@@ -70,14 +71,13 @@ export default function CartDrawer() {
                     <span className="font-semibold text-base text-slate-800 block">Your cart is empty</span>
                     <p className="text-slate-500 text-xs mt-1">Select a smart cooler to get started.</p>
                   </div>
-                  <button
-                    onClick={() => {
-                      setCartOpen(false);
-                    }}
+                  <Link
+                    to="/shop"
+                    onClick={() => setCartOpen(false)}
                     className="bg-robin text-white font-semibold text-xs px-6 py-3 rounded-lg transition-colors"
                   >
                     Browse Coolers
-                  </button>
+                  </Link>
                 </div>
               ) : (
                 <div className="flex-1 overflow-y-auto p-6 space-y-6">

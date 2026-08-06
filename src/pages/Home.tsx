@@ -90,15 +90,14 @@ export default function Home() {
     // Transparent, not white: the ambient grid in StoreFront sits behind this.
     <div className="relative overflow-x-clip">
       {/*
-        HERO — inset photo panel from sm up; edge-to-edge on phones, where the
-        inset and the corner radius only made the photo narrower.
+        HERO — inset photo panel, giant display type over full-bleed photography.
 
-        The min-height is lower on mobile for the same reason: the image is
-        landscape and object-cover scales it to fill the box, so a tall box on a
-        narrow screen crops away most of the shelf. Less height, less crop.
+        The min-height is lower on mobile: the image is landscape and object-cover
+        scales it to fill the box, so a tall box on a narrow screen crops away most
+        of the shelf. Less height, less crop.
       */}
-      <section className="pt-0 px-0 sm:pt-4 sm:px-4 lg:px-6">
-        <div className="relative overflow-hidden sm:rounded-[1.5rem] lg:rounded-[2rem] min-h-[440px] sm:min-h-[560px] lg:min-h-[82vh] flex flex-col">
+      <section className="pt-4 px-3 sm:px-4 lg:px-6">
+        <div className="relative overflow-hidden rounded-[1.5rem] lg:rounded-[2rem] min-h-[440px] sm:min-h-[560px] lg:min-h-[82vh] flex flex-col">
           {/* LCP element: never lazy, never deprioritised. */}
           <img
             src={asset("hero/vending-shelf.jpg")}
