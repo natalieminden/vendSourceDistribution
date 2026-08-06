@@ -282,7 +282,7 @@ export default function Home() {
           </ol>
 
           <p className="mt-8 pt-6 border-t border-slate-200 text-xs text-slate-500 leading-relaxed">
-            Cloud platform features are available on Qingo AI Vending Series models only.
+            The app shown above is the Qingo vending app. A preview of the Haha app is not available yet.
           </p>
         </div>
       </section>

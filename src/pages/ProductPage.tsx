@@ -288,6 +288,10 @@ export default function ProductPage() {
                     cloud dashboard, so pricing, planograms, and sales reporting stay in one place from day
                     one.
                   </p>
+                  <p className="mt-4 text-slate-600 leading-relaxed max-w-3xl">
+                    The smart app enables remote control, restock alerts, and data-driven product operation
+                    analysis.
+                  </p>
                 </div>
               )}
 
