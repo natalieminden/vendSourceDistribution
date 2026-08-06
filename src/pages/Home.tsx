@@ -290,7 +290,7 @@ export default function Home() {
           </ol>
 
           <p className="mt-8 pt-6 border-t border-slate-200 text-xs text-slate-500 leading-relaxed">
-            The app shown above is the Qingo vending app. A preview of the Haha app is not available yet.
+            The preview shown above is of the Qingo vending app.
           </p>
         </div>
       </section>
