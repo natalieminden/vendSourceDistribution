@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import { ShoppingBag, X, Minus, Plus, Check, Lock, Loader2, AlertCircle } from "lucide-react";
+import { ShoppingBag, X, Minus, Plus, Lock, Loader2, AlertCircle } from "lucide-react";
 import { useCart } from "../context/CartContext";
-import { addonOptions } from "../data/products";
 import { asset } from "../lib/asset";
 
 export default function CartDrawer() {
   const {
     cart,
-    selectedAddons,
     cartOpen,
     setCartOpen,
     promoCode,
@@ -19,11 +17,9 @@ export default function CartDrawer() {
     checkoutError,
     checkoutLoading,
     updateQty,
-    toggleAddonOption,
     handleApplyPromo,
     startCheckout,
     itemsSubtotal,
-    addonsSubtotal,
     promoDiscount,
     grandTotal,
   } = useCart();
@@ -131,41 +127,6 @@ export default function CartDrawer() {
                   </div>
 
                   {/* Recommended Accessories */}
-                  <div className="border-t border-slate-200 pt-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs uppercase font-semibold text-slate-500 tracking-wide block">
-                        Recommended Accessories
-                      </span>
-                    </div>
-
-                    <div className="space-y-2">
-                      {addonOptions.map(addon => {
-                        const isAdded = selectedAddons.some(ad => ad.id === addon.id);
-                        return (
-                          <button
-                            key={addon.id}
-                            onClick={() => toggleAddonOption(addon)}
-                            className={`w-full text-left p-3.5 rounded-xl border transition-colors flex items-center justify-between ${isAdded ? "bg-blue-50 border-blue-600" : "bg-white border-slate-200"}`}
-                          >
-                            <div className="flex items-center space-x-3">
-                              <div
-                                className={`w-5 h-5 rounded flex items-center justify-center border text-white ${isAdded ? "bg-blue-600 border-blue-600" : "border-slate-300 bg-white"}`}
-                              >
-                                {isAdded && <Check className="w-4 h-4 stroke-[3]" />}
-                              </div>
-                              <div>
-                                <span className="text-xs font-semibold text-slate-800 block">
-                                  {addon.name}
-                                </span>
-                                <span className="text-[11px] text-slate-500">{addon.badge}</span>
-                              </div>
-                            </div>
-                            <span className="text-xs font-semibold text-slate-900">${addon.price}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
                 </div>
               )}
 
@@ -210,12 +171,6 @@ export default function CartDrawer() {
                       <span>Subtotal:</span>
                       <span className="font-semibold text-slate-800">${itemsSubtotal.toFixed(2)}</span>
                     </div>
-                    {addonsSubtotal > 0 && (
-                      <div className="flex justify-between">
-                        <span>Selected Accessories:</span>
-                        <span className="font-semibold text-slate-800">${addonsSubtotal.toFixed(2)}</span>
-                      </div>
-                    )}
                     {promoApplied && (
                       <div className="flex justify-between text-emerald-600 font-medium">
                         <span>Promo Discount ({promoCode.trim().toUpperCase()}):</span>
