@@ -114,14 +114,28 @@ export default function ProductPage() {
 
       <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-8 lg:gap-12 items-start">
-          <aside className="lg:col-start-2 lg:row-start-1">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          {/*
+            The purchase rail. `contents` at mobile dissolves this wrapper so the
+            title and the buy box become grid items in their own right, free to be
+            ordered around the gallery: title (1), gallery (2), buy box (3), tabs (4).
+
+            From lg it is a real box again in the right-hand column, where the two
+            stack flush in normal flow and read as the single bordered card they
+            were before — hence the shared edge rather than two separate cards.
+          */}
+          <div className="contents lg:block lg:col-start-2 lg:row-start-1">
+            {/* No bottom padding at lg: the hairline under the tagline is the card's
+                own divider, and the buy box below supplies the space after it. Padding
+                on both sides of the seam left a gap twice as wide as intended. */}
+            <div className="order-1 lg:order-none lg:rounded-t-2xl lg:border lg:border-b-0 lg:border-slate-200 lg:bg-white lg:p-6 lg:pb-0">
               <h1 className="text-2xl font-bold text-slate-900 leading-tight">{product.name}</h1>
-              <p className="mt-1.5 text-sm text-slate-600 pb-5 border-b border-slate-100">
+              <p className="mt-1.5 text-sm text-slate-600 lg:pb-5 lg:border-b lg:border-slate-100">
                 {product.tagline}
               </p>
+            </div>
 
-              <div className="pt-5 flex items-baseline gap-2.5">
+            <div className="order-3 lg:order-none rounded-2xl lg:rounded-t-none border border-slate-200 lg:border-t-0 bg-white p-6 lg:pt-5 shadow-sm lg:shadow-none">
+              <div className="flex items-baseline gap-2.5">
                 <span className="text-3xl font-bold text-slate-900">
                   ${product.price.toLocaleString()}.00
                 </span>
@@ -141,11 +155,18 @@ export default function ProductPage() {
               >
                 Add to Cart
               </button>
+              {/* White pill with a dark circled arrow, as on the home page's
+                  bulk-pricing panel. The arrow does not animate: this sits directly
+                  under Add to Cart, where a moving element competes with the
+                  primary action. */}
               <Link
-                to="/shop"
-                className="mt-2.5 w-full inline-flex items-center justify-center gap-2 border border-slate-200 text-slate-800 font-semibold text-sm px-6 py-3.5 rounded-full transition-colors"
+                to="/contact"
+                className="mt-2.5 w-full inline-flex items-center justify-between gap-3 bg-white border border-slate-200 text-slate-900 font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-sm"
               >
-                Browse all machines
+                Get Bulk Invoice
+                <span className="bg-robin w-9 h-9 rounded-full text-white flex items-center justify-center shrink-0">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
               </Link>
 
               <dl className="mt-5 pt-5 border-t border-slate-100 space-y-2.5 text-xs">
@@ -167,11 +188,10 @@ export default function ProductPage() {
                 </div>
               </dl>
             </div>
-          </aside>
+          </div>
 
-          {/* Purchase rail */}
-          {/* Preview canvas + content */}
-          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+          {/* Preview canvas */}
+          <div className="order-2 lg:order-none min-w-0 lg:col-start-1 lg:row-start-1">
             <div className="relative rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
               <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200/70 bg-white/60 backdrop-blur">
                 <div className="flex items-center gap-1.5">
@@ -233,10 +253,13 @@ export default function ProductPage() {
                 })}
               </div>
             )}
+          </div>
 
+          {/* Overview / features / specs / what's included */}
+          <div className="order-4 lg:order-none min-w-0 lg:col-start-1 lg:row-start-2">
             {/* Tab bar — swaps content in place, no scrolling */}
             <div
-              className="mt-10 flex flex-wrap items-center gap-1.5 bg-slate-100 rounded-full p-1.5 w-fit max-w-full"
+              className="flex flex-wrap items-center gap-1.5 bg-slate-100 rounded-full p-1.5 w-fit max-w-full"
               role="tablist"
               aria-label="Product information"
             >

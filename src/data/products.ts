@@ -70,7 +70,7 @@ export const products: Product[] = [
   },
   {
     id: "max620",
-    name: "Max 620",
+    name: "Haha Max 620",
     price: 4899,
     originalPrice: 4999,
     badge: "Recommended Flagship",
@@ -171,7 +171,7 @@ export const products: Product[] = [
   },
   {
     id: "freezer",
-    name: "Smart Freezer",
+    name: "Haha Smart Freezer",
     price: 4699,
     originalPrice: 4999,
     badge: "Frozen & Specialty",

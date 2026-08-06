@@ -9,7 +9,7 @@ import { useEffect } from "react";
  * that case for now.
  */
 
-const SITE_NAME = "VendSource Distribution";
+export const SITE_NAME = "Vendsource AI Vending Machines";
 
 function setMeta(selector: string, attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
@@ -40,7 +40,9 @@ export interface PageMeta {
 
 export function usePageMeta({ title, description, jsonLd }: PageMeta) {
   useEffect(() => {
-    const fullTitle = `${title} | ${SITE_NAME}`;
+    // The home page passes SITE_NAME itself and stands alone; every other page is
+    // suffixed with it. Guarding on equality avoids "Site | Site" on the home page.
+    const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
     document.title = fullTitle;
 
     setMeta('meta[name="description"]', "name", "description", description);

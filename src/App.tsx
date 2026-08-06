@@ -11,6 +11,8 @@ import Shop from "./pages/Shop";
 import ProductPage from "./pages/ProductPage";
 import Faq from "./pages/Faq";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
 import { captureRef } from "./lib/referral";
 import { trackEvent } from "./lib/api";
@@ -124,6 +126,22 @@ export default function App() {
           element={
             <StoreFront>
               <Contact />
+            </StoreFront>
+          }
+        />
+        <Route
+          path="/privacy"
+          element={
+            <StoreFront>
+              <Privacy />
+            </StoreFront>
+          }
+        />
+        <Route
+          path="/terms"
+          element={
+            <StoreFront>
+              <Terms />
             </StoreFront>
           }
         />

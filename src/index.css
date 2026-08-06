@@ -7,10 +7,10 @@
   --color-brand: #2563eb;
   --color-brand-dark: #1d4ed8;
 
-  /* Soft periwinkle for the contact submit action. Nudged a shade deeper than
-     the reference so the white arrow inside still clears 3:1. */
-  --color-robin: #6d80d8;
-  --color-robin-dark: #5c6fc9;
+  /* Primary action colour. Dark ink rather than the earlier periwinkle, so
+     white text and arrow glyphs sit at maximum contrast. */
+  --color-robin: #0f172a;
+  --color-robin-dark: #020617;
 }
 
 /*
@@ -174,6 +174,66 @@ textarea:focus-visible,
   .product-card:focus-visible {
     transform: none;
   }
+}
+
+/*
+ * Legal pages (terms, privacy). Long-form prose with no interactive chrome, so
+ * the typography is declared once here instead of class-by-class: the pages stay
+ * plain semantic HTML and read like documents rather than like markup.
+ */
+.legal-prose {
+  color: var(--color-slate-600);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.legal-prose p,
+.legal-prose ul,
+.legal-prose ol {
+  margin-top: 0.875rem;
+}
+
+.legal-prose > :first-child {
+  margin-top: 0;
+}
+
+.legal-prose h3 {
+  margin-top: 1.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-slate-900);
+}
+
+.legal-prose ul,
+.legal-prose ol {
+  padding-left: 1.125rem;
+}
+.legal-prose ul {
+  list-style: disc;
+}
+.legal-prose ol {
+  list-style: decimal;
+}
+.legal-prose li {
+  margin-top: 0.4375rem;
+}
+
+.legal-prose strong {
+  font-weight: 600;
+  color: var(--color-slate-900);
+}
+
+.legal-prose a {
+  font-weight: 600;
+  color: var(--color-slate-900);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Clears the section heading from under the sticky header when a table-of-contents
+   link jumps to it. */
+.legal-anchor {
+  scroll-margin-top: 6rem;
 }
 
 /*

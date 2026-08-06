@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-6 lg:space-x-8 text-sm font-medium text-slate-600">
+        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-6 lg:space-x-8 text-sm font-medium text-slate-700">
           {navLinks.map(link => (
             <Link key={link.label} to={link.to} className="whitespace-nowrap transition-colors">
               {link.label}
@@ -58,7 +58,7 @@ export default function Header() {
 
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-200 bg-white">
-          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col space-y-1 text-sm font-medium text-slate-600">
+          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col space-y-1 text-sm font-medium text-slate-700">
             {navLinks.map(link => (
               <Link
                 key={link.label}

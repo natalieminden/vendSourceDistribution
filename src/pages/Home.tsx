@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { products, steps, reviews, faqItems, CONTACT_EMAIL } from "../data/products";
 import { asset } from "../lib/asset";
-import { usePageMeta } from "../lib/seo";
+import { usePageMeta, SITE_NAME } from "../lib/seo";
 import FinalCta from "../components/FinalCta";
 import MachineViewer from "../components/MachineViewer";
 import ProductCarousel from "../components/ProductCarousel";
@@ -70,7 +70,8 @@ export default function Home() {
     : [];
 
   usePageMeta({
-    title: "AI-Powered Smart Vending Coolers",
+    // The site name alone, unsuffixed — this is the root page.
+    title: SITE_NAME,
     description:
       "Smart vending coolers with load-cell shelves, AI vision and Nayax tap-to-pay. Compare six commercial models, see pricing and request volume quotes.",
     jsonLd: HOME_JSONLD,
@@ -88,17 +89,6 @@ export default function Home() {
   return (
     // Transparent, not white: the ambient grid in StoreFront sits behind this.
     <div className="relative overflow-x-clip">
-      {/* FLOATING MOBILE STICKY SHOP CTA */}
-      <div className="fixed bottom-4 right-4 z-30 md:hidden">
-        <Link
-          to="/shop"
-          className="bg-robin text-white font-semibold px-5 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-slate-950/30 text-xs"
-        >
-          <span>Shop Machines</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
-      </div>
-
       {/* HERO — inset photo panel, giant display type over full-bleed photography */}
       <section className="pt-4 px-3 sm:px-4 lg:px-6">
         <div className="relative overflow-hidden rounded-[1.5rem] lg:rounded-[2rem] min-h-[560px] lg:min-h-[82vh] flex flex-col">
@@ -241,7 +231,7 @@ export default function Home() {
                 to="/shop"
                 className="inline-flex items-center gap-3 bg-robin text-white font-semibold text-sm pl-6 pr-2 py-2 rounded-full shadow-lg shadow-slate-950/20"
               >
-                Shop All 6 Machines
+                Shop All Machines
                 <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center transition-transform">
                   <ArrowRight className="w-4 h-4" />
                 </span>
@@ -301,7 +291,9 @@ export default function Home() {
       {showcase && (
         <section className="py-10 lg:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white border border-slate-200 rounded-[2rem] p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-[0.45fr_0.55fr] gap-10 lg:gap-14 items-center">
-            <div>
+            {/* On mobile the render leads and the copy follows; on desktop the
+                two-column order is reversed back to copy-then-render. */}
+            <div className="order-2 lg:order-1">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
                 {showcase.name}
               </h2>
@@ -327,11 +319,13 @@ export default function Home() {
               </Link>
             </div>
 
-            <MachineViewer
-              src="models/haha-1200-ultra.glb"
-              poster={showcase.imgUrl}
-              posterAlt={`${showcase.name} smart vending cooler`}
-            />
+            <div className="order-1 lg:order-2">
+              <MachineViewer
+                src="models/haha-1200-ultra.glb"
+                poster={showcase.imgUrl}
+                posterAlt={`${showcase.name} smart vending cooler`}
+              />
+            </div>
           </div>
         </section>
       )}

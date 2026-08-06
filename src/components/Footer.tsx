@@ -5,15 +5,15 @@ import { CONTACT_EMAIL } from "../data/products";
 const SHOP_LINKS = [
   { to: "/shop", label: "All machines" },
   { to: "/shop/haha1200ultra", label: "Haha 1200 Ultra" },
-  { to: "/shop/max620", label: "Max 620" },
+  { to: "/shop/max620", label: "Haha Max 620" },
   { to: "/shop/qingoking509", label: "Qingo King 509" },
 ];
 
 const COMPANY_LINKS = [
   { to: "/contact", label: "Bulk pricing" },
   { to: "/contact", label: "Contact us" },
-  { to: "/#faq", label: "Terms of Service" },
-  { to: "/#faq", label: "Privacy Policy" },
+  { to: "/terms", label: "Terms of Service" },
+  { to: "/privacy", label: "Privacy Policy" },
 ];
 
 export default function Footer() {

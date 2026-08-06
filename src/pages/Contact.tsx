@@ -26,11 +26,17 @@ const REASONS = [
 /** Machine-count options; the form is equally valid for a single unit. */
 const MACHINE_COUNTS = ["1", "2", "3", "4", "5", "6-10", "11-20", "20+"];
 
+/*
+ * Field and label colours are pitched for measured contrast against the grey panel
+ * the form sits on. The placeholder was slate-400 (3.4:1 on white, under the 4.5:1
+ * minimum) and the border slate-300 (1.5:1, under the 3:1 for a control edge) —
+ * between them, the main reason the form was hard to read.
+ */
 const FIELD =
-  "w-full rounded-xl bg-white border border-slate-300 text-sm text-slate-800 p-3 outline-none " +
-  "placeholder:text-slate-400 focus:border-slate-900 focus:ring-2 focus:ring-slate-900/15 transition-all";
+  "w-full rounded-xl bg-white border border-slate-500 text-sm text-slate-900 p-3 outline-none " +
+  "placeholder:text-slate-600 focus:border-slate-900 focus:ring-2 focus:ring-slate-900/15 transition-all";
 
-const LABEL = "text-[11px] font-semibold text-slate-700 block mb-1.5 uppercase tracking-wide";
+const LABEL = "text-[11px] font-semibold text-slate-900 block mb-1.5 uppercase tracking-wide";
 
 const CONTACT_JSONLD = {
   "@context": "https://schema.org",
@@ -91,8 +97,8 @@ export default function Contact() {
         </div>
 
         <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-start">
-          {/* Form card — soft daylight gradient panel. */}
-          <div className="bg-daylight relative rounded-[2rem] overflow-hidden">
+          {/* Form card — light grey panel, matching the sidebar card below it. */}
+          <div className="bg-slate-100 relative rounded-[2rem] overflow-hidden">
             <div className="relative p-6 sm:p-8 lg:p-10">
               {submitted ? (
                 <div className="text-center py-12 space-y-4">
@@ -259,7 +265,7 @@ export default function Contact() {
                           <label key={product.id} className="flex items-center gap-2.5 cursor-pointer group">
                             <span
                               className={`w-4 h-4 rounded border grid place-items-center transition-colors shrink-0 ${
-                                checked ? "bg-slate-900 border-slate-900 text-white" : "border-slate-400"
+                                checked ? "bg-slate-900 border-slate-900 text-white" : "border-slate-500"
                               }`}
                             >
                               {checked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -270,7 +276,7 @@ export default function Contact() {
                               checked={checked}
                               onChange={() => toggleMachine(product.name)}
                             />
-                            <span className="text-sm text-slate-700">{product.name}</span>
+                            <span className="text-sm text-slate-800">{product.name}</span>
                           </label>
                         );
                       })}
