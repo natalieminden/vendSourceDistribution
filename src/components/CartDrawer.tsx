@@ -43,8 +43,11 @@ export default function CartDrawer() {
           aria-label="Close cart trigger"
         />
 
-        <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-          <div className="pointer-events-auto w-screen max-w-md">
+        {/* No left gutter on phones: with pl-10 the w-screen panel could not shrink
+            to fit (its min-content floor is wider than the space left over), so the
+            right edge — close button, prices, Apply — was pushed off screen. */}
+        <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-0 sm:pl-10">
+          <div className="pointer-events-auto w-screen max-w-md min-w-0">
             <div className="flex h-full flex-col bg-white shadow-2xl border-l border-slate-200">
               {/* Cart Header */}
               <div className="px-6 py-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
