@@ -7,6 +7,13 @@
       "runtimeArgs": ["vite", "--host=0.0.0.0"],
       "port": 5183,
       "autoPort": true
+    },
+    {
+      "name": "pages-preview",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\npx.cmd",
+      "runtimeArgs": ["vite", "preview", "--base=/vendSourceDistribution/", "--port=5184"],
+      "port": 5184,
+      "autoPort": true
     }
   ]
 }

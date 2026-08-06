@@ -1,0 +1,63 @@
+# Preview deploy of the marketing site to GitHub Pages.
+#
+# This is a PREVIEW ONLY. Pages serves static files, so nothing under /api works
+# here: the cart can be opened but Stripe checkout, the rep portal and event
+# tracking all need a real backend. The production host is Firebase.
+name: Deploy preview to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # So a preview can be re-published without an empty commit.
+  workflow_dispatch:
+
+# Pages needs these to publish; the token is otherwise read-only.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a newer push cancel an in-flight deploy rather than queue behind it.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        # A project site is served from /<repo>/, not the domain root.
+        env:
+          BUILD_BASE: /${{ github.event.repository.name }}/
+        run: npm run build
+
+      - name: Add SPA fallback
+        # Pages has no rewrite rules, so a deep link like /shop/max620 would 404 on
+        # reload. Pages serves 404.html for any unmatched path; making it a copy of
+        # index.html hands the URL to the client-side router instead.
+        run: cp dist/index.html dist/404.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

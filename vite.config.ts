@@ -5,7 +5,15 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/',
+    /*
+     * Served from the domain root by default, which is what Firebase Hosting wants.
+     *
+     * GitHub Pages is the exception: a project site lives under
+     * /<repo>/, so every asset URL has to carry that prefix. The Pages workflow
+     * sets BUILD_BASE=/vendSourceDistribution/ for its build only — do not
+     * hardcode it here, or the Firebase build ships broken asset paths.
+     */
+    base: process.env.BUILD_BASE || '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

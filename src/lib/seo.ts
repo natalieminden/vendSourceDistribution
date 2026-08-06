@@ -9,7 +9,7 @@ import { useEffect } from "react";
  * that case for now.
  */
 
-export const SITE_NAME = "Vendsource AI Vending Machines";
+export const SITE_NAME = "VendSource AI Vending Machines";
 
 function setMeta(selector: string, attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
